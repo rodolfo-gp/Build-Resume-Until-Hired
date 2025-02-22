@@ -1,0 +1,16 @@
+/*Footer.css*/
+
+.group-names{
+    display: flex;
+    padding: 10px;
+    margin: 10px;
+    
+    width: 100%;
+    
+    justify-content: center;
+    align-items: center;
+}
+
+.group-name{
+    padding: 10px;
+}

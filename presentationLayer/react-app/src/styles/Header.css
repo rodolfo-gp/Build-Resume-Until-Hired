@@ -1,0 +1,16 @@
+/* Header.css */
+
+.header-container{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center; /*vertically centers items*/
+
+    width: 100%;
+    margin: 10px;
+    overflow: hidden;
+}
+
+.logo{
+    width: 20%;
+    margin-right: auto; 
+}
