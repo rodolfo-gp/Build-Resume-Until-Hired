@@ -6,6 +6,8 @@ import Footer from './components/Footer';
 
 import Homepage from "./pages/Homepage";
 import Loginpage from './pages/Loginpage';
+import CoverLetter from './pages/Cover_Letter';
+import Resume from './pages/Resume';
 
 import './App.css';
 
@@ -16,6 +18,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Loginpage />} />
         <Route path="/Homepage" element={<Homepage />} />
+        <Route path="/Cover_Letter" element={<CoverLetter />}/>
+        <Route path="/Resume" element={<Resume />} />
       </Routes>
       <Footer/>
     </BrowserRouter>
