@@ -5,7 +5,8 @@ import "../styles/Header.css";
 function Header(){
     return(
         <div className="header-container">
-            <img className="logo" src="./images/temp logo.png" alt="Some logo for us i guess" />
+            <h2>B.R.U.H</h2>
+            
         </div>
     );
 }

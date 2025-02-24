@@ -1,17 +1,12 @@
 import React from "react";
 
-import Header from "../components/Header";
-import Footer from "../components/Footer";
+import "../styles/Homepage.css";
 
 function Homepage(){
 
     return(
         <div className = "homepage-container">
-            <Header/>
-            <div>
-                <p>div inside a div cause im div-ed</p>
-            </div>
-            <Footer/>
+            <p>wow homepage</p>
         </div>
     );
 }

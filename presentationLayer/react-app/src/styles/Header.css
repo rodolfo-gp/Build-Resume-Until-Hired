@@ -6,8 +6,9 @@
     align-items: center; /*vertically centers items*/
 
     width: 100%;
-    margin: 10px;
     overflow: hidden;
+
+    border: 1px solid red;
 }
 
 .logo{
