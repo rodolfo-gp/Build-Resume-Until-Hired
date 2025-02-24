@@ -57,7 +57,7 @@ function CoverLetter(){
             value = {jobDesc}
             onChange = {(event) => setJobDesc(event.target.value)}
             />
-            <h3>Resume:</h3>
+            <h3>Resume/Relavent Skills:</h3>
             <input
             required = "true"
             type = "text"
