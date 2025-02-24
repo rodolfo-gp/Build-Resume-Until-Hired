@@ -7,5 +7,5 @@
     - virtualenv\scripts\
     
 4. Install dependencies
-    - pip install flask requests pymongo flask_pymongo
+    - pip install flask requests pymongo flask_pymongo flask-bcrypt Bcrypt
 
