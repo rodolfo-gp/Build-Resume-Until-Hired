@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 
 
 function Resume(){
@@ -6,7 +6,7 @@ function Resume(){
     
     return(
     <div>
-        Kill me
+        <h2>Please input resume data into the following fields</h2>
     </div>
     );
 }
