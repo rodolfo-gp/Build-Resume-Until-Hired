@@ -4,9 +4,18 @@ import "../styles/Homepage.css";
 
 function Homepage(){
 
+    
     return(
         <div className = "homepage-container">
-            <p>wow homepage</p>
+            <h1>Which would you like to create</h1>
+            <div className="Buttons">
+            <a href="Resume.html">  
+                <button name="Resume">Resume</button>
+            </a> 
+            <a href="Cover_Letter.html">
+                <button name="Cover Letter">Cover Letter</button>
+            </a>
+            </div>
         </div>
     );
 }
