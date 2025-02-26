@@ -6,7 +6,6 @@ function Header(){
     return(
         <div className="header-container">
             <h2>B.R.U.H</h2>
-            
         </div>
     );
 }

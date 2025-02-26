@@ -8,14 +8,13 @@
 
     justify-content: flex-start;
     align-items: center;
-
-    border: 1px solid darkblue;
 }
 
 .username-container,
 .password-container{
     margin: 5px;
 }
+
 
 
 

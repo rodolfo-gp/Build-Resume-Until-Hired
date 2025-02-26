@@ -54,7 +54,7 @@ function Loginpage() {
                 Continue as Guest
             </button>
 		</form>
-	);
+	);	
 }
 
 export default Loginpage;
