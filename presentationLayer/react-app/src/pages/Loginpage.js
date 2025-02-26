@@ -47,10 +47,10 @@ function Loginpage() {
                 />
             </div>
 
-			<button className="submit button" type="submit">
+			<button className="submit" type="submit">
 				Submit
 			</button>
-			<button className="guest button" onClick ={() => window.location.href = "/Homepage"}>
+			<button className="guest" onClick ={() => window.location.href = "/Homepage"}>
                 Continue as Guest
             </button>
 		</form>

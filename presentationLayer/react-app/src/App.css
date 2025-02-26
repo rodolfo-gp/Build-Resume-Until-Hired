@@ -16,3 +16,20 @@ body,html{
   overflow-x: hidden;
   overflow-y: auto;
 }
+
+
+
+/* Global CSS */
+
+button {
+  text-align: center;
+  border-radius: 5px;
+  text-decoration: none;  /* Remove underline */
+  cursor: pointer;
+  padding: 5px;
+  margin: 5px;
+}
+
+button:hover{
+  background-color: lightgrey;
+}
