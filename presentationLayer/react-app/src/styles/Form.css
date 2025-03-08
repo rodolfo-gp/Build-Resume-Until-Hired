@@ -1,6 +1,6 @@
 /*Loginpage.css*/
 
-.loginpage-container{
+.form-container{
     height: 100vh;
     
     display: flex;
@@ -10,9 +10,18 @@
     align-items: center;
 }
 
+.form-container input{
+    width: 25%;
+}
+
 .username-container,
 .password-container{
+    display: flex;
+    justify-content: center;
+
+    width: 100%;
     margin: 5px;
+    
 }
 
 
