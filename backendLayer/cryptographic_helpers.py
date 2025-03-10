@@ -16,3 +16,10 @@ def hash_email(email):
 def hash_password(password):
     """Returns a securely hashed password (bcrypt)."""
     return bcrypt.generate_password_hash(password).decode('utf-8')
+
+def compare_passwords(hashed_password, password_plaintext):
+    """Returns true if plain text password == hashed password after hashing"""
+    if bcrypt.check_password_hash(hashed_password, password_plaintext):
+        return True
+    
+    return False
