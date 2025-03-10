@@ -5,14 +5,13 @@ from flask_pymongo import PyMongo
 
 
 app = Flask(__name__)
-app.config["MONGO_URI"] = "mongodb://localhost:27017/SENG401BRUHDB"
+app.config["MONGO_URI"] = "mongodb://mongodb:27017/SENG401BRUHDB"
 mongo = PyMongo(app)
 
 
-@app.route("/")
+@app.route("/",methods=['GET'])
 def test():
-    users = list(mongo.db.users.find({}, {"_id": 0}))  # Convert cursor to list and exclude ObjectId
-    return jsonify(users)
+    return "Hello From Flask"
 
 @app.route('/signup', methods=['POST'])
 def signup():
@@ -80,4 +79,4 @@ def login():
         
     return "hello"   
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=5000)
