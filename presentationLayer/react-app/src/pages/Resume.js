@@ -1,87 +1,71 @@
 import React, { useState } from "react";
 
+import "../styles/Form.css";
 
-function Resume() {
+function ResumeForm({row, col}) {
+	const [formData, setFormData] = useState({
+		name: "",
+		address: "",
+		phone: "",
+		socials: "",
+		education: "",
+		skills: "",
+		experience: "",
+		volunteer: "",
+	});
 
-    const [name, setName] = useState("");
-    const [address, setAddress] = useState("");
-    const [phone, setPhone] = useState("");
-    const [socials, setSocials] = useState("");
-    const [education, setEducation] = useState("");
-    const [skills, setSkills] = useState("");
-    const [experience, setExp] = useState("");
-    const [projects, setProjects] = useState("");
-    const [volunteer, setVolunteer] = useState("");
+    const textAreaFields = ["education", "skills", "experience", "volunteer"];
+
+    const handleChange = (event) =>{
+        const {name, value} = event.target;
+        setFormData((prevData) => ({
+            ...prevData,
+            [name]: value,
+        }));
+    };
 
 
-    return (
-        <div>
-            <h2>Please input resume data into the following fields</h2>
-            <form>
-                <h3>Name:</h3>
-                <input
-                    required="true"
-                    type="text"
-                    value={name}
-                    onChange={(event) => setName(event.target.value)}
-                />
-                <h3>Address:</h3>
-                <input
-                    type="text"
-                    value={address}
-                    onChange={(event) => setAddress(event.target.value)}
-                />
-                <h3>Phone:</h3>
-                <input
-                    required="true"
-                    type="text"
-                    value={phone}
-                    onChange={(event) => setPhone(event.target.value)}
-                />
-                <h3>Socials:</h3>
-                <input
-                    type="text"
-                    value={socials}
-                    onChange={(event) => setSocials(event.target.value)}
-                />
-                <h3>Education:</h3>
-                <input
-                    required="true"
-                    type="text"
-                    value={education}
-                    onChange={(event) => setEducation(event.target.value)}
-                />
-                <h3>Skills:</h3>
-                <input
-                    required="true"
-                    type="text"
-                    value={skills}
-                    onChange={(event) => setSkills(event.target.value)}
-                />
-                <h3>Experience:</h3>
-                <input
-                    required="true"
-                    type="text"
-                    value={experience}
-                    onChange={(event) => setExp(event.target.value)}
-                />
-                <h3>Projects:</h3>
-                <input
-                    required="true"
-                    type="text"
-                    value={projects}
-                    onChange={(event) => setProjects(event.target.value)}
-                />
-                <h3>Volunteer:</h3>
-                <input
-                    type="text"
-                    value={volunteer}
-                    onChange={(event) => setVolunteer(event.target.value)}
-                />
-                <input type="submit" value="Submit" />
-            </form>
-        </div>
-    );
+	return (
+		<form className="form-container">
+			<h3>Enter your Resume Information</h3>
+
+            {Object.entries(formData).map(([field, value]) => 
+                <div className = "field-container">
+                    
+                    {/**
+                     * If the field is in textAreaFields it uses <textarea>
+                     * otherwise it uses the regular <input/>
+                     */}
+                    {textAreaFields.includes(field) ? (
+                        <textarea
+                            id = {field}
+                            name = {field}
+                            value = {value}
+                            onChange = {handleChange}
+                            placeholder = {`${field} `}
+                            rows = {row}
+                            cols = {col}
+                        />
+                    ) : (
+                        <input
+                            id = {field}
+                            type = "text"
+                            name = {field}
+                            value = {value}
+                            onChange = {handleChange}
+                            placeholder = {`${field}`}
+                        />
+                    )}
+
+                </div>
+            )}
+            
+			<button className="submit" type="submit">
+				Submit
+			</button>
+
+		</form>
+	);
 }
 
-export default Resume;
+export default ResumeForm;

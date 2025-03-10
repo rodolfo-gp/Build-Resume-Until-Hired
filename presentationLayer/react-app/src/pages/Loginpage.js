@@ -37,7 +37,7 @@ function Loginpage() {
 	return (
 		<form onSubmit={handleSubmit} className="form-container">
 			<h3>Login</h3>
-			<div className = "username-container">
+			<div className = "field-container">
                 <input
                     type = "text"
                     value = {username}
@@ -45,7 +45,7 @@ function Loginpage() {
                     placeholder = "Enter username..."
                 />
             </div>
-            <div className = "password-container">
+            <div className = "field-container">
                 <input
                     type = "password"
                     value = {password}
