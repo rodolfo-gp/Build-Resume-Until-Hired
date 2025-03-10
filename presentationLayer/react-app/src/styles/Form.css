@@ -8,14 +8,15 @@
 
     justify-content: flex-start;
     align-items: center;
+
+    border: 10px solid pink;
 }
 
 .form-container input{
     width: 25%;
 }
 
-.username-container,
-.password-container{
+.field-container{
     display: flex;
     justify-content: center;
 

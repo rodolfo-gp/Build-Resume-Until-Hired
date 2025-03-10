@@ -13,7 +13,7 @@ function SignupPage(){
     return(
 		<form className="form-container">
             <h3>Signup</h3>
-			<div className = "username-container">
+			<div className = "field-container">
                 <input
                     type = "text"
                     value = {username}
@@ -21,7 +21,7 @@ function SignupPage(){
                     placeholder = "Enter username..."
                 />
             </div>
-            <div className = "password-container">
+            <div className = "field-container">
                 <input
                     type = "password"
                     value = {password}
@@ -29,7 +29,7 @@ function SignupPage(){
                     placeholder="Enter password..."
                 />
             </div>
-            <div className = "password-container">
+            <div className = "field-container">
                 <input
                     type = "password"
                     value ={confirmPasswoord}
