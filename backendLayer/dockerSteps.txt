@@ -1,7 +1,0 @@
-docker build -t flaskapi .
-
-docker run --name flaskapi -p 5000:5000 flaskapi
-
-
-docker-compose down
-docker-compose up --build
