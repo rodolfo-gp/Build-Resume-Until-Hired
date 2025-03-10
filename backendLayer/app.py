@@ -1,11 +1,12 @@
 import cryptographic_helpers as ch
 from flask import Flask, jsonify, request
 from flask_pymongo import PyMongo 
+import os
 
 
 
 app = Flask(__name__)
-app.config["MONGO_URI"] = "mongodb://mongodb:27017/SENG401BRUHDB"
+app.config["MONGO_URI"] = os.getenv("MONGO_URI", "mongodb://mongodb:27017/SENG401BRUHDB")
 mongo = PyMongo(app)
 
 
