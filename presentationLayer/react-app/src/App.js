@@ -8,7 +8,7 @@ import Footer from "./components/Footer";
 // Importing Pages
 import Homepage from "./pages/Homepage";
 import Loginpage from "./pages/Loginpage";
-import CoverLetter from "./pages/Cover_Letter";
+import CoverLetter from "./pages/CoverLetter";
 import Resume from "./pages/Resume";
 import SignupPage from "./pages/SignupPage";
 
