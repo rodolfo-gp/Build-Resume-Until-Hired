@@ -17,4 +17,4 @@ From here, you can run this one too:
 ```
 pip install -r requirements.txt
 ```
-4. From here, you can run the python file without any issues (except for the GPT key, which will be sorted later)
+4. From here, you can run the python file without any issues (except for the GPT key, which will be in the env file sent to everyone)
