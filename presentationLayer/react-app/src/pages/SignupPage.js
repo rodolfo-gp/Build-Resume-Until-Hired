@@ -7,11 +7,30 @@ function SignupPage(){
     const navigate = useNavigate();
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    const [confirmPasswoord, setConfirmPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
 
+    const URL = "";
+
+	const myHeaders = new Headers();
+	myHeaders.append("Content-Type", "application/json");
+
+	async function senddata() {
+		await fetch(URL,{
+			method: "POST",
+			headers: myHeaders,
+			body: JSON.stringify({
+                username:{username},
+                password:{password}
+            }),
+		});
+		return false;
+	}
+
+    //state variable to check if the passwords are the same
+    let issame = password === confirmPassword
 
     return(
-		<form className="form-container">
+		<div className="form-container" id="input">
             <h3>Signup</h3>
 			<div className = "field-container">
                 <input
@@ -29,22 +48,24 @@ function SignupPage(){
                     placeholder="Enter password..."
                 />
             </div>
-            <div className = "field-container">
+            <div className = "field-container" id="comfirm">
                 <input
                     type = "password"
-                    value ={confirmPasswoord}
+                    value ={confirmPassword}
                     onChange={(event) => setConfirmPassword(event.target.value)}
                     placeholder="Confirm password..."
                 />
             </div>
-
+            <>
+                {!issame && <p>passwords do not match</p>}
+            </>
 			<button className="login" onClick={() => navigate("/Login")}>
 				Return to Login page
 			</button>
-			<button className="submit" type="submit">
+			<button disabled={!issame} id="submitbutton" className="submit" type="button" onClick={(event)=>senddata(event)}>
 				Sign up
 			</button>
-		</form>
+		</div>
     );
 
 }
