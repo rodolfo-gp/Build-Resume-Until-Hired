@@ -20,8 +20,8 @@ function CoverLetterForm({ row, col }) {
 	const myHeaders = new Headers();
 	myHeaders.append("Content-Type", "application/json");
 
-	function senddata() {
-		fetch(URL,{
+	async function senddata() {
+		await fetch(URL,{
 			method: "POST",
 			headers: myHeaders,
 			body: JSON.stringify(formData),
