@@ -15,8 +15,22 @@ function CoverLetterForm({ row, col }) {
 
 	const textAreaFields = ["jobDesc"];
 
+	const URL = "";
+
+	const myHeaders = new Headers();
+	myHeaders.append("Content-Type", "application/json");
+
+	function senddata() {
+		fetch(URL,{
+			method: "POST",
+			headers: myHeaders,
+			body: JSON.stringify(formData),
+		});
+		return false;
+	}
+
 	return (
-		<form className="form-container">
+		<div className="form-container">
 			<h3>Enter your Cover Letter Information</h3>
 			{Object.entries(formData).map(([field, value]) => (
 				<InputField
@@ -29,10 +43,10 @@ function CoverLetterForm({ row, col }) {
 					col={col}
 				/>
 			))}
-			<button className="submit" type="submit">
+			<button className="submit" type="submit" onClick={(event)=>senddata(event)}>
 				Submit
 			</button>
-		</form>
+		</div>
 	);
 }
 

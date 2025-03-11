@@ -18,9 +18,22 @@ function ResumeForm({row, col}) {
 
     const textAreaFields = ["education", "skills", "experience", "volunteer"];
 
+	const URL = "";
 
+	const myHeaders = new Headers();
+	myHeaders.append("Content-Type", "application/json");
+
+	function senddata() {
+		fetch(URL,{
+			method: "POST",
+			headers: myHeaders,
+			body: JSON.stringify(formData),
+		});
+		return false;
+	}
+	
 	return (
-		<form className="form-container">
+		<div className="form-container">
 			<h3>Enter your Resume Information</h3>
 
             {Object.entries(formData).map(([field, value]) => 
@@ -35,11 +48,11 @@ function ResumeForm({row, col}) {
                 />
             )}
 
-			<button className="submit" type="submit">
+			<button className="submit" type="submit" onClick={(event)=>senddata(event)}>
 				Submit
 			</button>
 
-		</form>
+		</div>
 	);
 }
 
