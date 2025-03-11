@@ -11,34 +11,29 @@ function Loginpage() {
 	/** This is how we send user login information to the flask backend
 	 *  TODO: Change the url to be the actual URL required for the backend
 	 */
-	const url = "http://127.0.0.1:5000/submit";
-	const handleSubmit = async (event) => {
-		event.preventDefault();
+	const URL = "";
 
-		if(!username.trim() || !password.trim()){
-			alert("Please fill in all fields");
-			return;
-		}
+	const myHeaders = new Headers();
+	myHeaders.append("Content-Type", "application/json");
 
-		const response = await fetch(url, {
+	async function senddata() {
+		await fetch(URL,{
 			method: "POST",
-			headers: {
-				"Content-type": "application/json",
-			},
+			headers: myHeaders,
 			body: JSON.stringify({
-				username: username,
-				password: password,
+				username:{username},
+				password:{password}
 			}),
 		});
-	};
-
-	
+		return false;
+	}
 
 	return (
-		<form onSubmit={handleSubmit} className="form-container">
+		<form onSubmit={(event)=>senddata(event)} className="form-container">
 			<h3>Login</h3>
 			<div className = "field-container">
                 <input
+					required = {true}
                     type = "text"
                     value = {username}
                     onChange = {(event) => setUsername(event.target.value)}
@@ -47,6 +42,7 @@ function Loginpage() {
             </div>
             <div className = "field-container">
                 <input
+					required = {true}
                     type = "password"
                     value = {password}
                     onChange={(event) => setPassword(event.target.value)}
