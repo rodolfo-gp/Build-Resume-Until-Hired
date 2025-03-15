@@ -9,11 +9,15 @@ function CoverLetterForm({ row, col }) {
 		name: "",
 		address: "",
 		phone: "",
+		education:"",
 		company: "",
+		recipientinfo:"",
 		jobDesc: "",
+		resume: "",
+		
 	});
 
-	const textAreaFields = ["jobDesc"];
+	const textAreaFields = ["education", "recipient info", "jobDesc", "resume" ];
 
 	const URL = "";
 
