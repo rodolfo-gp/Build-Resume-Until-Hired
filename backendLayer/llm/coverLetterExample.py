@@ -2,6 +2,7 @@ from gptPromptingutilities import gpt_prompter
 
 # Constants:
 name = "Zaid Shaikh the FBI Agent"
+profession = "Software Engineer"
 education = "University of Calgary, Schulich School of Engineering, Software Engineering Undergraduate"
 address = "123 1st Street NW"
 recipientAddress = "Tip Top Tailors, 3625 Shaganapi Trail NW, Calgary NW"
@@ -85,7 +86,7 @@ letterTemplate = f.read()
 
 
 promptPayload = """
-Please make a sample cover letter for a software engineering student. Use the following fields:
+Please make a cover letter for a {userProfession}. Use the following fields:
 Name: {userName}
 Address: {userAddress}
 Phone Number: {userNumber}
@@ -103,6 +104,7 @@ Please use the enclosed cover letter as a template for filling the information i
 Here is the job description that the cover letter should be tailored towards:
 {jobDescription}
 """.format(
+    userProfession = profession,
     userName = name, 
     userEducation = education, 
     userAddress = address,
@@ -114,6 +116,6 @@ Here is the job description that the cover letter should be tailored towards:
     userDesiredCompany = recipientAddress + recipientName,
     jobDescription = jobDescription
     )
-header = "The prompt being sent will contian details about creating a resume or cover letter template. please return ONLY the text associated with the template"
+header = "The prompt being sent will contain details about creating a resume or cover letter template. please return ONLY the text associated with the template"
 
 print(gpt_prompter(promptPayload, header))
