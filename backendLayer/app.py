@@ -1,3 +1,4 @@
+from flask_cors import CORS
 import cryptographic_helpers as ch
 from flask import Flask, jsonify, request
 from flask_pymongo import PyMongo 
@@ -6,6 +7,7 @@ import os
 
 
 app = Flask(__name__)
+CORS(app)
 app.config["MONGO_URI"] = os.getenv("MONGO_URI")
 mongo = PyMongo(app)
 
