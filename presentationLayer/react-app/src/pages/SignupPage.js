@@ -9,22 +9,23 @@ function SignupPage(){
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
 
-    const URL = "";
+    const URL = "http://localhost:5000/signup";
+
 
 	const myHeaders = new Headers();
 	myHeaders.append("Content-Type", "application/json");
 
 	async function senddata() {
-		await fetch(URL,{
-			method: "POST",
-			headers: myHeaders,
-			body: JSON.stringify({
-                username:{username},
-                password:{password}
+        await fetch(URL, {
+            method: "POST",
+            headers: myHeaders,
+            body: JSON.stringify({
+                email: username,
+                password: password
             }),
-		});
-		return false;
-	}
+        });
+        return false;
+    }
 
     //state variable to check if the passwords are the same
     let issame = password === confirmPassword
