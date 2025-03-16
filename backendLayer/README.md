@@ -23,7 +23,7 @@ How to upload all files:
 
 1. ```cd backendLayer```
    
-2. ```scp -i SENG401ProjectEC2Key.pem * ec2-user@18.222.60.25:/home/ec2-user/SENG401_Term_Project_backend```
+2. ```scp -i SENG401ProjectEC2Key.pem -r * ec2-user@18.222.60.25:/home/ec2-user/SENG401_Term_Project_backend``` DO NOT HAVE VIRTUALENV FILES OR OTHER JAZZ TO UPLOAD
 
 Update AWS Instance:
 1. conncet via ssh through AWS intance terminal
