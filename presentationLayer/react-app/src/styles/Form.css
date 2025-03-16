@@ -1,0 +1,31 @@
+/*Loginpage.css*/
+
+.form-container{
+    height: 100vh;
+    
+    display: flex;
+    flex-direction: column;
+
+    justify-content: flex-start;
+    align-items: center;
+
+    border: 10px solid pink;
+}
+
+.form-container input{
+    width: 25%;
+}
+
+.field-container{
+    display: flex;
+    justify-content: center;
+
+    width: 100%;
+    margin: 5px;
+    
+}
+
+
+
+
+
