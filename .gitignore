@@ -131,6 +131,7 @@ dist
 
 
 backendLayer/__pycache__
+backendLayer/llm/__pycache__
 backendLayer/virtualenv
 
 backendLayer/SENG401ProjectEC2Key.pem
