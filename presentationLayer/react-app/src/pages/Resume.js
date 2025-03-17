@@ -16,7 +16,7 @@ function ResumeForm({row, col}) {
 
     const textAreaFields = ["skills", "experience", "volunteer"];
 
-	const URL = "";
+	const URL = "https://api.bru-h.xyz/resume";
 
 	const myHeaders = new Headers();
 	myHeaders.append("Content-Type", "application/json");

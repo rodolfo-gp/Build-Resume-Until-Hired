@@ -9,7 +9,7 @@ function SignupPage(){
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
 
-    const URL = "http://localhost:5000/signup";
+    const URL = "https://api.bru-h.xyz/signup";
 
 
 	const myHeaders = new Headers();

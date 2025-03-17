@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import {useNavigate} from "react-router-dom";
 
+
 import "../styles/Form.css";
+import Homepage from "./Homepage";
 
 function Loginpage() {
 	const navigate = useNavigate();
@@ -11,7 +13,7 @@ function Loginpage() {
 	/** This is how we send user login information to the flask backend
 	 *  TODO: Change the url to be the actual URL required for the backend
 	 */
-	const URL = "http://localhost:5000/login";
+	const URL = "https://api.bru-h.xyz/login";
 
 	const myHeaders = new Headers();
 	myHeaders.append("Content-Type", "application/json");
