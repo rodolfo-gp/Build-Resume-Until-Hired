@@ -18,7 +18,7 @@ function CoverLetterForm({ row, col }) {
 
 	const textAreaFields = ["recipient info", "jobDesc"];
 
-	const URL = "";
+	const URL = "https://api.bru-h.xyz/coverletter";
 
 	const myHeaders = new Headers();
 	myHeaders.append("Content-Type", "application/json");
