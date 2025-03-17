@@ -190,54 +190,43 @@ To stop docker engine: ```stop docker```
 <!-- CONTRIBUTORS -->
 ## Contributors:
 
-<p align="center">
-  <a href="https://github.com/rodolfo-gp" style="text-decoration: none; display: inline-block; text-align: center; margin: 10px;">
+<div align="center" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
+  <a href="https://github.com/rodolfo-gp" style="text-decoration: none; text-align: center;">
     <img src="https://github.com/rodolfo-gp.png" width="50" height="50" style="border-radius: 50%;" alt="rodolfo-gp" />
-    <br />
-    <span style="font-size: 14px; font-weight: bold;">Rodolfo Gil</span>
-    <br />
-    <span style="font-size: 12px; color: gray;">DevOps & Backend Developer</span>
+    <br /><strong>Rodolfo Gil</strong>
+    <br /><span style="color:gray;">DevOps & Backend Developer</span>
   </a>
-  <a href="https://github.com/SenorYuen" style="text-decoration: none; display: inline-block; text-align: center; margin: 10px;">
+
+  <a href="https://github.com/SenorYuen" style="text-decoration: none; text-align: center;">
     <img src="https://github.com/SenorYuen.png" width="50" height="50" style="border-radius: 50%;" alt="SenorYuen" />
-    <br />
-    <span style="font-size: 14px; font-weight: bold;">Adam Yuen</span>
-    <br />
-    <span style="font-size: 12px; color: gray;">Backend Developer</span>
+    <br /><strong>Adam Yuen</strong>
+    <br /><span style="color:gray;">Backend Developer</span>
   </a>
-  <a href="https://github.com/s0uptim3" style="text-decoration: none; display: inline-block; text-align: center; margin: 10px;">
+
+  <a href="https://github.com/s0uptim3" style="text-decoration: none; text-align: center;">
     <img src="https://github.com/s0uptim3.png" width="50" height="50" style="border-radius: 50%;" alt="s0uptim3" />
-    <br />
-    <span style="font-size: 14px; font-weight: bold;">Odin Fox</span>
-    <br />
-    <span style="font-size: 12px; color: gray;">Frontend Developer</span>
+    <br /><strong>Odin Fox</strong>
+    <br /><span style="color:gray;">Frontend Developer</span>
   </a>
-  <a href="https://github.com/FahmiSar" style="text-decoration: none; display: inline-block; text-align: center; margin: 10px;">
+
+  <a href="https://github.com/FahmiSar" style="text-decoration: none; text-align: center;">
     <img src="https://github.com/FahmiSar.png" width="50" height="50" style="border-radius: 50%;" alt="FahmiSar" />
-    <br />
-    <span style="font-size: 14px; font-weight: bold;">Fahmi Sar</span>
-    <br />
-    <span style="font-size: 12px; color: gray;">Frontend Developer</span>
+    <br /><strong>Fahmi Sar</strong>
+    <br /><span style="color:gray;">Frontend Developer</span>
   </a>
-  <a href="https://github.com/Shiro3695" style="text-decoration: none; display: inline-block; text-align: center; margin: 10px;">
+
+  <a href="https://github.com/Shiro3695" style="text-decoration: none; text-align: center;">
     <img src="https://github.com/Shiro3695.png" width="50" height="50" style="border-radius: 50%;" alt="Shiro3695" />
-    <br />
-    <span style="font-size: 14px; font-weight: bold;">Alexander Lai</span>
-    <br />
-    <span style="font-size: 12px; color: gray;">Frontend Developer</span>
+    <br /><strong>Alexander Lai</strong>
+    <br /><span style="color:gray;">Frontend Developer</span>
   </a>
-  <a href="https://github.com/Zaid-sh" style="text-decoration: none; display: inline-block; text-align: center; margin: 10px;">
+
+  <a href="https://github.com/Zaid-sh" style="text-decoration: none; text-align: center;">
     <img src="https://github.com/Zaid-sh.png" width="50" height="50" style="border-radius: 50%;" alt="Zaid-sh" />
-    <br />
-    <span style="font-size: 14px; font-weight: bold;">Zaid Shaikh</span>
-    <br />
-    <span style="font-size: 12px; color: gray;">Fullstack Developer</span>
+    <br /><strong>Zaid Shaikh</strong>
+    <br /><span style="color:gray;">Fullstack Developer</span>
   </a>
-</p>
-
-
-
-
+</div>
 
 
 
