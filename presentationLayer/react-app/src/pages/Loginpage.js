@@ -13,21 +13,32 @@ function Loginpage() {
 	/** This is how we send user login information to the flask backend
 	 *  TODO: Change the url to be the actual URL required for the backend
 	 */
-	const URL = "https://api.bru-h.xyz/login";
+	const URL = "https://api.bru-h.xyz/Login";
 
 	const myHeaders = new Headers();
 	myHeaders.append("Content-Type", "application/json");
 
-	async function senddata() {
-		await fetch(URL,{
+	async function senddata(event) {
+		event.preventDefault();
+
+		const response = await fetch(URL,{
 			method: "POST",
 			headers: myHeaders,
 			body: JSON.stringify({
-				username:{username},
-				password:{password}
+				email: username,
+				password: password
 			}),
 		});
-		return false;
+
+		const message = await response.text();
+
+		if (response.status === 201) {
+			alert("Login Successful!");
+			navigate("/Homepage")
+		}
+		else {
+			alert("Login Failed: " + message);
+		}
 	}
 
 	return (

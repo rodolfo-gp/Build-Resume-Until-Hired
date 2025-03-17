@@ -26,7 +26,7 @@ def signup():
         if not does_user_exist(hashed_email):
             hashed_password = ch.hash_password(data["password"])
             newUser = {"email": hashed_email, "password": hashed_password}
-            
+
             try:
                 mongo.db.users.insert_one(newUser)
                 return "User Created Successfully", 201
@@ -53,7 +53,7 @@ def login():
         data = request.json
         if not data or "email" not in data or "password" not in data:
             return "Bad Request, Missing Data", 400
-        
+
         hashed_email = ch.hash_email(data["email"])
         if does_user_exist_login(hashed_email, data["password"]):
             return "Successful Login", 201

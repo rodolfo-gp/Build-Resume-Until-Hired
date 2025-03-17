@@ -16,7 +16,7 @@ function SignupPage(){
 	myHeaders.append("Content-Type", "application/json");
 
 	async function senddata() {
-        await fetch(URL, {
+        const response = await fetch(URL, {
             method: "POST",
             headers: myHeaders,
             body: JSON.stringify({
@@ -24,7 +24,16 @@ function SignupPage(){
                 password: password
             }),
         });
-        return false;
+
+        const message = await response.text();
+
+        if (response.status === 201) {
+            alert("Signup Successful!");
+            navigate("/Login");
+        }
+        else {
+            alert("Signup Failed: " + message);
+        }
     }
 
     //state variable to check if the passwords are the same
