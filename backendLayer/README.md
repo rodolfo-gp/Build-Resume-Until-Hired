@@ -12,7 +12,7 @@ To stop docker engine: ```stop docker```
 
 ## For Dev AWS Deployment: (instance already exists)
 
-So you have this pem file used to auth into the AWS EC2 instance. So what we do is use the pem file to auth, then upload all of this dir file into a specific folder in the EC2 instance. After that, ssh into the intance and rebuild and start the new containers with the new code. The public IP of the instance at the time of writting this...
+So you have this pem file used to auth into the AWS EC2 instance. So what we do is use the pem file to auth, then upload all of this dir files and folders into a specific folder in the EC2 instance. After that, ssh into the intance and rebuild and start the new containers with the new code. This assuming that you already have EC2 instance, have installed docker and docker-compose, configured Ngix reverse proxy to allow API container to communicate with instance portss(https), and have a valid ssl certificate for https connection and requests to the server. The public IP of the instance at the time of writting this...
 
 IP: 18.222.60.25 \
 Domain: api.bru-h.xyz 
