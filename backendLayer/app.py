@@ -21,7 +21,6 @@ def signup():
         data = request.json
         if not data or "email" not in data or "password" not in data:
             return "Bad Request, Missing Data", 400
-        
         hashed_email = ch.hash_email(data["email"])
 
         if not does_user_exist(hashed_email):
@@ -38,6 +37,7 @@ def signup():
             return "User with that email already exists", 402
     except Exception as e:
         print(f"Error: {e}")
+
         return "Bad Request", 500
 
 def does_user_exist(email):
