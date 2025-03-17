@@ -6,14 +6,6 @@
 
     height: 100%;
     flex-grow: 1;
-/* The image works however is too zoomed in i think its just an issue with the 
-    resolution of the picture will fix this later
-
-    background-image: url("/public/images/Shore.png");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-*/
 
     border: 10px solid green ;
 }

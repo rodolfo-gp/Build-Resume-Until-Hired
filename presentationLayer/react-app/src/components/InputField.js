@@ -1,5 +1,7 @@
 import React from "react";
 
+import "../styles/Form.css";
+
 function InputField({field, value, handleChange, setFormData, textAreaFields, placeholder, row, col}){
     const isTextArea = textAreaFields.includes(field);
 

@@ -10,10 +10,19 @@
     align-items: center;
 
     border: 10px solid pink;
+    
 }
 
 .form-container input{
     width: 25%;
+
+    padding: 3px;
+}
+
+.form-container textarea{
+    resize: none;
+
+    padding: 3px;
 }
 
 .field-container{

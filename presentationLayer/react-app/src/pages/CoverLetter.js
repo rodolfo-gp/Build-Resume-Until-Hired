@@ -2,21 +2,21 @@ import React, { useState } from "react";
 import { handleChange } from "../utils/FormValidation";
 import InputField from "../components/InputField";
 
-import "../styles/Form.css";
-
 function CoverLetterForm({ row, col }) {
 	const [formData, setFormData] = useState({
 		name: { value: "", placeholder: "Full Name" },
 		address: { value: "", placeholder: "Address" },
+		postalCode: {value: "", placeholder: "Postal Code"},
 		phone: { value: "", placeholder: "Phone number" },
 		education: { value: "", placeholder: "Education" },
-		company: { value: "", placeholder: "Company you wish to apply to" },
 		recipientinfo: { value: "", placeholder: "Name of Hiring Manager" },
+		companyName: { value: "", placeholder: "Company Name"},
+		companyAddress: {value: "", placeholder: "Address of the Company"},
+		companyPostalCode: {value: "", placeholder: "Postal Code of Company"},
 		jobDesc: { value: "", placeholder: "Description of job" },
-		resume: { value: "", placeholder: "Upload your file" },
 	});
 
-	const textAreaFields = ["education", "recipient info", "jobDesc", "resume"];
+	const textAreaFields = ["recipient info", "jobDesc"];
 
 	const URL = "";
 

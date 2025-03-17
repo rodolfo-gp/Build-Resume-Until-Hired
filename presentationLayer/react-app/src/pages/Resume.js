@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import { handleChange } from "../utils/FormValidation";
 import InputField from "../components/InputField";
 
-import "../styles/Form.css";
-
 function ResumeForm({row, col}) {
 	const [formData, setFormData] = useState({
 		name: {value: "", placeholder: "Full Name"},
@@ -16,7 +14,7 @@ function ResumeForm({row, col}) {
 		volunteer: {value: "", placeholder: "Volunteer experience"},
 	});
 
-    const textAreaFields = ["education", "skills", "experience", "volunteer"];
+    const textAreaFields = ["skills", "experience", "volunteer"];
 
 	const URL = "";
 
