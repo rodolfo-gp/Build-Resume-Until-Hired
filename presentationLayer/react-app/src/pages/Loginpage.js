@@ -3,7 +3,6 @@ import {useNavigate} from "react-router-dom";
 
 
 import "../styles/Form.css";
-import Homepage from "./Homepage";
 
 function Loginpage() {
 	const navigate = useNavigate();
