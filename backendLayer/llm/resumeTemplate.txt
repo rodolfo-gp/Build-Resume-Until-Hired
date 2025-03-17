@@ -1,0 +1,40 @@
+[Name] 	[x year Software Engineering Student]
+Calgary, AB 	[phone number] | Email | LinkedIn | GitHub
+ 
+EDUCATION  
+[University]	[Expected Graduation Date]
+ 
+[Degree Name] - GPA
+ 
+Awards: 	[Place Awards Here]
+TECHNICAL SKILLS 
+Languages: 	Python, C, C++, Java, Assembly, Arduino, Git, HTML, CSS, JavaScript
+Hardware:	IMUs, Biosensors, Embedded Systems, BLE, ANT, Soldering, Breadboarding
+Miscellaneous:	LLM’s and ML, Chatbots, Automation, Classifiers, NLUs, Pipelining 
+WORK EXPERIENCE 
+Sandoz Canada, Calgary, Alberta (Remote)	September 2024 - Present 
+Software Engineering Researcher 
+•	Collaborating in a government funded research project to develop a Chatbot for Sandoz to improve access to reliable and comprehensive drug information to improve user experience
+•	Developing a RAG (Retrieval Augmented Generation) application for the chatbot to improve its dependence on updated training data
+University of Calgary, Calgary, Alberta	May 2024 – Present 
+Software Engineering Researcher	 
+•	The Impact of Prompt Stylometry in Large Language Models (LLMs):
+o	Leading a research study to evaluate the impact of different prompting strategies on the complexity, reliability, and readability of LLM generated code
+o	Conducted an extensive literature review and manually developed 400 prompts tailored to class level coding problems to test multiple LLMs 
+o	Designed a Python plug-in pipeline to automate test cases and code quality evaluation different metrics 
+•	Using ChatGPT to Augment Software Engineering Chatbots Dataset:
+o	Collaborated on the rebuttal of a project submitted to a top Software Engineering journal to leverage ChatGPT to augment natural language training data on NLUs
+o	Implemented a new data augmentation method based on random deletion and swap techniques to benchmark against the ChatGPT-based approach, achieving 8% improvement in F1 scores over baseline
+TECHNICAL PROJECTS (or equivalent)
+IMU Based Crash Detector 	Jan 2024 – March 2024 
+•	Designed a crash detection system using IMU sensors, C and the IAR debugger for Garmin’s Embedded in Embedded final project, with plans to implement ANT 
+•	Used C and debuggers to program a development board and Inertial Measurement Unit to reliably detect a variety of different crash scenarios tested by the IIHS 
+•	Placed 4th in People’s Choice Awards, showcasing public presentation skills and technical achievement
+Portable Handheld Gaming Console 	March 2023 
+•	Lead the software-hardware development of an Arduino powered system to run Battleship using C, a TFT display, and various input devices to create a basic and user-friendly GUI 
+•	Integrated engineering design principles to promote modularity, repairability, and upgradability to improve the final product’s viability in a real-world scenario 
+ENGINEERING STUDENT TEAMS (or equivalent; volunteering, activities and societies, awards, conferences, etc.)
+Biomedical Engineering Research and Innovation Team, University of Calgary 	July 2024 - Present 
+Software Team Member
+•	Assisted in redesigning a modified mobility walker’s Arduino logic to incorporate interrupts, improving sensor responsiveness and accuracy 
+•	Implementing BLE and Bluetooth in a TV remote catering to dementia patients to create a “find my” feature for the remote, as well as an improved web app configuration interface 
