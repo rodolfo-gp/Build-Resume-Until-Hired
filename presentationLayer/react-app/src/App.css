@@ -24,20 +24,20 @@ footer{
 }
 
 
-/* Global CSS */
-button {
-  text-align: center;
-  border-radius: 5px;
-  text-decoration: none;  /* Remove underline */
-  cursor: pointer;
-  padding: 5px;
-  margin: 5px;
 
-  width: 10%;
-  max-width: 500px;
-  max-height: 200px;
+.header-container{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center; /*vertically centers items*/
+
+  width: 100%;
+  overflow: hidden;
+
+  border: 2px solid red;
 }
 
-button:hover{
-  background-color: lightgrey;
+.logo{
+  width: 20%;
+  margin-right: auto; 
 }
+
