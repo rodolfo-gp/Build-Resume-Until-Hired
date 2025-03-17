@@ -37,7 +37,7 @@ function Loginpage() {
 					required = {true}
                     type = "text"
                     value = {email}
-                    onChange = {(event) => setUsername(event.target.value)}
+                    onChange = {(event) => setEmail(event.target.value)}
                     placeholder = "Enter email..."
                 />
             </div>
