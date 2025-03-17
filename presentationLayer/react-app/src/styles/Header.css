@@ -1,0 +1,17 @@
+/* Header.css */
+
+.header-container{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center; /*vertically centers items*/
+
+    width: 100%;
+    overflow: hidden;
+
+    border: 2px solid red;
+}
+
+.logo{
+    width: 20%;
+    margin-right: auto; 
+}
