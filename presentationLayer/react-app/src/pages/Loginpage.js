@@ -6,7 +6,7 @@ import "../styles/Form.css";
 
 function Loginpage() {
 	const navigate = useNavigate();
-	const [username, setUsername] = useState("");
+	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 
 	/** This is how we send user login information to the flask backend
@@ -22,7 +22,7 @@ function Loginpage() {
 			method: "POST",
 			headers: myHeaders,
 			body: JSON.stringify({
-				username:{username},
+				email:{email},
 				password:{password}
 			}),
 		});
@@ -36,9 +36,9 @@ function Loginpage() {
                 <input
 					required = {true}
                     type = "text"
-                    value = {username}
+                    value = {email}
                     onChange = {(event) => setUsername(event.target.value)}
-                    placeholder = "Enter username..."
+                    placeholder = "Enter email..."
                 />
             </div>
             <div className = "field-container">
