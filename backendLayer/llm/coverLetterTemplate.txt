@@ -1,0 +1,15 @@
+[Your Name]
+[Your Address]
+ [City, Province, Postal Code]
+ [Your Email] | [Your Phone Number] | [LinkedIn]
+[Date]
+
+
+To The Hiring Manager for [Company Name],
+I am excited to apply for the [Job Title] position for [Internship Duration]. As a [Type of Student] at [Educational Institution], I am passionate about [Relevant Field, e.g., embedded systems, AI, healthcare, etc.]. After researching [Company Name] through [personal experience, networking, or research method], I found the company’s focus on [industry-specific focus], as well as its [work culture, values, or mission], aligns closely with my interests and skill set. I believe my [skills and passions] would allow me to contribute meaningfully to [Company Name]’s team.
+As I share [Company Name]’s vision of [company's goal, e.g., creating impactful technology], I am currently a [team member/leader] in [relevant project, student group, or work experience]. In this role, I [describe relevant technical contributions]. Our work, including [mention 1-2 specific projects related to the company’s field], provides [impact, skills gained, or how it relates to the company’s focus].
+I have also [completed a relevant program, certification, or coursework], where I worked on [specific project that highlights technical skills]. For example, I developed [technical solution], leveraging [technology], similar to those used in [Company Name]’s products/services]. This process required [mention technical challenges like testing, calibration, integration, etc.], strengthening my [relevant technical skills].
+Additionally, I have pursued [work or extracurricular activities] to build my skills in [field]. I am currently working on [describe relevant work experience], where I [describe key technical work and outcomes].
+Finally, it is important to me that I not only [personal values, e.g., lead a balanced lifestyle, create impactful technology, improve accessibility, etc.] but also seek out opportunities to see my work make a difference. [Company Name]’s focus on [relevant focus area] in conjunction with its [work culture, innovation, or community] is something I would love the opportunity to be a part of. I hope to hear from you soon to discuss how I can contribute to the team.
+Sincerely,
+[Your Name]
