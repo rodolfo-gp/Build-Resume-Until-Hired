@@ -6,13 +6,13 @@ import "../styles/Form.css";
 
 function Loginpage() {
 	const navigate = useNavigate();
-	const [username, setUsername] = useState("");
+	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 
 	/** This is how we send user login information to the flask backend
 	 *  TODO: Change the url to be the actual URL required for the backend
 	 */
-	const URL = "https://api.bru-h.xyz/login";
+	const URL = "https://api.bru-h.xyz/Login";
 
 	const myHeaders = new Headers();
 	myHeaders.append("Content-Type", "application/json");
@@ -22,7 +22,7 @@ function Loginpage() {
 			method: "POST",
 			headers: myHeaders,
 			body: JSON.stringify({
-				username:{username},
+				email:{email},
 				password:{password}
 			}),
 		});
@@ -36,9 +36,9 @@ function Loginpage() {
                 <input
 					required = {true}
                     type = "text"
-                    value = {username}
-                    onChange = {(event) => setUsername(event.target.value)}
-                    placeholder = "Enter username..."
+                    value = {email}
+                    onChange = {(event) => setEmail(event.target.value)}
+                    placeholder = "Enter email..."
                 />
             </div>
             <div className = "field-container">
