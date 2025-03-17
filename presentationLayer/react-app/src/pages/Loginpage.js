@@ -12,7 +12,7 @@ function Loginpage() {
 	/** This is how we send user login information to the flask backend
 	 *  TODO: Change the url to be the actual URL required for the backend
 	 */
-	const URL = "https://api.bru-h.xyz/login";
+	const URL = "https://api.bru-h.xyz/Login";
 
 	const myHeaders = new Headers();
 	myHeaders.append("Content-Type", "application/json");
