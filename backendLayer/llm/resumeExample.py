@@ -105,6 +105,7 @@ Social Medias: {userSocials}
 Education: {userEducation}
 Skills: {userSkills}
 Work Experience: {userExperience}
+Projects: {userProjects}
 Additional Experience: {supplementaryUserExperience}
 
 The resume template should adhere to the following:

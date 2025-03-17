@@ -132,3 +132,4 @@ dist
 
 backendLayer/__pycache__
 backendLayer/virtualenv
+backendLayer/llm/__pycache__
