@@ -8,6 +8,8 @@ function Loginpage() {
 	const navigate = useNavigate();
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
+	const [loginstatus, setLogin] = useState(false);
+	const [responsemessage, setMessage] = useState("");
 
 	/** This is how we send user login information to the flask backend
 	 *  TODO: Change the url to be the actual URL required for the backend
@@ -22,11 +24,22 @@ function Loginpage() {
 			method: "POST",
 			headers: myHeaders,
 			body: JSON.stringify({
-				email:{email},
-				password:{password}
+				email:email,
+				password:password
 			}),
 			keepalive:true
-		});
+		}).then(response => {
+			let result = response.json();
+			if (response.status>=200 && response.status<300){
+				setLogin(true);
+				return result
+			}
+			else{
+				return result
+			}
+		}).then(data => {
+			setMessage(data["message"])
+		})
 		return false;
 	}
 
@@ -61,7 +74,7 @@ function Loginpage() {
 			<button className="submit" type="button" onClick={(event)=>senddata(event)} >
 				Log in
 			</button>
-
+			<p>{responsemessage}</p>
 		</form>
 	);
 }
