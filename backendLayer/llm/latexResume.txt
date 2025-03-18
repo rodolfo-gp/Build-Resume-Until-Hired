@@ -1,0 +1,251 @@
+%-------------------------
+% Resume in Latex
+% Author : Jake Gutierrez
+% Based off of: https://github.com/sb2nov/resume
+% License : MIT
+%------------------------
+
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\input{glyphtounicode}
+
+
+%----------FONT OPTIONS----------
+% sans-serif
+% \usepackage[sfdefault]{FiraSans}
+% \usepackage[sfdefault]{roboto}
+% \usepackage[sfdefault]{noto-sans}
+% \usepackage[default]{sourcesanspro}
+
+% serif
+% \usepackage{CormorantGaramond}
+% \usepackage{charter}
+
+
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+% Ensure that generate pdf is machine readable/ATS parsable
+\pdfgentounicode=1
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubSubheading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textit{\small#1} & \textit{\small #2} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & #2 \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%-------------------------------------------
+%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+
+%----------HEADING----------
+% \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
+%   \textbf{\href{http://sourabhbajaj.com/}{\Large Sourabh Bajaj}} & Email : \href{mailto:sourabh@sourabhbajaj.com}{sourabh@sourabhbajaj.com}\\
+%   \href{http://sourabhbajaj.com/}{http://www.sourabhbajaj.com} & Mobile : +1-123-456-7890 \\
+% \end{tabular*}
+
+\begin{center}
+    \textbf{\Huge \scshape Rodolfo Gil Pereira} \\ \vspace{1pt}
+    \small +1 (587) 990-3445 $|$ \href{mailto:rodolfoandresgp@hotmail.com}{\underline{rodolfoandresgp@hotmail.com}} $|$ 
+    \href{https://www.linkedin.com/in/rodolfo-gp/}{\underline{linkedin.com/in/rodolfo-gp/}} $|$
+    \href{https://rodolfogil.netlify.app/}{\underline{rodolfogil.netlify.app}}
+\end{center}
+
+% \begin{center}
+%     \textbf{\Huge \scshape Rodolfo Gil Pereira} \\ \vspace{1pt}
+%     \small +1 (587) 990-3445 $|$ \href{mailto:rodolfoandresgp@hotmail.com}{\underline{rodolfoandresgp@hotmail.com}} $|$ 
+%     \href{https://www.linkedin.com/in/rodolfo-gp/}{\underline{linkedin.com/in/rodolfo-gp/}} $|$
+%     \href{https://github.com/rodolfo-gp}{\underline{github.com/rodolfo-gp}}
+% \end{center}
+
+
+%-----------EDUCATION-----------
+\section{Education}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {University of Calgary}{Calgary, AB}
+      {Bachelor of Science in Engineering - Software Engineering, GPA: 3.42}{Expected Grad: 2027(With Internship)}
+      
+  \resumeSubHeadingListEnd
+
+
+%-----------EXPERIENCE-----------
+\section{Experience}
+  \resumeSubHeadingListStart
+
+    \resumeSubheading
+      {Website Developer}{Jan. 2025 -- Present}
+      {Paws United Rescue Society Club}{Calgary, AB}
+      \resumeItemListStart
+        \resumeItem{Worked in a team in updating, maintain, and expanding website UI and UX using Webflow}
+        \resumeItem{Using strong communication with club executives, planned and implemented new website features efficiently}
+        
+      \resumeItemListEnd
+      
+     \resumeSubheading
+      {Tool Rental Associate}{April 2023 -- Aug. 2024}
+      {The Home Depot}{Calgary, AB}
+      \resumeItemListStart
+          \resumeItem{Worked collaboratively with team members to ensure an organized and efficient rental department, reducing customer wait times by 15\%.}
+          \resumeItem{Applied strong communication and interpersonal skills to assist customers, enhancing satisfaction and contributing to a 20\% sales increase.}
+          \resumeItem{Managed rental department during closing time, ensuring 100\% tools were accounted for, workspaces were organized, and equipment was secured.}
+      \resumeItemListEnd
+
+
+  \resumeSubHeadingListEnd
+
+
+%-----------PROJECTS-----------
+\section{Projects}
+    \resumeSubHeadingListStart
+
+   
+    % \resumeProjectHeading
+    %       {\textbf{Build Resumes Until Hired Web App} $|$ \emph{Flask, MongoDB, AI, Docker, AWS}}{Jan. 2025 -- April. 2025}
+    %       \resumeItemListStart
+    %         \resumeItem{With a team, developing a fullstack web app to help job seekers automate tailoring their job applications cover letters and resumes leveraging AI}
+    %         \resumeItem{Developed backend REST API's for secure sign-up, login, and token Auth. Integrated MongoDB to store user information securely}
+    %         \resumeItem{GRRRRRRRRR devops stuff here}
+            
+    %       \resumeItemListEnd
+    
+      
+
+    \resumeProjectHeading
+          {\textbf{Movie Theater Application Server} $|$ \emph{Java, Spring, MySQL}}{Sept. 2024 -- Dec. 2024}
+          \resumeItemListStart
+            \resumeItem{Worked in a team, where I designed and developed a MySQL DB and Spring Boot server REST API for features like movie info, user authentication, ticket booking, and payment}
+            \resumeItem{Planned meetings, wrote technical and non-technical documentation throughout development life cycle, culminating in project completion 1 week ahead of schedule}
+          \resumeItemListEnd
+          
+    \resumeProjectHeading
+          {\textbf{Disaster Victim Management Application} $|$ \emph{QA, Java, PostgreSQL}}{Jan. 2024 -- Apr. 2024}
+          \resumeItemListStart
+            \resumeItem{Developed Java app with PostgreSQL integration to aid disaster response, streamlining supply management and victim-family connections}
+            \resumeItem{Implemented and tested application features using JUnit, ensuring software quality standards}
+          \resumeItemListEnd
+          
+    \resumeProjectHeading
+          {\textbf{Shopping Website Server} $|$ \emph{Python, Flask, Backend}}{Jan.2024 -- Apr. 2024}
+          \resumeItemListStart
+            \resumeItem{Developed a server with Python Flask to manage product data and user authentication for login and registration processes}
+            \resumeItem{Designed and optimized REST APIs for frontend-to-server communication, increasing request processing speed by 15\%}
+          \resumeItemListEnd
+          
+    \resumeProjectHeading
+        {\textbf{Shopping Website} $|$ \emph{Fullstack, React, JavaScript, HTML, CSS}}{Jan. 2024 -- Apr. 2024}
+        \resumeItemListStart
+          \resumeItem{Developed React-based shopping site with product catalog, shopping cart, and smooth navigation for enhanced user experience.}
+          % \resumeItem{Integrated user registration, login, and protected routes, ensuring a 100\% registration rate for new users before shopping.}
+        \resumeItemListEnd
+            
+    \resumeProjectHeading
+          {\textbf{Portfolio Website} $|$ \emph{Vite, JavaScript, HTML, CSS, UI}}{Jan.2024 -- Present}
+          \resumeItemListStart
+            \resumeItem{Developed my personal website using ViteJs framework to showcase my projects, skills and more}
+            \resumeItem{\href{https://rodolfogil.netlify.app/}{\underline{rodolfogil.netlify.app}}}
+          \resumeItemListEnd
+
+    \resumeProjectHeading
+          {\textbf{Airline Flight Management App} $|$ \emph{C++}}{Nov. 2023 -- Dec. 2023}
+          \resumeItemListStart
+            \resumeItem{Developed a robust flight management system in C++ to streamline operations, allowing users to efficiently search, book, and manage flights.}
+            \resumeItem{Optimized memory management, removing 100\% of memory leaks and improving application performance}
+          \resumeItemListEnd
+        
+    
+    \resumeProjectHeading
+        {\textbf{Mini Arcade Machine} $|$ \emph{C++, Circuit Design, Embedded Systems}}{Nov. 2023 -- Dec. 2023}
+          \resumeItemListStart
+            \resumeItem{Worked with a team to make a portable arcade machine powered by Arduino, integrating game in C++ called "Cuttle fish Run" to deliver an engaging gaming experience}
+            \resumeItem{Optimized circuit layout and game algorithms, reducing projected power consumption by 20\%}
+          \resumeItemListEnd
+    
+    \resumeSubHeadingListEnd
+
+
+
+%
+%-----------PROGRAMMING SKILLS-----------
+\section{Technical Skills}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{Languages}{: Java, Python, C/C++, MySQL, PostgreSQL, MongoDB , JavaScript, HTML, CSS, Bash, SQL, NoSQL} \\
+     \textbf{Frameworks \& Developer Tools}{: Flask, JUnit, Spring Boot, React, Vite, Git, Linux VM, Postman} \\
+     % \textbf{Miscellaneous}{: Microsoft office, Microsoft Excel, Microsoft word} \\
+     % \textbf{Libraries}{: pandas, NumPy, Matplotlib}
+    % \textbf{Misinal}{: pandas, NumPy, Matplotlib}
+     % \textbf{Hardware}{: Arduino, PIC, Embedded Systems, MPLAB IDE}
+    }}
+ \end{itemize}
+
+
+%-------------------------------------------
+\end{document}

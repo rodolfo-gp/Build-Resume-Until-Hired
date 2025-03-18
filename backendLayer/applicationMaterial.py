@@ -33,7 +33,7 @@ class CoverLetter(JobAppMaterial):
     def __init__(self, jobAppJson):
         super().__init__(jobAppJson)
         self.materialType = "cover letter"
-        f = open("llm/coverLetterTemplate.txt", "r", encoding="utf-8")
+        f = open("llm/latexCoverLetter.txt", "r", encoding="utf-8")
         self.template = f.read()
 
     def extractJsonInfo(self, jobAppDict):
@@ -94,7 +94,7 @@ class Resume(JobAppMaterial):
     def __init__(self, jobAppJson):
         super().__init__(jobAppJson)
         self.materialType = "resume"
-        f = open("llm/resumeTemplate.txt", "r", encoding="utf-8")
+        f = open("llm/latexResume.txt", "r", encoding="utf-8")
         self.template = f.read()
 
     def extractJsonInfo(self, jobAppDict):
