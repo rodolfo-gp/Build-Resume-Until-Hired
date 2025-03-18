@@ -33,8 +33,12 @@ class CoverLetter(JobAppMaterial):
     def __init__(self, jobAppJson):
         super().__init__(jobAppJson)
         self.materialType = "cover letter"
-        f = open("llm/latexCoverLetter.txt", "r", encoding="utf-8")
-        self.template = f.read()
+        if self.latex == "True":
+            f = open("llm/latexCoverLetter.txt", "r", encoding="utf-8")
+            self.template = f.read()
+        else:
+            f = open("llm/coverLetterTemplate.txt", "r", encoding="utf-8")
+            self.template = f.read()
 
     def extractJsonInfo(self, jobAppDict):
         super().extractJsonInfo(jobAppDict)
@@ -101,6 +105,13 @@ class Resume(JobAppMaterial):
         super().extractJsonInfo(jobAppDict)
 
         self.socials = jobAppDict['socials']
+
+        if self.latex == "True":
+            f = open("llm/latexResume.txt", "r", encoding="utf-8")
+            self.template = f.read()
+        else:
+            f = open("llm/resumeTemplate.txt", "r", encoding="utf-8")
+            self.template = f.read()
 
     def createResumeLetterPrompt(self):
         promptPayload = """
