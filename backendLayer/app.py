@@ -54,8 +54,10 @@ def signup():
         
     except Exception as e:
         print(f"Error: {e}")
+
         return_request["message"] = e
         return jsonify(return_request), 500
+
 
 def does_user_exist(email):
     return mongo.db.users.find_one({"email": email}, {"_id": 0}) is not None
