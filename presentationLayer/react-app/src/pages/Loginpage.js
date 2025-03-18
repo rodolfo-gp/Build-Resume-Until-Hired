@@ -25,13 +25,13 @@ function Loginpage() {
 				email:{email},
 				password:{password}
 			}),
-			keepalive: true,
+			keepalive:true
 		});
 		return false;
 	}
 
 	return (
-		<form onSubmit={(event)=>senddata(event)} className="form-container">
+		<form className="form-container">
 			<h3>Login</h3>
 			<div className = "field-container">
                 <input
@@ -58,7 +58,7 @@ function Loginpage() {
 			<button className="guest" type="button" onClick ={() => navigate("/Homepage")}>
                 Continue as Guest
             </button>
-			<button className="submit" type="submit">
+			<button className="submit" type="button" onClick={(event)=>senddata(event)} >
 				Log in
 			</button>
 
