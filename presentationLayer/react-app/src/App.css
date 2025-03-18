@@ -1,16 +1,11 @@
 /*App.css*/
 
-body,html{
-  height: 100vh;
-  padding: 0;
-  margin: 0;
-}
-
-#root{
-  box-sizing: border-box;
+body,html, #root{
   height: 100vh;
   width: 100vw;
-  
+  padding: 0;
+  margin: 0;
+
   display: flex;
   flex-direction: column;
 
@@ -19,21 +14,30 @@ body,html{
 
 }
 
-
-/* Global CSS */
-button {
-  text-align: center;
-  border-radius: 5px;
-  text-decoration: none;  /* Remove underline */
-  cursor: pointer;
-  padding: 5px;
-  margin: 5px;
-
-  width: 10%;
-  max-width: 500px;
-  max-height: 200px;
+#root{
+  box-sizing: border-box; 
 }
 
-button:hover{
-  background-color: lightgrey;
+.header-container,
+footer{
+  flex-shrink: 0
 }
+
+
+
+.header-container{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center; /*vertically centers items*/
+
+  width: 100%;
+  overflow: hidden;
+
+  border: 2px solid red;
+}
+
+.logo{
+  width: 20%;
+  margin-right: auto; 
+}
+
