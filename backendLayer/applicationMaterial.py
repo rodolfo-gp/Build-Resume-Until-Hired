@@ -20,11 +20,13 @@ class JobAppMaterial ():
         self.name = jobAppDict['name']
         self.education = jobAppDict['education']
         self.address = jobAppDict['address']
-        self.phone = jobAppDict['phone number']
+        self.phone = jobAppDict['phone']
         self.email = jobAppDict['email']
-        self.socials = jobAppDict['social media']
         self.skills = jobAppDict['skills']
-        self.targetJobApplication = jobAppDict['job description']        
+        self.targetJobApplication = jobAppDict['jobDesc']
+        self.experience = jobAppDict['workExperience']
+        self.projects = jobAppDict['projects']
+        self.additionalExperience = jobAppDict['additionalExperience']
 
 class CoverLetter(JobAppMaterial):
     def __init__(self, jobAppJson):
@@ -36,10 +38,9 @@ class CoverLetter(JobAppMaterial):
     def extractJsonInfo(self, jobAppDict):
         super().extractJsonInfo(jobAppDict)
 
-        self.userDesiredCompany = jobAppDict['job contact info']
-        self.projects = jobAppDict['projects']
-        self.experience = jobAppDict['experience']
-        self.additionalExperience = jobAppDict['additional experience']
+        self.userDesiredCompany = jobAppDict['companyName']
+        self.userDesiredCompanyInfo = jobAppDict['companyLocation']
+        self.hiringManagerName = jobAppDict['recipientInfo']
 
     def createCoverLetterPrompt(self):
         promptPayload = """
@@ -48,9 +49,10 @@ class CoverLetter(JobAppMaterial):
         Address: {userAddress}
         Phone Number: {userNumber}
         Email: {userEmail}
-        Social Media (optional): {userSocials}
 
-        Hiring Manager Information: {userDesiredCompany}
+        Hiring Manager Name: {userDesiredCompany}
+        Company Name: {userCompanyName}
+        Company Details: {userCompanyDetails}
 
         Education: {userEducation}
         Skills: {userSkills}
@@ -69,9 +71,10 @@ class CoverLetter(JobAppMaterial):
             userAddress = self.address,
             userNumber = self.phone,
             userEmail = self.email,
-            userSocials = self.socials,
 
-            userDesiredCompany = self.targetJobApplication,
+            userDesiredCompany = self.hiringManagerName,
+            userCompanyName = self.userDesiredCompany,
+            userCompanyDetails = self.userDesiredCompanyInfo,
 
             userEducation = self.education,
             userSkills = self.skills,
@@ -96,12 +99,9 @@ class Resume(JobAppMaterial):
     def extractJsonInfo(self, jobAppDict):
         super().extractJsonInfo(jobAppDict)
 
-        self.userDesiredCompany = jobAppDict['job contact info']
-        self.projects = jobAppDict['projects']
-        self.experience = jobAppDict['experience']
-        self.additionalExperience = jobAppDict['additional experience']
+        self.socials = jobAppDict['socials']
 
-    def createCoverLetterPrompt(self):
+    def createResumeLetterPrompt(self):
         promptPayload = """
         Please make a resume for a Software Engineering Intern. Use the following information to generate a resume. Please return ONLY the text associated with the template.
         Name: {userName}
@@ -154,7 +154,7 @@ cover_letter_data = {
     "skills": ["Python", "C++", "Embedded Systems", "React.js"],
     "job description": "Software Engineering Intern at Seequent",
     "job contact info": "Hiring Manager, Seequent, Calgary, AB",
-    "projects": ["Developed an AI chatbot using Rasa and Llama 3", 
+    "projects": ["Developed an AI chatbot using Rasa and Llama 3",
                  "Optimized a C-based data compression algorithm for embedded systems"],
     "experience": ["Research Intern at University of Calgary, focusing on LLM evaluations",
                    "Software Developer Intern at XYZ Tech, developed REST APIs in Python"],
