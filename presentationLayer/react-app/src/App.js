@@ -31,10 +31,10 @@ function App() {
 					path="/Cover_Letter"
 					element={<CoverLetter row={textAreaRow} col={textAreaCol} />}
 				/>
-				<Route 
-          path="/Resume" 
-          element={<Resume row ={textAreaRow} col={textAreaCol}/>} 
-        />
+				<Route
+					path="/Resume"
+					element={<Resume row={textAreaRow} col={textAreaCol} />}
+				/>
 			</Routes>
 			<Footer />
 		</BrowserRouter>

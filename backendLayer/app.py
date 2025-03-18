@@ -27,10 +27,11 @@ def signup():
     try:
         data = request.json
         if not data or "email" not in data or "password" not in data:
-            
+         
             return_request["message"] = "Bad Request, Missing Data"
             return jsonify(return_request), 400
         
+
         hashed_email = ch.hash_email(data["email"])
 
         if not does_user_exist(hashed_email):
@@ -52,8 +53,10 @@ def signup():
             return jsonify(return_request), 400
     except Exception as e:
         print(f"Error: {e}")
+
         return_request["message"] = e
         return jsonify(return_request), 500
+
 
 def does_user_exist(email):
     return mongo.db.users.find_one({"email": email}, {"_id": 0}) is not None
