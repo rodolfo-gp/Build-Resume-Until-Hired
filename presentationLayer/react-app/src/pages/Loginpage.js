@@ -25,6 +25,7 @@ function Loginpage() {
 				email:{email},
 				password:{password}
 			}),
+			keepalive: true,
 		});
 		return false;
 	}
