@@ -148,17 +148,18 @@ cover_letter_data = {
     "name": "John Doe",
     "education": "B.Sc. in Software Engineering, University of Calgary",
     "address": "123 Main St, Calgary, AB, Canada",
-    "phone number": "123-456-7890",
+    "phone": "123-456-7890",
     "email": "johndoe@example.com",
-    "social media": "https://linkedin.com/in/johndoe",
     "skills": ["Python", "C++", "Embedded Systems", "React.js"],
-    "job description": "Software Engineering Intern at Seequent",
-    "job contact info": "Hiring Manager, Seequent, Calgary, AB",
+    "jobDesc": "Software Engineering Intern at Seequent",
+    "recipientInfo": "Hiring Manager",
+    "companyName": "Seequent",
+    "companyLocation": "Calgary, AB",
     "projects": ["Developed an AI chatbot using Rasa and Llama 3",
                  "Optimized a C-based data compression algorithm for embedded systems"],
-    "experience": ["Research Intern at University of Calgary, focusing on LLM evaluations",
+    "workExperience": ["Research Intern at University of Calgary, focusing on LLM evaluations",
                    "Software Developer Intern at XYZ Tech, developed REST APIs in Python"],
-    "additional experience": ["Volunteer coding mentor at local high school"]
+    "additionalExperience": ["Volunteer coding mentor at local high school"]
 }
 
 # Dummy dictionary for testing Resume
