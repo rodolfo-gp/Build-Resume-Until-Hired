@@ -179,7 +179,7 @@ resume_data = {
     "workExperience": ["Software Engineer Intern at ABC Corp, worked on database optimization",
                    "Teaching Assistant for Data Structures at University of Toronto"],
     "additionalExperience": ["Hackathon participant - 1st place in AI challenge"],
-    "latex": False
+    "latex": "True"
 }
 
 # Convert to JSON strings

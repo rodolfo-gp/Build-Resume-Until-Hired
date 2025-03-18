@@ -117,8 +117,20 @@ def generate_coverletter():
 
 @app.route('/resume', methods=['POST'])
 def generate_resume():
-    data = request.get_json()
-    cover_letter = Resume(json.dumps(data))
-    prompt = cover_letter.createResumeLetterPrompt()
-    output = gpt_prompter(prompt)
-    return output
+    return_request = {
+        "doc_title": datetime.datetime.now(),
+        "doc_body": "",
+        "latex" : False
+    }
+    try:
+        data = request.get_json()
+        cover_letter = Resume(json.dumps(data))
+        prompt = cover_letter.createResumeLetterPrompt()
+        output = gpt_prompter(prompt)
+        return_request["doc_body"] = output
+        return_request["latex"] = cover_letter.latex
+        return jsonify(return_request), 200
+    except Exception as e:
+        print(f"Error: {e}")
+        return_request["doc_body"] = "Bad request"
+        return jsonify(return_request), 500
