@@ -72,8 +72,7 @@ def generate_coverletter():
     cover_letter = CoverLetter(data)
     prompt = cover_letter.createCoverLetterPrompt()
     output = gpt_prompter(prompt)
-    print(output)
-    return
+    return output
 
 @app.route('/resume', method=['POST'])
 def generate_resume():
