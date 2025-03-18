@@ -10,7 +10,7 @@
     border: 10px solid green ;
 }
 
-.title-container{
+.homepage-container > .title-container{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -18,7 +18,7 @@
 
 @media (min-width: 712px){
    
-    .button-container{
+    .homepage-container > .button-container{
         display: flex;
         flex-direction: row; 
     
@@ -28,7 +28,7 @@
         align-items: center;
     }
     
-    .button-container button{
+    .homepage-container > .button-container button{
         height: 70%;
         width: 40%;
     
@@ -38,11 +38,11 @@
 
 
 @media (max-width: 712px){
-    .title-container h1{
+    .homepage-container > .title-container h1{
         font-size: 1.5rem;
     }
 
-    .button-container{
+    .homepage-container > .button-container{
         display: flex;
         flex-direction: column;
         
@@ -52,7 +52,7 @@
         align-items: center;
     }
 
-    .button-container button{
+    .homepage-container > .button-container button{
         font-size: 1rem;
         padding: 10px;
         width: 200px;

@@ -1,8 +1,13 @@
-/*Form.css*/
+/*
+    Form.css
+
+    A quirk to note for this CSS file
+    Resume.js and CoverLetter.js both import InputField.js
+    which uses this CSS so Resume and CoverLetter's CSS comes
+    directly from here
+*/
 
 .form-container{
-    height: 100vh;
-    
     display: flex;
     flex-direction: column;
 
@@ -38,7 +43,19 @@ button:hover{
     margin: 5px;
 }
 
-button {    
+.button-container{
+    display: flex;
+    width: 100%; /*takes up the entire width in parent (form-container*/
+
+    justify-content: center;
+    align-items: center;
+    
+    margin-top: auto;
+    gap: 10px;
+    border: 1px solid green;
+}
+
+.button-container > button {    
     max-width: 500px;
     max-height: 200px;
 }   
