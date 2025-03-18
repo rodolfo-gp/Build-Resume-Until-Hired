@@ -27,6 +27,7 @@ class JobAppMaterial ():
         self.experience = jobAppDict['workExperience']
         self.projects = jobAppDict['projects']
         self.additionalExperience = jobAppDict['additionalExperience']
+        self.latex = jobAppDict['latex']
 
 class CoverLetter(JobAppMaterial):
     def __init__(self, jobAppJson):
@@ -152,14 +153,15 @@ cover_letter_data = {
     "email": "johndoe@example.com",
     "skills": ["Python", "C++", "Embedded Systems", "React.js"],
     "jobDesc": "Software Engineering Intern at Seequent",
-    "recipientInfo": "Hiring Manager",
+    "recipientInfo": "Odin Fox",
     "companyName": "Seequent",
     "companyLocation": "Calgary, AB",
     "projects": ["Developed an AI chatbot using Rasa and Llama 3",
                  "Optimized a C-based data compression algorithm for embedded systems"],
     "workExperience": ["Research Intern at University of Calgary, focusing on LLM evaluations",
                    "Software Developer Intern at XYZ Tech, developed REST APIs in Python"],
-    "additionalExperience": ["Volunteer coding mentor at local high school"]
+    "additionalExperience": ["Volunteer coding mentor at local high school"],
+    "latex": False
 }
 
 # Dummy dictionary for testing Resume
@@ -176,7 +178,8 @@ resume_data = {
                  "Built a CI/CD pipeline for automated testing with GitHub Actions"],
     "workExperience": ["Software Engineer Intern at ABC Corp, worked on database optimization",
                    "Teaching Assistant for Data Structures at University of Toronto"],
-    "additionalExperience": ["Hackathon participant - 1st place in AI challenge"]
+    "additionalExperience": ["Hackathon participant - 1st place in AI challenge"],
+    "latex": False
 }
 
 # Convert to JSON strings

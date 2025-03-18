@@ -4,6 +4,7 @@ from flask import Flask, jsonify, request
 from flask_pymongo import PyMongo
 import os
 import json
+import datetime
 
 from applicationMaterial import (CoverLetter, Resume)
 from llm.gptPromptingutilities import gpt_prompter
@@ -92,15 +93,27 @@ def login():
 @app.route('/coverletter', methods=['POST'])
 def generate_coverletter():
     return_request = {
-        "doc_title": "",
+        "doc_title": datetime.datetime.now(),
         "doc_body": "",
         "latex" : False
     }
-    data = request.get_json()
-    cover_letter = CoverLetter(json.dumps(data))
-    prompt = cover_letter.createCoverLetterPrompt()
-    output = gpt_prompter(prompt)
-    return output
+    try:
+        data = request.get_json()
+        if data is None:
+            return_request["doc_body"] = "Bad Request, Missing Data"
+            return jsonify(return_request), 400
+
+        cover_letter = CoverLetter(json.dumps(data))
+        prompt = cover_letter.createCoverLetterPrompt()
+        output = gpt_prompter(prompt)
+        return_request["doc_body"] = output
+        return_request["latex"] = cover_letter.latex
+        return jsonify(return_request), 200
+    except Exception as e:
+        print(f"Error: {e}")
+        return_request["doc_body"] = "Bad request"
+        return jsonify(return_request), 500
+
 
 @app.route('/resume', methods=['POST'])
 def generate_resume():
