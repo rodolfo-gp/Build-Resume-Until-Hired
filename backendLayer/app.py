@@ -91,6 +91,11 @@ def login():
 
 @app.route('/coverletter', methods=['POST'])
 def generate_coverletter():
+    return_request = {
+        "doc_title": "",
+        "doc_body": "",
+        "latex" : False
+    }
     data = request.get_json()
     cover_letter = CoverLetter(json.dumps(data))
     prompt = cover_letter.createCoverLetterPrompt()
