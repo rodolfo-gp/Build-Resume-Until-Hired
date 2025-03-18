@@ -188,5 +188,5 @@ cover_letter = CoverLetter(cover_letter_json)
 resume = Resume(resume_json)
 
 # Generate prompts
-print(cover_letter.createCoverLetterPrompt())
-print(resume.createCoverLetterPrompt())
+# print(cover_letter.createCoverLetterPrompt())
+# print(resume.createCoverLetterPrompt())
