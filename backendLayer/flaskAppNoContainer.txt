@@ -7,7 +7,8 @@
     - virtualenv\scripts\activate
     
 4. Install dependencies
-    - pip install flask requests pymongo flask_pymongo flask-bcrypt Bcrypt python-dotenv
+    - pip install -r requirements.txt
+    
 5. Run flask app
     - python app.py
 
