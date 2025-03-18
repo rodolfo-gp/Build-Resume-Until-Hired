@@ -167,17 +167,16 @@ resume_data = {
     "name": "Jane Smith",
     "education": "B.Sc. in Computer Science, University of Toronto",
     "address": "456 Elm St, Toronto, ON, Canada",
-    "phone number": "987-654-3210",
+    "phone": "987-654-3210",
     "email": "janesmith@example.com",
-    "social media": "https://github.com/janesmith",
+    "socials": "https://github.com/janesmith",
     "skills": ["Java", "SQL", "PostgreSQL", "Docker"],
-    "job description": "Software Developer Intern at Garmin",
-    "job contact info": "Recruiter, Garmin, Toronto, ON",
+    "jobDesc": "Software Developer Intern at Garmin",
     "projects": ["Created a web app using React.js and Flask for Bluetooth communication",
                  "Built a CI/CD pipeline for automated testing with GitHub Actions"],
-    "experience": ["Software Engineer Intern at ABC Corp, worked on database optimization",
+    "workExperience": ["Software Engineer Intern at ABC Corp, worked on database optimization",
                    "Teaching Assistant for Data Structures at University of Toronto"],
-    "additional experience": ["Hackathon participant - 1st place in AI challenge"]
+    "additionalExperience": ["Hackathon participant - 1st place in AI challenge"]
 }
 
 # Convert to JSON strings
