@@ -127,7 +127,7 @@ def get_user_cvs():
         
         #get user document operation
         try:
-            user_cvs_list = list(mongo.db.user_cvs.find({"email": hashed_email}, {}))
+            user_cvs_list = list(mongo.db.user_cvs.find({"email": hashed_email}, {"_id":0}))
             if user_cvs_list:
                 
                 return_request["message"] = "successfully retrived documents"
@@ -176,9 +176,12 @@ def save_cv():
             "email": hashed_email, 
             "latex": data["latex"],
             "doc_tittle": data["doc_tittle"],
-            "doc_body": data["doc_body"]
+            "doc_body": data["doc_body"],
+            "id": 0
             }
         try:
+            document_count = mongo.db.user_cvs.count_documents({"email": hashed_email})
+            new_document["id"] = document_count + 1
             mongo.db.user_cvs.insert_one(new_document)
             return_request["message"] = "New document created successfully"
             return_request["status"] = True
