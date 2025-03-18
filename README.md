@@ -125,7 +125,9 @@ These are the things required to run a local version of the app
    ```sh
    cd persentationLayer
    cd react-app
-   npm install
+   npm install -g serve
+   npm run build
+   serve -s build
    ```
 4. Enter your backend API in `config.js` Alex Help
    ```js
