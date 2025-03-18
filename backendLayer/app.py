@@ -127,7 +127,7 @@ def generate_resume():
         cover_letter = Resume(json.dumps(data))
         prompt = cover_letter.createResumeLetterPrompt()
         output = gpt_prompter(prompt)
-        return_request["doc_body"] = json.dumps(output, ensure_ascii=False)
+        return_request["doc_body"] = output.replace("\n", "\\n ")
         return_request["latex"] = cover_letter.latex
         return jsonify(return_request), 200
     except Exception as e:
