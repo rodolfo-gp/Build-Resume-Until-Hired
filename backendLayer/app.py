@@ -50,7 +50,7 @@ def does_user_exist_login(hashed_email, password_plain_text):
     user = mongo.db.users.find_one({"email": hashed_email}, {"_id": 0})
     return user and ch.compare_passwords(user["password"], password_plain_text)
 
-@app.route('/Login', methods=['POST'])
+@app.route('lLogin', methods=['POST'])
 def login():
     try:
         data = request.json
