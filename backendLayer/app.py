@@ -50,21 +50,30 @@ def does_user_exist_login(hashed_email, password_plain_text):
     user = mongo.db.users.find_one({"email": hashed_email}, {"_id": 0})
     return user and ch.compare_passwords(user["password"], password_plain_text)
 
-@app.route('login', methods=['POST'])
+@app.route('/login', methods=['POST'])
 def login():
+    return_request = {
+        "message": "",
+        "status": False
+    }
     try:
         data = request.json
         if not data or "email" not in data or "password" not in data:
-            return "Bad Request, Missing Data", 400
+            return_request["messege"] = "Bad Request, Missing Data"
+            return jsonify(return_request), 400
 
         hashed_email = ch.hash_email(data["email"])
         if does_user_exist_login(hashed_email, data["password"]):
-            return "Successful Login", 201
+            return_request["messege"] = "Successful Login"
+            return jsonify(return_request), 201
         else:
-            return "Incorrect email or password", 401
+            return_request["messege"] = "Incorrect email or password"
+            return jsonify(return_request), 400
     except Exception as e:
         print(f"Error: {e}")
-        return "Bad Request", 500
+        return_request["messege"] = "Bad request"
+        return jsonify(return_request), 500
+    
 
 @app.route('/coverletter', methods=['POST'])
 def generate_coverletter():
@@ -75,7 +84,7 @@ def generate_coverletter():
     print(output)
     return
 
-@app.route('/resume', method=['POST'])
+@app.route('/resume', methods=['POST'])
 def generate_resume():
 
     return
