@@ -3,6 +3,7 @@ import cryptographic_helpers as ch
 from flask import Flask, jsonify, request
 from flask_pymongo import PyMongo
 import os
+import json
 
 from applicationMaterial import (CoverLetter, Resume)
 from llm.gptPromptingutilities import gpt_prompter
@@ -27,10 +28,10 @@ def signup():
     try:
         data = request.json
         if not data or "email" not in data or "password" not in data:
-            
+
             return_request["message"] = "Bad Request, Missing Data"
             return jsonify(return_request), 400
-        
+
         hashed_email = ch.hash_email(data["email"])
 
         if not does_user_exist(hashed_email):
@@ -42,7 +43,7 @@ def signup():
                 return_request["message"] = "User Created Successfully"
                 return_request["status"] = True
                 return jsonify(return_request), 201
-            
+
             except Exception as e:
                 print(f"Database Error: {e}")
                 return_request["message"] = "Database Insertion Error"
@@ -86,17 +87,20 @@ def login():
         print(f"Error: {e}")
         return_request["message"] = "Bad request"
         return jsonify(return_request), 500
-    
+
 
 @app.route('/coverletter', methods=['POST'])
 def generate_coverletter():
-    data = request.json
-    cover_letter = CoverLetter(data)
+    data = request.get_json()
+    cover_letter = CoverLetter(json.dumps(data))
     prompt = cover_letter.createCoverLetterPrompt()
     output = gpt_prompter(prompt)
     return output
 
 @app.route('/resume', methods=['POST'])
 def generate_resume():
-
-    return
+    data = request.get_json()
+    cover_letter = Resume(json.dumps(data))
+    prompt = cover_letter.createResumeLetterPrompt()
+    output = gpt_prompter(prompt)
+    return output
