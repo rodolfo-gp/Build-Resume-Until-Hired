@@ -186,7 +186,3 @@ resume_json = json.dumps(resume_data)
 # Create instances of CoverLetter and Resume
 cover_letter = CoverLetter(cover_letter_json)
 resume = Resume(resume_json)
-
-# Generate prompts
-print(cover_letter.createCoverLetterPrompt())
-print(resume.createCoverLetterPrompt())
