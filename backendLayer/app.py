@@ -59,19 +59,20 @@ def login():
     try:
         data = request.json
         if not data or "email" not in data or "password" not in data:
-            return_request["messege"] = "Bad Request, Missing Data"
+            return_request["message"] = "Bad Request, Missing Data"
             return jsonify(return_request), 400
 
         hashed_email = ch.hash_email(data["email"])
         if does_user_exist_login(hashed_email, data["password"]):
-            return_request["messege"] = "Successful Login"
+            return_request["message"] = "Successful Login"
+            return_request["status"] = True
             return jsonify(return_request), 201
         else:
-            return_request["messege"] = "Incorrect email or password"
+            return_request["message"] = "Incorrect email or password"
             return jsonify(return_request), 400
     except Exception as e:
         print(f"Error: {e}")
-        return_request["messege"] = "Bad request"
+        return_request["message"] = "Bad request"
         return jsonify(return_request), 500
     
 
