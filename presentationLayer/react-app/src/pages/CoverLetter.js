@@ -1,8 +1,12 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 import { handleChange } from "../utils/FormValidation";
 import InputField from "../components/InputField";
 
 function CoverLetterForm({ row, col }) {
+	const navigate = useNavigate();
+
 	const [formData, setFormData] = useState({
 		name: { value: "", placeholder: "Full Name" },
 		email: { value: "", placeholder: "Email" },
@@ -60,7 +64,11 @@ function CoverLetterForm({ row, col }) {
 				/>
 			))}
 			<div className="button-container">
-				<button className="back-button" type="button">
+				<button 
+					className="back-button"
+					type="button"
+					onClick={() => navigate("/Homepage")}
+				>
 					Back
 				</button>
 				<button

@@ -1,8 +1,12 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 import { handleChange } from "../utils/FormValidation";
 import InputField from "../components/InputField";
 
 function ResumeForm({ row, col }) {
+	const navigate = useNavigate();
+
 	const [formData, setFormData] = useState({
 		name: { value: "", placeholder: "Full Name" },
 		email: { value: "", placeholder: "Email" },
@@ -21,7 +25,7 @@ function ResumeForm({ row, col }) {
 		},
 		projects: { value: "", placeholder: "Name of projects you have worked on" },
 		jobDesc: { value: "", placeholder: "Description of job" },
-		template: {value: "", placeholder: "Template for Resume (Optional)"},
+		template: { value: "", placeholder: "Template for Resume (Optional)" },
 	});
 
 	const textAreaFields = [
@@ -30,7 +34,7 @@ function ResumeForm({ row, col }) {
 		"additionalExperience",
 		"projects",
 		"jobDesc",
-		"template"
+		"template",
 	];
 
 	const URL = "https://api.bru-h.xyz/resume";
@@ -64,13 +68,22 @@ function ResumeForm({ row, col }) {
 				/>
 			))}
 
-			<button
-				className="submit"
-				type="submit"
-				onClick={(event) => senddata(event)}
-			>
-				Submit
-			</button>
+			<div className="button-container">
+				<button
+					className="back-button"
+					type="button"
+					onClick={() => navigate("/Homepage")}
+				>
+					Back
+				</button>
+				<button
+					className="submit"
+					type="submit"
+					onClick={(event) => senddata(event)}
+				>
+					Submit
+				</button>
+			</div>
 		</div>
 	);
 }

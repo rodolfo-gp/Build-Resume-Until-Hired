@@ -6,16 +6,15 @@
 
     height: 100%;
     flex-grow: 1;
-
-    border: 10px solid green ;
 }
 
-.homepage-container > .title-container{
+.homepage-container .title-container{
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
+/*This is for screens with a width of >712px*/
 @media (min-width: 712px){
    
     .homepage-container > .button-container{
@@ -28,7 +27,7 @@
         align-items: center;
     }
     
-    .homepage-container > .button-container button{
+    .homepage-container .button-container button{
         height: 70%;
         width: 40%;
     
@@ -36,9 +35,9 @@
     }
 }
 
-
+/*This is for screens with a width of <712px */
 @media (max-width: 712px){
-    .homepage-container > .title-container h1{
+    .homepage-container .title-container h1{
         font-size: 1.5rem;
     }
 
@@ -47,12 +46,13 @@
         flex-direction: column;
         
         gap: 10px;
+        margin: 0;
         
         justify-content: center;
         align-items: center;
     }
 
-    .homepage-container > .button-container button{
+    .homepage-container .button-container button{
         font-size: 1rem;
         padding: 10px;
         width: 200px;
