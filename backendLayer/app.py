@@ -135,7 +135,7 @@ def save_cv():
             mongo.db.user_cvs.insert_one(new_document)
             return_request["message"] = "New document created successfully"
             return_request["status"] = True
-            return jsonify(return_request), 
+            return jsonify(return_request), 200
         
         except Exception as e:
             print(f"Database Error: {e}")
