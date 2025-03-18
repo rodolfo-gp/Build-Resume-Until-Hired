@@ -101,7 +101,52 @@ def check_missing_or_blank_fields(data, required_fields):
         return True
     return False
 
-
+@app.route('/cv', methods=['POST'])
+def get_user_cvs():
+    return_request = {
+        "message": "",
+        "status": False,
+        "documents": []
+    }
+    required_fields = ["email", "password"]
+    
+    try:
+        #Check missing fields and blank
+        data = request.json
+        if check_missing_or_blank_fields(data, required_fields):
+            return_request["message"] = "Bad Request, Missing required fields"
+            return jsonify(return_request), 400
+        
+        #validate user
+        hashed_email = ch.hash_email(data["email"])
+        if not valid_credentials(hashed_email, data["password"]):
+            return_request["message"] = "Invalid user credentials"
+            return jsonify(return_request), 400
+        
+        #get user document operation
+        try:
+            user_cvs_list = list(mongo.db.user_cvs.find({"email": hashed_email}, {}))
+            if user_cvs_list:
+                
+                return_request["message"] = "successfully retrived documents"
+                return_request["status"] = True
+                return_request["documents"] = user_cvs_list
+            else:
+                return_request["message"] = "No user documents"
+                
+            return jsonify(return_request), 200
+        
+        except Exception as e:
+            print(f"Database Error: {e}")
+            return_request["message"] = "Database Error: " + e
+            return jsonify(return_request), 501
+          
+          
+    except Exception as e:
+        print(f"Error: {e}")
+        return_request["message"] = e
+        return jsonify(return_request), 500
+    
 @app.route('/cv/save', methods=['POST'])
 def save_cv():
     return_request = {
