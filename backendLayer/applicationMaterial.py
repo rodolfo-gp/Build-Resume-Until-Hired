@@ -98,8 +98,6 @@ class Resume(JobAppMaterial):
     def __init__(self, jobAppJson):
         super().__init__(jobAppJson)
         self.materialType = "resume"
-        f = open("llm/latexResume.txt", "r", encoding="utf-8")
-        self.template = f.read()
 
     def extractJsonInfo(self, jobAppDict):
         super().extractJsonInfo(jobAppDict)
