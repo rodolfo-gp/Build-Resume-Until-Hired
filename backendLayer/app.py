@@ -50,7 +50,7 @@ def does_user_exist_login(hashed_email, password_plain_text):
     user = mongo.db.users.find_one({"email": hashed_email}, {"_id": 0})
     return user and ch.compare_passwords(user["password"], password_plain_text)
 
-@app.route('login', methods=['POST'])
+@app.route('/login', methods=['POST'])
 def login():
     return_request = {
         "message": "",
@@ -72,7 +72,7 @@ def login():
     except Exception as e:
         print(f"Error: {e}")
         return_request["messege"] = "Bad request"
-            return jsonify(return_request), 500
+        return jsonify(return_request), 500
     
 
 @app.route('/coverletter', methods=['POST'])
@@ -84,7 +84,7 @@ def generate_coverletter():
     print(output)
     return
 
-@app.route('/resume', method=['POST'])
+@app.route('/resume', methods=['POST'])
 def generate_resume():
 
     return
