@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 import { handleChange } from "../utils/FormValidation";
 import InputField from "../components/InputField";
+import "../styles/Generation.css";
 
 function CoverLetterForm({ row, col }) {
 	const navigate = useNavigate();
