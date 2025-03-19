@@ -6,6 +6,7 @@ import "../styles/Form.css";
 function SignupPage() {
 	const navigate = useNavigate();
 	const [username, setUsername] = useState("");
+	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [confirmPassword, setConfirmPassword] = useState("");
 
@@ -38,48 +39,64 @@ function SignupPage() {
 	let issame = password === confirmPassword;
 
 	return (
-		<form className="form-container" id="input">
-			<h3>Signup</h3>
-			<div className="field-container">
-				<input
-					type="text"
-					value={username}
-					onChange={(event) => setUsername(event.target.value)}
-					placeholder="Enter username..."
-				/>
-			</div>
-			<div className="field-container">
-				<input
-					type="password"
-					value={password}
-					onChange={(event) => setPassword(event.target.value)}
-					placeholder="Enter password..."
-				/>
-			</div>
-			<div className="field-container" id="comfirm">
-				<input
-					type="password"
-					value={confirmPassword}
-					onChange={(event) => setConfirmPassword(event.target.value)}
-					placeholder="Confirm password..."
-				/>
-			</div>
-			<>{!issame && <p>passwords do not match</p>}</>
-			<div className="button-container">
-				<button className="login" onClick={() => navigate("/Login")}>
-					Return to Login page
-				</button>
-				<button
-					disabled={!issame}
-					id="submitbutton"
-					className="submit"
-					type="button"
+		<div className="login-container">
+			<div className="login-card">
+				<h2>Welcome Back</h2>
+				<p>Please enter your details to sign in</p>
+
+				<div className = "input-group">
+					<label>Full Name</label>
+					<input
+						type="text"
+						value = {username}
+						onChange = {(event) => setUsername(event.target.value)}
+						placeholder="Enter your full name"
+					/>
+				</div>
+
+				<div className="input-group">
+					<label>Email</label>
+					<input 
+						type="email"
+						value = {email}
+						onChange = {(event) => setEmail(event.target.value)}
+						placeholder="Enter your email"
+					/>
+				</div>
+
+				<div className="input-group">
+					<label>Password</label>
+					<input 
+						type= "password"
+						value = {password}
+						onChange = {(event) => setPassword(event.target.value)}
+						placeholder="Create a password"
+					/>
+				</div>
+
+				<div className="input-group">
+					<label>Confirm Password</label>
+					<input
+						type = "password"
+						value = {password}
+						onChange = {(event) => setPassword(event.target.value)}
+						placeholder = "Confirm password"
+					/>
+				</div>
+
+				<button 
+					className="signin-button"
+					type="submit"
 					onClick={(event) => senddata(event)}
 				>
-					Sign up
+					Create Account
 				</button>
+
+				<p>
+					Already have an account?<a href="/Login">Sign in</a>
+				</p>
 			</div>
-		</form>
+		</div>
 	);
 }
 
