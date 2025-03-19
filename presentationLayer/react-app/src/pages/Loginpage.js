@@ -10,6 +10,8 @@ function Loginpage() {
 	const [password, setPassword] = useState("");
 	const [showPassword, setShowPassword] = useState(false);
 
+	localStorage.setItem("email", "")
+
 	const togglePasswordVisibility = () => {
 		setShowPassword(!showPassword);
 	}
@@ -36,6 +38,7 @@ function Loginpage() {
 				let result = response.json();
 				if (response.status >= 200 && response.status < 300) {
 					localStorage.setItem("email", email)
+					navigate('/Homepage')
 					return result;
 				} else {
 					return result;

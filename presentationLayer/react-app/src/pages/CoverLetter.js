@@ -6,6 +6,7 @@ import InputField from "../components/InputField";
 
 function CoverLetterForm({ row, col }) {
 	const navigate = useNavigate();
+	const [output, setOutput] = useState([]);
 
 	const [formData, setFormData] = useState({
 		name: { value: "", placeholder: "Full Name" },
@@ -16,6 +17,7 @@ function CoverLetterForm({ row, col }) {
 		recipientInfo: { value: "", placeholder: "Name of Hiring Manager" },
 		companyName: { value: "", placeholder: "Company Name" },
 		companyLocation: { value: "", placeholder: "Location of the Company" },
+		skills: {value: "", placeholder: "List skills seperated by commas"},
 		workExperience: { value: "", placeholder: "List of work experience" },
 		additionalExperience: {
 			value: "",
@@ -24,6 +26,7 @@ function CoverLetterForm({ row, col }) {
 		projects: { value: "", placeholder: "Name of projects you have worked on" },
 		jobDesc: { value: "", placeholder: "Description of job" },
 		template: {value: "", placeholder: "Template for Cover Letter (Optional)"},
+		latex: {value: "", palceholder: "False"}
 	});
 
 	const textAreaFields = [
@@ -44,6 +47,14 @@ function CoverLetterForm({ row, col }) {
 			method: "POST",
 			headers: myHeaders,
 			body: JSON.stringify(formData),
+		}).then((response)=>{
+			let result = response.json();
+			if (response.status >= 200 && response.status < 300) {
+				return result
+			}
+		}).then((data)=>{
+			const formattedText = data["doc_body"].split("\\n");
+			setOutput(formattedText)
 		});
 		return false;
 	}
@@ -78,6 +89,11 @@ function CoverLetterForm({ row, col }) {
 				>
 					Submit
 				</button>
+			</div>
+			<div>
+				{output.map((line, index) => (
+					<p key={index}>{line}</p>
+				))}
 			</div>
 		</div>
 	);
