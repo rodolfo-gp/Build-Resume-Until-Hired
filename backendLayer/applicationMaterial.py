@@ -20,26 +20,32 @@ class JobAppMaterial ():
         self.name = jobAppDict['name']
         self.education = jobAppDict['education']
         self.address = jobAppDict['address']
-        self.phone = jobAppDict['phone number']
+        self.phone = jobAppDict['phone']
         self.email = jobAppDict['email']
-        self.socials = jobAppDict['social media']
         self.skills = jobAppDict['skills']
-        self.targetJobApplication = jobAppDict['job description']        
+        self.targetJobApplication = jobAppDict['jobDesc']
+        self.experience = jobAppDict['workExperience']
+        self.projects = jobAppDict['projects']
+        self.additionalExperience = jobAppDict['additionalExperience']
+        self.latex = jobAppDict['latex']
 
 class CoverLetter(JobAppMaterial):
     def __init__(self, jobAppJson):
         super().__init__(jobAppJson)
         self.materialType = "cover letter"
-        f = open("llm/coverLetterTemplate.txt", "r", encoding="utf-8")
-        self.template = f.read()
+        if self.latex == "True":
+            f = open("llm/latexCoverLetter.txt", "r", encoding="utf-8")
+            self.template = f.read()
+        else:
+            f = open("llm/coverLetterTemplate.txt", "r", encoding="utf-8")
+            self.template = f.read()
 
     def extractJsonInfo(self, jobAppDict):
         super().extractJsonInfo(jobAppDict)
 
-        self.userDesiredCompany = jobAppDict['job contact info']
-        self.projects = jobAppDict['projects']
-        self.experience = jobAppDict['experience']
-        self.additionalExperience = jobAppDict['additional experience']
+        self.userDesiredCompany = jobAppDict['companyName']
+        self.userDesiredCompanyInfo = jobAppDict['companyLocation']
+        self.hiringManagerName = jobAppDict['recipientInfo']
 
     def createCoverLetterPrompt(self):
         promptPayload = """
@@ -48,9 +54,10 @@ class CoverLetter(JobAppMaterial):
         Address: {userAddress}
         Phone Number: {userNumber}
         Email: {userEmail}
-        Social Media (optional): {userSocials}
 
-        Hiring Manager Information: {userDesiredCompany}
+        Hiring Manager Name: {userDesiredCompany}
+        Company Name: {userCompanyName}
+        Company Details: {userCompanyDetails}
 
         Education: {userEducation}
         Skills: {userSkills}
@@ -69,9 +76,10 @@ class CoverLetter(JobAppMaterial):
             userAddress = self.address,
             userNumber = self.phone,
             userEmail = self.email,
-            userSocials = self.socials,
 
-            userDesiredCompany = self.targetJobApplication,
+            userDesiredCompany = self.hiringManagerName,
+            userCompanyName = self.userDesiredCompany,
+            userCompanyDetails = self.userDesiredCompanyInfo,
 
             userEducation = self.education,
             userSkills = self.skills,
@@ -90,18 +98,19 @@ class Resume(JobAppMaterial):
     def __init__(self, jobAppJson):
         super().__init__(jobAppJson)
         self.materialType = "resume"
-        f = open("llm/resumeTemplate.txt", "r", encoding="utf-8")
-        self.template = f.read()
+        if self.latex == "True":
+            f = open("llm/latexResume.txt", "r", encoding="utf-8")
+            self.template = f.read()
+        else:
+            f = open("llm/resumeTemplate.txt", "r", encoding="utf-8")
+            self.template = f.read()
 
     def extractJsonInfo(self, jobAppDict):
         super().extractJsonInfo(jobAppDict)
 
-        self.userDesiredCompany = jobAppDict['job contact info']
-        self.projects = jobAppDict['projects']
-        self.experience = jobAppDict['experience']
-        self.additionalExperience = jobAppDict['additional experience']
+        self.socials = jobAppDict['socials']
 
-    def createCoverLetterPrompt(self):
+    def createResumeLetterPrompt(self):
         promptPayload = """
         Please make a resume for a Software Engineering Intern. Use the following information to generate a resume. Please return ONLY the text associated with the template.
         Name: {userName}
@@ -148,17 +157,19 @@ cover_letter_data = {
     "name": "John Doe",
     "education": "B.Sc. in Software Engineering, University of Calgary",
     "address": "123 Main St, Calgary, AB, Canada",
-    "phone number": "123-456-7890",
+    "phone": "123-456-7890",
     "email": "johndoe@example.com",
-    "social media": "https://linkedin.com/in/johndoe",
     "skills": ["Python", "C++", "Embedded Systems", "React.js"],
-    "job description": "Software Engineering Intern at Seequent",
-    "job contact info": "Hiring Manager, Seequent, Calgary, AB",
-    "projects": ["Developed an AI chatbot using Rasa and Llama 3", 
+    "jobDesc": "Software Engineering Intern at Seequent",
+    "recipientInfo": "Odin Fox",
+    "companyName": "Seequent",
+    "companyLocation": "Calgary, AB",
+    "projects": ["Developed an AI chatbot using Rasa and Llama 3",
                  "Optimized a C-based data compression algorithm for embedded systems"],
-    "experience": ["Research Intern at University of Calgary, focusing on LLM evaluations",
+    "workExperience": ["Research Intern at University of Calgary, focusing on LLM evaluations",
                    "Software Developer Intern at XYZ Tech, developed REST APIs in Python"],
-    "additional experience": ["Volunteer coding mentor at local high school"]
+    "additionalExperience": ["Volunteer coding mentor at local high school"],
+    "latex": False
 }
 
 # Dummy dictionary for testing Resume
@@ -166,17 +177,17 @@ resume_data = {
     "name": "Jane Smith",
     "education": "B.Sc. in Computer Science, University of Toronto",
     "address": "456 Elm St, Toronto, ON, Canada",
-    "phone number": "987-654-3210",
+    "phone": "987-654-3210",
     "email": "janesmith@example.com",
-    "social media": "https://github.com/janesmith",
+    "socials": "https://github.com/janesmith",
     "skills": ["Java", "SQL", "PostgreSQL", "Docker"],
-    "job description": "Software Developer Intern at Garmin",
-    "job contact info": "Recruiter, Garmin, Toronto, ON",
+    "jobDesc": "Software Developer Intern at Garmin",
     "projects": ["Created a web app using React.js and Flask for Bluetooth communication",
                  "Built a CI/CD pipeline for automated testing with GitHub Actions"],
-    "experience": ["Software Engineer Intern at ABC Corp, worked on database optimization",
+    "workExperience": ["Software Engineer Intern at ABC Corp, worked on database optimization",
                    "Teaching Assistant for Data Structures at University of Toronto"],
-    "additional experience": ["Hackathon participant - 1st place in AI challenge"]
+    "additionalExperience": ["Hackathon participant - 1st place in AI challenge"],
+    "latex": "True"
 }
 
 # Convert to JSON strings
@@ -188,5 +199,5 @@ cover_letter = CoverLetter(cover_letter_json)
 resume = Resume(resume_json)
 
 # Generate prompts
-print(cover_letter.createCoverLetterPrompt())
-print(resume.createCoverLetterPrompt())
+# print(cover_letter.createCoverLetterPrompt())
+# print(resume.createCoverLetterPrompt())
