@@ -26,7 +26,7 @@ function CoverLetterForm({ row, col }) {
 		projects: { value: "", placeholder: "Name of projects you have worked on" },
 		jobDesc: { value: "", placeholder: "Description of job" },
 		template: {value: "", placeholder: "Template for Cover Letter (Optional)"},
-		latex: {value: false, placeholder: ""}
+		latex: {value: false}
 	});
 
 	const textAreaFields = [

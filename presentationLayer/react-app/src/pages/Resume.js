@@ -28,7 +28,7 @@ function ResumeForm({ row, col }) {
 		projects: { value: "", placeholder: "Name of projects you have worked on" },
 		jobDesc: { value: "", placeholder: "Description of job" },
 		template: { value: "", placeholder: "Template for Resume (Optional)" },
-		latex: {value: ""}
+		latex: {value: false}
 	});
 
 	const textAreaFields = [
