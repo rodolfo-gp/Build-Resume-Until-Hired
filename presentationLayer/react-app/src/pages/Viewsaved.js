@@ -5,6 +5,8 @@ function Viewsaved(){
     const password = localStorage.getItem("password");
     const [documentlist, setList] = useState([]);
     const [textarea, setText] = useState(""); 
+    const [currentID, setID] = useState();
+    const [deletemessage, setDelete] = useState("");
 
     const myHeaders = new Headers();
 	myHeaders.append("Content-Type", "application/json");
@@ -63,8 +65,29 @@ function Viewsaved(){
             }
         }).then((data)=>{
             setText(data["document"]["doc_body"])
+            setID(data["document"]["id"])
         })
 
+    }
+
+    async function deletedoc(id) {
+        await fetch(URL+"/user",{
+            method:"DELETE",
+            headers:myHeaders,
+            body:JSON.stringify({
+                email: email,
+                password: password,
+                doc_id:id,
+            })
+        }).then((response)=>{
+            if (response.status >= 200 && response.status < 300){
+                setDelete("Deletion successful")
+                setText("")
+                Getcvs()
+            } else{
+                setDelete("Deletion failed")
+            }
+        })
     }
 
     return( 
@@ -74,7 +97,9 @@ function Viewsaved(){
                 <li onClick={() => Getonecv(item["id"])}>{JSON.stringify(item["doc_title"])}</li>
             ))}
         </div>
-        <div>{textarea}</div>
+            <div>{textarea}</div>
+            {currentID && <button onClick={()=> deletedoc(currentID)}>Delete</button>}
+            <div>{deletemessage}</div>
         </div>
     )
     
