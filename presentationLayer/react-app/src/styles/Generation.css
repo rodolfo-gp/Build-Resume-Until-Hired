@@ -1,3 +1,16 @@
+body, html {
+    height: 100%;
+    overflow-y: auto;
+    margin: 0;
+    padding: 0;
+
+}
+
+.output_page {
+    max-height: 80vh;  /* Max height to fit content on screen, 80% of the viewport height */
+    overflow-y: auto;
+}
+
 .cvGeneration_output {
     max-width: 800px;
     margin: 20px auto;
