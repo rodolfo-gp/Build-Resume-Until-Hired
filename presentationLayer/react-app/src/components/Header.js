@@ -4,9 +4,9 @@ import "../styles/Header.css";
 
 function Header(){
     return(
-        <nav className="header-container">
+        <div className="header-container">
             <h2>B.R.U.H</h2>
-        </nav>
+        </div>
     );
 }
 
