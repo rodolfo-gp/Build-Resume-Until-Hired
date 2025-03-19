@@ -26,7 +26,7 @@ function CoverLetterForm({ row, col }) {
 		projects: { value: "", placeholder: "Name of projects you have worked on" },
 		jobDesc: { value: "", placeholder: "Description of job" },
 		template: {value: "", placeholder: "Template for Cover Letter (Optional)"},
-		latex: {value: "", palceholder: "False"}
+		latex: {value: false, placeholder: ""}
 	});
 
 	const textAreaFields = [
@@ -73,8 +73,7 @@ function CoverLetterForm({ row, col }) {
 					row={row}
 					col={col}
 				/>
-			))}
-	
+			))}	
 
 			<div className="button-container">
 				<button 
