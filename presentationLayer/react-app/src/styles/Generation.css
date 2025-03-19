@@ -5,8 +5,14 @@ body, html {
     padding: 0;
 }
 
+h1 {
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
 .output_page {
-    max-height: 80vh;  /* Max height to fit content on screen, 80% of the viewport height */
+    max-height: 80vh;
     overflow-y: auto;
 }
 

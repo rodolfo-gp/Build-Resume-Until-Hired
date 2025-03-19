@@ -51,9 +51,9 @@ function CoverLetterForm({ row, col }) {
             return response.json();
         }).then((data) => {
             const formattedText = data["doc_body"].split("\\n");
-            const docTitle = data["doc_title"];
+            const doc_title = data["doc_title"];
 
-            navigate("/Output", { state: { formattedText, docTitle } });
+            navigate("/Output", { state: { formattedText, doc_title } });
             navigate("/Output", { state: { output: formattedText } });
         });
         return false;
