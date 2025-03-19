@@ -1,24 +1,31 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { FaEnvelope, FaFileAlt } from "react-icons/fa";
 
 import "../styles/Homepage.css";
 
+import Card from "../components/Card";
+
 function Homepage() {
-	const navigate = useNavigate();
 
 	return (
 		<div className="homepage-container">
-			<div className="title-container">
-				<h1>Which would you like to create</h1>
-			</div>
-			<div className="button-container">
-				<button name="resume" onClick={() => navigate("/Resume")}>
-					Resume
-				</button>
-				<button name="cover-letter" onClick={() => navigate("/Cover_Letter")}>
-					Cover Letter
-				</button>
-			</div>
+			<Card
+				title = "Resume"
+				description = "Create a professional resume that stands out"
+				buttonText = "Build Resume"
+				icon = {<FaFileAlt/>}
+				color = "#007bff"
+				link = "/Resume"
+			/>
+			<Card
+				title = "Cover Letter"
+				description= "Write a compelling cover letter"
+				buttonText = "Write a Cover Letter"
+				icon = {<FaEnvelope/>}
+				color="#008000"
+				link = "/Cover_Letter"
+			/>
+
 		</div>
 	);
 }

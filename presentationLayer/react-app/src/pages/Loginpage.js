@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import {useNavigate} from "react-router-dom";
-
+import { useNavigate } from "react-router-dom";
 
 import "../styles/Form.css";
 
@@ -14,13 +13,15 @@ function Loginpage() {
 	/** This is how we send user login information to the flask backend
 	 *  TODO: Change the url to be the actual URL required for the backend
 	 */
-	const URL = "https://api.bru-h.xyz/login";
+	const URL = "https://api.bru-h.xyz/Login";
 
 	const myHeaders = new Headers();
 	myHeaders.append("Content-Type", "application/json");
 
-	async function senddata() {
-		await fetch(URL,{
+	async function senddata(event) {
+		event.preventDefault();
+
+		const response = await fetch(URL, {
 			method: "POST",
 			headers: myHeaders,
 			body: JSON.stringify({

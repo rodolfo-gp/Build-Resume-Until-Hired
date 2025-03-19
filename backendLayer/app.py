@@ -77,6 +77,7 @@ def login():
             return_request["message"] = "Bad Request, Missing Data"
             return jsonify(return_request), 400
 
+
         hashed_email = ch.hash_email(data["email"])
         if does_user_exist_login(hashed_email, data["password"]):
             return_request["message"] = "Successful Login"

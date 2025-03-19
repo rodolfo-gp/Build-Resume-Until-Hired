@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import "../styles/Form.css";
 
@@ -11,7 +11,6 @@ function SignupPage(){
     const [responsemessage, setMessage] = useState("");
 
     const URL = "https://api.bru-h.xyz/signup";
-
 
 	const myHeaders = new Headers();
 	myHeaders.append("Content-Type", "application/json");
@@ -80,8 +79,6 @@ function SignupPage(){
             <p>{responsemessage}</p>
 		</div>
     );
-
 }
-
 
 export default SignupPage;
