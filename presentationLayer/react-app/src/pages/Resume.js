@@ -7,7 +7,6 @@ import "../styles/Generation.css";
 
 function ResumeForm({ row, col }) {
 	const navigate = useNavigate();
-	const [output, setOutput] = useState([]);
 
 	const [formData, setFormData] = useState({
 		name: { value: "", placeholder: "Full Name" },
@@ -57,9 +56,9 @@ function ResumeForm({ row, col }) {
 			}
 		}).then((data)=>{
 			const formattedText = data["doc_body"].split("\\n");
-            const docTitle = data["doc_title"];
+            const doc_title = data["doc_title"];
 
-            navigate("/Output", { state: { formattedText, docTitle } });
+            navigate("/Output", { state: { formattedText, doc_title } });
             navigate("/Output", { state: { output: formattedText } });
 		});
 		return false;
