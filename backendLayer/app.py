@@ -155,7 +155,7 @@ def save_cv():
         "message": "",
         "status": False
     }
-    required_fields = ["email", "password", "latex", "doc_tittle", "doc_body"]
+    required_fields = ["email", "password", "latex", "doc_title", "doc_body"]
     
     try:
         #Check missing fields
@@ -175,7 +175,7 @@ def save_cv():
         new_document = {
             "email": hashed_email, 
             "latex": data["latex"],
-            "doc_tittle": data["doc_tittle"],
+            "doc_title": data["doc_title"],
             "doc_body": data["doc_body"],
             "id": 0
             }
