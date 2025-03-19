@@ -8,10 +8,11 @@ const OutputForm = () => {
     const location = useLocation();
     let { output, doc_title } = location.state || {};
     const [responsemessage, setMessage] = useState("");
-    if (localStorage.getItem("doc_body") !== undefined){    
-        output = JSON.parse(localStorage.getItem("doc_body"));    
-        localStorage.setItem("doc_body", JSON.stringify(output));
+    if (output != null){
+        localStorage.setItem("doc_body", JSON.stringify(output));    
         localStorage.setItem("doc_title", JSON.stringify(doc_title));
+    }else{
+        output = JSON.parse(localStorage.getItem("doc_body"));  
     }
 
 
