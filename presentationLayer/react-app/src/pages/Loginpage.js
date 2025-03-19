@@ -10,6 +10,8 @@ function Loginpage() {
 	const [password, setPassword] = useState("");
 	const [showPassword, setShowPassword] = useState(false);
 
+	localStorage.setItem("email", "")
+
 	const togglePasswordVisibility = () => {
 		setShowPassword(!showPassword);
 	}

@@ -6,6 +6,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 
 // Importing Pages
+import Navbar from "./components/Navbar";
 import Homepage from "./pages/Homepage";
 import Loginpage from "./pages/Loginpage";
 import CoverLetter from "./pages/CoverLetter";
@@ -22,6 +23,7 @@ function App() {
 	return (
 		<BrowserRouter>
 			<Header />
+			<Navbar />
 			<Routes>
 				<Route path="/" element={<Loginpage />} />
 				<Route path="/Login" element={<Loginpage />} />

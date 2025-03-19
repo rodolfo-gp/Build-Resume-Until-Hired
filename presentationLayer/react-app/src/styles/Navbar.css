@@ -1,0 +1,38 @@
+.navbar {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 15px 30px;
+    text-align: center;
+    transition: 0.3s ease-in-out;
+}
+
+.navbar:hover {
+    transform: translateY(-5px);
+}
+
+.navbar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.navbar ul li {
+    margin: 0 15px;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: black;
+    font-size: 18px;
+    padding: 10px 15px;
+    border-radius: 8px;
+    transition: 0.3s ease-in-out;
+}
+
+.navbar a:hover {
+    background: #007bff;
+    color: white;
+}
