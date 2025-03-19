@@ -5,10 +5,10 @@ import "../styles/Form.css";
 
 
 function SignupPage() {
+	let navigate = useNavigate();
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [confirmPassword, setConfirmPassword] = useState("");
-
 
     const URL = "https://api.bru-h.xyz/signup";
 
@@ -26,6 +26,8 @@ function SignupPage() {
         }).then(response => {
 			let result = response.json();
 			if (response.status>=200 && response.status<300){
+				localStorage.setItem("email", email);
+				navigate('/Homepage');
 				return result
 			}
 			else{
