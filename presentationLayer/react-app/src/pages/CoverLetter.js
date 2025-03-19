@@ -4,7 +4,11 @@ import { useNavigate } from "react-router-dom";
 import { handleChange } from "../utils/FormValidation";
 import InputField from "../components/InputField";
 
-function CoverLetterForm({ row, col }) {
+/**
+ * The CSS for this page comes from the input field component
+ */
+
+function CoverLetterForm() {
 	const navigate = useNavigate();
 	const [output, setOutput] = useState([]);
 
@@ -17,7 +21,7 @@ function CoverLetterForm({ row, col }) {
 		recipientInfo: { value: "", placeholder: "Name of Hiring Manager" },
 		companyName: { value: "", placeholder: "Company Name" },
 		companyLocation: { value: "", placeholder: "Location of the Company" },
-		skills: {value: "", placeholder: "List skills seperated by commas"},
+		skills: { value: "", placeholder: "List skills seperated by commas" },
 		workExperience: { value: "", placeholder: "List of work experience" },
 		additionalExperience: {
 			value: "",
@@ -25,16 +29,28 @@ function CoverLetterForm({ row, col }) {
 		},
 		projects: { value: "", placeholder: "Name of projects you have worked on" },
 		jobDesc: { value: "", placeholder: "Description of job" },
-		template: {value: "", placeholder: "Template for Cover Letter (Optional)"},
-		latex: {value: false, placeholder: ""}
+		template: {
+			value: "",
+			placeholder: "Template for Cover Letter (Optional)",
+		},
+		latex: { value: false, placeholder: "" },
 	});
 
-	const textAreaFields = [
-		"workExperience",
-		"additionalExperience",
-		"projects",
-		"jobDesc",
-		"template"
+	/** This is out the page is going to be laid out */
+	const fieldGroups = [
+		["name"],
+		["email"],
+		["address", "phone"],
+		["education"],
+		["recipientInfo"],
+		["companyName", "companyLocation"],
+		["skills"],
+		["workExperience"],
+		["additionalExperience"],
+		["projects"],
+		["jobDesc"],
+		["template"],
+		["latex"],
 	];
 
 	const URL = "https://api.bru-h.xyz/coverletter";
@@ -47,55 +63,88 @@ function CoverLetterForm({ row, col }) {
 			method: "POST",
 			headers: myHeaders,
 			body: JSON.stringify(formData),
-		}).then((response)=>{
-			let result = response.json();
-			if (response.status >= 200 && response.status < 300) {
-				return result
-			}
-		}).then((data)=>{
-			const formattedText = data["doc_body"].split("\\n");
-			setOutput(formattedText)
-		});
+		})
+			.then((response) => {
+				let result = response.json();
+				if (response.status >= 200 && response.status < 300) {
+					return result;
+				}
+			})
+			.then((data) => {
+				const formattedText = data["doc_body"].split("\\n");
+				setOutput(formattedText);
+			});
 		return false;
 	}
 
 	return (
 		<div className="form-container">
-			<h3>Enter your Cover Letter Information</h3>
-			{Object.entries(formData).map(([field, data]) => (
-				<InputField
-					field={field}
-					value={data.value}
-					handleChange={handleChange}
-					setFormData={setFormData}
-					textAreaFields={textAreaFields}
-					placeholder={data.placeholder}
-					row={row}
-					col={col}
-				/>
-			))}	
-
-			<div className="button-container">
-				<button 
-					className="back-button"
-					type="button"
-					onClick={() => navigate("/Homepage")}
-				>
-					Back
-				</button>
-				<button
-					className="submit"
-					type="submit"
-					onClick={(event) => senddata(event)}
-				>
-					Submit
-				</button>
-			</div>
 			<div>
-				{output.map((line, index) => (
-					<p key={index}>{line}</p>
-				))}
+				<h3>Enter your Cover Letter Information</h3>
+				<p>Provide details below to build your professional cover letter.</p>
 			</div>
+
+			{/**
+			 * This looks confusing but .map() is a function
+			 * So it can have a return given there's {}
+			 */}
+			<div className = "two-column-grid">
+				{fieldGroups.map((fields, index) => {
+					/** we are destructing to make the later part of the code more readable */
+					const [leftName, rightName] = fields;
+					const leftEntry = formData[leftName];
+					const rightEntry = rightName ? formData[rightName] : null;
+
+					return (
+						<div className="row">
+							<InputField
+								field={leftName}
+								value={leftEntry.value}
+								handleChange={handleChange}
+								setFormData={setFormData}
+								placeholder={leftEntry.placeholder}
+							/>
+							{rightEntry && (
+								<InputField
+									field={rightName}
+									value={rightEntry.value}
+									handleChange={handleChange}
+									setFormData={setFormData}
+									placeholder={rightEntry.placeholder}	
+								/>
+							)}
+						</div>
+					);
+				})}
+
+				{/**Buttons */}
+				<div className="button-container">
+					<button
+						className="back-button"
+						type="button"
+						onClick={() => navigate("/Homepage")}
+					>
+						Main Menu
+					</button>
+					<button
+						className="submit"
+						type="submit"
+						onClick={(event) => senddata(event)}
+					>
+						Generate Letter →
+					</button>
+				</div>
+
+				<div>
+					{output.map((line, index) => (
+						<p key={index}>{line}</p>
+					))}
+				</div>
+			
+			{/** End of two-column-grid*/}
+			</div>
+		
+		{/** End of form-container */}
 		</div>
 	);
 }
