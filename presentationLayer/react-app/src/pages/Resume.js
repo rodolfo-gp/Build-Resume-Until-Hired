@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 import { handleChange } from "../utils/FormValidation";
 import InputField from "../components/InputField";
+import "../styles/Generation.css";
 
 function ResumeForm({ row, col }) {
 	const navigate = useNavigate();
@@ -94,7 +95,7 @@ function ResumeForm({ row, col }) {
 					Submit
 				</button>
 			</div>
-			<div>
+			<div className="rGeneration_output">
 				{output.map((line, index) => (
 					<p key={index}>{line}</p>
 				))}
