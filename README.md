@@ -118,7 +118,7 @@ These are the things required to run a local version of the app
 
 ### Installation
 
-1. Get a free ChatGPTAPI Key at [https://example.com](https://example.com) Adam help
+1. Acquire tokens and a valid OpenAI API Key at [OpenAI's API](https://platform.openai.com/). 
 2. Clone the repo
   
 3. Install NPM packages
@@ -156,9 +156,9 @@ These are the things required to run a local version of the app
 <!-- USAGE EXAMPLES -->
 ## Usage using Docker
 
-Now that you have installed everything theseare the steps to run the app.
+Now that you have installed everything these are the steps to run the app.
 
-1. Be in the backendLayer dir. This will launch the entire backend. For info on ports used chack the dockerfile and docker-compose file
+1. Be in the backendLayer dir. This will launch the entire backend. For info on ports used check the dockerfile and docker-compose file
    ```sh
    cd backenLayer
    ```
@@ -237,7 +237,7 @@ To stop docker engine: ```stop docker```
           <img src="https://github.com/Zaid-sh.png" width="50" height="50" alt="Zaid-sh" />
         </a>
         <br /><strong>Zaid Shaikh</strong>
-        <br /><span style="color:gray;">Fullstack Developer</span>
+        <br /><span style="color:gray;">Fullstack Developer<br />Management Team</span>
       </td>
     </tr>
   </table>
