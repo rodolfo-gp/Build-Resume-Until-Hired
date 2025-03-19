@@ -271,7 +271,7 @@ def delete_user_document():
             return jsonify(return_request), 400
         
         try:
-            doc_id = int(data["doc_id"])  # Ensure doc_id is an integer
+            doc_id = int(data["doc_id"])
             
             # Attempt to delete the document
             delete_result = mongo.db.user_cvs.delete_one({"email": hashed_email, "id": doc_id})
@@ -282,7 +282,7 @@ def delete_user_document():
                 return jsonify(return_request), 200
             else:
                 return_request["message"] = "Document not found"
-                return jsonify(return_request), 404  # Use 404 for "not found"
+                return jsonify(return_request), 404  
             
         except Exception as e:
             print(f"Database Error: {e}")
