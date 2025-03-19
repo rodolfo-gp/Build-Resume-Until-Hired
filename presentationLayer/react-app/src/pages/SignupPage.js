@@ -83,7 +83,7 @@ function SignupPage() {
 					<input
 						type = "password"
 						value = {password}
-						onChange = {(event) => setPassword(event.target.value)}
+						onChange = {(event) => setConfirmPassword(event.target.value)}
 						placeholder = "Confirm password"
 					/>
 				</div>
