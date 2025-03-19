@@ -127,7 +127,7 @@ def get_user_cvs():
         
         #get user document operation
         try:
-            user_cvs_list = list(mongo.db.user_cvs.find({"email": hashed_email}, {"_id":0}))
+            user_cvs_list = list(mongo.db.user_cvs.find({"email": hashed_email}, {"_id":0,"email":0}))
             if user_cvs_list:
                 
                 return_request["message"] = "successfully retrived documents"
