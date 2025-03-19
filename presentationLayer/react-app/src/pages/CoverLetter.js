@@ -74,6 +74,8 @@ function CoverLetterForm({ row, col }) {
 					col={col}
 				/>
 			))}
+	
+
 			<div className="button-container">
 				<button 
 					className="back-button"
