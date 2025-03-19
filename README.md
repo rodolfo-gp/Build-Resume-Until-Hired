@@ -40,7 +40,7 @@
   <p align="center">
     Tailor your resumes and cover letter for a specific job
     <br />
-    <a href="https://bru-h.xyz/"><strong>Demo »</strong></a>
+    <a href="https://bru-h.xyz/"><strong>Live Demo »</strong></a>
     <br />
     <br />
     
@@ -107,9 +107,7 @@ To get a local copy up and running follow these simple example steps.
 
 These are the things required to run a local version of the app
 * npm
-  ```sh
-  npm install npm@latest -g
-  ```
+
 * Docker (for easiest setup)
   
 * python 3.x
@@ -125,9 +123,7 @@ These are the things required to run a local version of the app
    ```sh
    cd persentationLayer
    cd react-app
-   npm install -g serve
-   npm run build
-   serve -s build
+   npm install
    ```
 4. Enter your backend API in `config.js` Alex Help
    ```js
@@ -154,7 +150,7 @@ These are the things required to run a local version of the app
 
 
 <!-- USAGE EXAMPLES -->
-## Usage using Docker
+## Running Application
 
 Now that you have installed everything these are the steps to run the app.
 
@@ -180,13 +176,19 @@ To stop docker engine: ```stop docker```
 
 5. build and run the npm run build
    ```sh
+   npm install -g serve
    npm run build
    serve -s build
    ```
+6. click on the localhost link to view the website
 
+The app should now be fully running. Website is on localhost:3000 which is connected to the backend API container on localhost:5000
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+## Documentation
 
+* Backend API and AWS deployment documentation is on the backendLayer directory README.md file
+* Frontend website documentation is on the presentationLayer directory README.md file
 
 
 <!-- CONTRIBUTORS -->
