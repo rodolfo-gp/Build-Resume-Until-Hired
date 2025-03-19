@@ -7,9 +7,11 @@
     transition: 0.3s ease-in-out;
 }
 
+
 .navbar:hover {
     transform: translateY(-5px);
 }
+
 
 .navbar ul {
     list-style: none;
@@ -23,6 +25,7 @@
     margin: 0 15px;
 }
 
+
 .navbar a {
     text-decoration: none;
     color: black;
@@ -35,4 +38,28 @@
 .navbar a:hover {
     background: #007bff;
     color: white;
+}
+
+/*This is for screens <768px width*/
+@media (max-width: 768px) {
+    .navbar ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .navbar ul li {
+        margin: 10px 0;
+    }
+}
+
+/*This is for screens <480px width*/
+@media (max-width: 480px) {
+    .navbar {
+        padding: 10px 20px;
+    }
+
+    .navbar a {
+        font-size: 16px;
+        padding: 8px 12px;
+    }
 }
