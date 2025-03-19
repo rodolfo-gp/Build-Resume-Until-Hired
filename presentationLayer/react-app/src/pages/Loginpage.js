@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState} from "react";
 import { useNavigate } from "react-router-dom";
 import {FaEye, FaEyeSlash} from "react-icons/fa";
 
@@ -6,8 +6,8 @@ import "../styles/LoginSignup.css";
 
 function Loginpage() {
 	const navigate = useNavigate();
-	const [email, setEmail] = useState("");
-	const [password, setPassword] = useState("");
+	const [email, setEmail] = useState();
+	const [password, setPassword] = useState();
 	const [showPassword, setShowPassword] = useState(false);
 
 
@@ -16,10 +16,6 @@ function Loginpage() {
 		setShowPassword(!showPassword);
 	}
 
-	useEffect(()=>{
-		localStorage.setItem("email", "")
-	},[])
-	
 	const URL = "https://api.bru-h.xyz/login";
 
 
