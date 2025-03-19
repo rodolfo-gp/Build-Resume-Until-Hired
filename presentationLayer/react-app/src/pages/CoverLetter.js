@@ -35,7 +35,7 @@ function CoverLetterForm({ row, col }) {
 		"template"
 	];
 
-	const URL = "http://localhost:5000/coverletter";
+	const URL = "https://api.bru-h.xyz/coverletter";
 
 	const myHeaders = new Headers();
 	myHeaders.append("Content-Type", "application/json");
