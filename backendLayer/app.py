@@ -82,8 +82,6 @@ def login():
         if check_missing_or_blank_fields(data, required_fields):
             return_request["message"] = "Bad Request, Missing required fields"
             return jsonify(return_request), 400
-        
-        #validate credentials
         hashed_email = ch.hash_email(data["email"])
         if not valid_credentials(hashed_email, data["password"]):
             return_request["message"] = "Incorrect email or password"
