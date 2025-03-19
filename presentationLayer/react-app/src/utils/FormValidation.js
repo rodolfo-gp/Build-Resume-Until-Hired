@@ -2,10 +2,11 @@
 // Contains all checks needed for every field
 
 
-export const handleChange = (event, setFormData) =>{
-    const {name, value} = event.target;
-    setFormData((prevData) => ({
-        ...prevData, // this preserves all the unchanged lines
-        [name]: value,
+export function handleChange(event, setFormData) {
+    const { name, value, type, checked } = event.target;
+
+    setFormData((prevFormData) => ({
+        ...prevFormData,
+        [name]: type === "checkbox" ? checked : { ...prevFormData[name], value }
     }));
-};
+}
