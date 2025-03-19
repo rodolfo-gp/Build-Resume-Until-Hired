@@ -13,7 +13,7 @@ function Loginpage() {
 	/** This is how we send user login information to the flask backend
 	 *  TODO: Change the url to be the actual URL required for the backend
 	 */
-	const URL = "https://api.bru-h.xyz/Login";
+	const URL = "https://api.bru-h.xyz/login";
 
 	const myHeaders = new Headers();
 	myHeaders.append("Content-Type", "application/json");
@@ -21,7 +21,7 @@ function Loginpage() {
 	async function senddata(event) {
 		event.preventDefault();
 
-		const response = await fetch(URL, {
+		await fetch(URL, {
 			method: "POST",
 			headers: myHeaders,
 			body: JSON.stringify({
@@ -69,7 +69,7 @@ function Loginpage() {
 			<button className="signup" type="button" onClick={() => navigate("/Signup")}>
 				Sign up
 			</button>
-			<button className="guest" type="button" onClick ={() => navigate("/Homepage")}>
+			<button className="guest" type="button" onClick ={() => navigate("/Homepage",{ state: {loginstatus}})}>
                 Continue as Guest
             </button>
 			<button className="submit" type="button" onClick={(event)=>senddata(event)} >
