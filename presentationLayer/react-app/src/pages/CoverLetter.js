@@ -26,7 +26,7 @@ function CoverLetterForm({ row, col }) {
 		projects: { value: "", placeholder: "Name of projects you have worked on" },
 		jobDesc: { value: "", placeholder: "Description of job" },
 		template: {value: "", placeholder: "Template for Cover Letter (Optional)"},
-		latex: {value: false, placeholder: ""}
+		latex: {value: false}
 	});
 
 	const textAreaFields = [
@@ -43,61 +43,55 @@ function CoverLetterForm({ row, col }) {
 	myHeaders.append("Content-Type", "application/json");
 
 	async function senddata() {
-		await fetch(URL, {
-			method: "POST",
-			headers: myHeaders,
-			body: JSON.stringify(formData),
-		}).then((response)=>{
-			let result = response.json();
-			if (response.status >= 200 && response.status < 300) {
-				return result
-			}
-		}).then((data)=>{
-			const formattedText = data["doc_body"].split("\\n");
-			setOutput(formattedText)
-		});
-		return false;
-	}
+        await fetch(URL, {
+            method: "POST",
+            headers: myHeaders,
+            body: JSON.stringify(formData),
+        }).then((response) => {
+            return response.json();
+        }).then((data) => {
+            const formattedText = data["doc_body"].split("\\n");
+            const title = data["doc_title"];
 
-	return (
-		<div className="form-container">
-			<h3>Enter your Cover Letter Information</h3>
-			{Object.entries(formData).map(([field, data]) => (
-				<InputField
-					field={field}
-					value={data.value}
-					handleChange={handleChange}
-					setFormData={setFormData}
-					textAreaFields={textAreaFields}
-					placeholder={data.placeholder}
-					row={row}
-					col={col}
-				/>
-			))}	
+            navigate("/Output", { state: { output: formattedText, doc_title: title } });
+        });
+        return false;
+    }
 
-			<div className="button-container">
-				<button 
-					className="back-button"
-					type="button"
-					onClick={() => navigate("/Homepage")}
-				>
-					Back
-				</button>
-				<button
-					className="submit"
-					type="submit"
-					onClick={(event) => senddata(event)}
-				>
-					Submit
-				</button>
-			</div>
-			<div>
-				{output.map((line, index) => (
-					<p key={index}>{line}</p>
-				))}
-			</div>
-		</div>
-	);
+    return (
+        <div className="form-container">
+            <h3>Enter your Cover Letter Information</h3>
+            {Object.entries(formData).map(([field, data]) => (
+                <InputField
+                    key={field}
+                    field={field}
+                    value={data.value}
+                    handleChange={handleChange}
+                    setFormData={setFormData}
+                    textAreaFields={textAreaFields}
+                    placeholder={data.placeholder}
+                    row={row}
+                    col={col}
+                />
+            ))}
+            <div className="button-container">
+                <button
+                    className="back-button"
+                    type="button"
+                    onClick={() => navigate("/Homepage")}
+                >
+                    Back
+                </button>
+                <button
+                    className="submit"
+                    type="button"
+                    onClick={senddata}
+                >
+                    Submit
+                </button>
+            </div>
+        </div>
+    );
 }
 
 export default CoverLetterForm;

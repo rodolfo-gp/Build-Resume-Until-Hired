@@ -3,10 +3,10 @@ import { useNavigate } from "react-router-dom";
 
 import { handleChange } from "../utils/FormValidation";
 import InputField from "../components/InputField";
+import "../styles/Generation.css";
 
 function ResumeForm({ row, col }) {
 	const navigate = useNavigate();
-	const [output, setOutput] = useState([]);
 
 	const [formData, setFormData] = useState({
 		name: { value: "", placeholder: "Full Name" },
@@ -27,7 +27,7 @@ function ResumeForm({ row, col }) {
 		projects: { value: "", placeholder: "Name of projects you have worked on" },
 		jobDesc: { value: "", placeholder: "Description of job" },
 		template: { value: "", placeholder: "Template for Resume (Optional)" },
-		latex: {value: ""}
+		latex: {value: false}
 	});
 
 	const textAreaFields = [
@@ -56,7 +56,8 @@ function ResumeForm({ row, col }) {
 			}
 		}).then((data)=>{
 			const formattedText = data["doc_body"].split("\\n");
-			setOutput(formattedText)
+            const title = data["doc_title"];
+            navigate("/Output", { state: { output: formattedText, doc_title: title } });
 		});
 		return false;
 	}
@@ -89,15 +90,10 @@ function ResumeForm({ row, col }) {
 				<button
 					className="submit"
 					type="submit"
-					onClick={(event) => senddata(event)}
+					onClick={senddata}
 				>
 					Submit
 				</button>
-			</div>
-			<div>
-				{output.map((line, index) => (
-					<p key={index}>{line}</p>
-				))}
 			</div>
 		</div>
 	);
