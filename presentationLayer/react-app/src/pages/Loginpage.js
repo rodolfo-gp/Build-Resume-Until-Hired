@@ -5,8 +5,10 @@ import "../styles/Form.css";
 
 function Loginpage() {
 	const navigate = useNavigate();
-	const [username, setUsername] = useState("");
+	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
+	const [loginstatus, setLogin] = useState(false);
+	const [responsemessage, setMessage] = useState("");
 
 	/** This is how we send user login information to the flask backend
 	 *  TODO: Change the url to be the actual URL required for the backend
@@ -23,62 +25,57 @@ function Loginpage() {
 			method: "POST",
 			headers: myHeaders,
 			body: JSON.stringify({
-				email: username,
-				password: password,
+				email:email,
+				password:password
 			}),
-		});
-
-		const message = await response.text();
-
-		if (response.status === 201) {
-			alert("Login Successful!");
-			navigate("/Homepage");
-		} else {
-			alert("Login Failed: " + message);
-		}
+			keepalive:true
+		}).then(response => {
+			let result = response.json();
+			if (response.status>=200 && response.status<300){
+				setLogin(true);
+				return result
+			}
+			else{
+				return result
+			}
+		}).then(data => {
+			setMessage(data["message"])
+		})
+		return false;
 	}
 
 	return (
-		<form onSubmit={(event) => senddata(event)} className="form-container">
+		<form className="form-container">
 			<h3>Login</h3>
-			<div className="field-container">
-				<input
-					required={true}
-					type="text"
-					value={username}
-					onChange={(event) => setUsername(event.target.value)}
-					placeholder="Enter username..."
-				/>
-			</div>
-			<div className="field-container">
-				<input
-					required={true}
-					type="password"
-					value={password}
-					onChange={(event) => setPassword(event.target.value)}
-					placeholder="Enter password..."
-				/>
-			</div>
+			<div className = "field-container">
+                <input
+					required = {true}
+                    type = "text"
+                    value = {email}
+                    onChange = {(event) => setEmail(event.target.value)}
+                    placeholder = "Enter email..."
+                />
+            </div>
+            <div className = "field-container">
+                <input
+					required = {true}
+                    type = "password"
+                    value = {password}
+                    onChange={(event) => setPassword(event.target.value)}
+                    placeholder="Enter password..."
+                />
+            </div>
 
-			<div className="button-container">
-				<button
-					className="signup"
-					type="button"
-					onClick={() => navigate("/Signup")}
-				>
-					Sign up
-				</button>
-				<button
-					className="guest"
-					type="button"
-					onClick={() => navigate("/Homepage")}
-				>
-					Continue as Guest
-				</button>
-				<button className="submit" type="submit">
-					Log in
-				</button>
-			</div>
+			<button className="signup" type="button" onClick={() => navigate("/Signup")}>
+				Sign up
+			</button>
+			<button className="guest" type="button" onClick ={() => navigate("/Homepage")}>
+                Continue as Guest
+            </button>
+			<button className="submit" type="button" onClick={(event)=>senddata(event)} >
+				Log in
+			</button>
+			<p>{responsemessage}</p>
 		</form>
 	);
 }
