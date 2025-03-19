@@ -16,6 +16,7 @@ function CoverLetterForm({ row, col }) {
 		recipientInfo: { value: "", placeholder: "Name of Hiring Manager" },
 		companyName: { value: "", placeholder: "Company Name" },
 		companyLocation: { value: "", placeholder: "Location of the Company" },
+		skills: {value: "", placeholder: "List skills seperated by commas"},
 		workExperience: { value: "", placeholder: "List of work experience" },
 		additionalExperience: {
 			value: "",
@@ -24,6 +25,7 @@ function CoverLetterForm({ row, col }) {
 		projects: { value: "", placeholder: "Name of projects you have worked on" },
 		jobDesc: { value: "", placeholder: "Description of job" },
 		template: {value: "", placeholder: "Template for Cover Letter (Optional)"},
+		latex: {value: "", palceholder: "False"}
 	});
 
 	const textAreaFields = [
