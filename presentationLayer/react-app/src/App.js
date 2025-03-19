@@ -12,8 +12,10 @@ import Loginpage from "./pages/Loginpage";
 import CoverLetter from "./pages/CoverLetter";
 import Resume from "./pages/Resume";
 import SignupPage from "./pages/SignupPage";
+import Viewsaved from "./pages/Viewsaved";
 
 import "./App.css";
+
 
 // Constants
 const textAreaRow = "4";
@@ -27,6 +29,7 @@ function App() {
 			<Routes>
 				<Route path="/" element={<Loginpage />} />
 				<Route path="/Login" element={<Loginpage />} />
+				<Route path="/View" element={<Viewsaved />} />
 				<Route path="/Signup" element={<SignupPage />} />
 				<Route path="/Homepage" element={<Homepage />} />
 				<Route

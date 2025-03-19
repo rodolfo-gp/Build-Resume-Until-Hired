@@ -27,6 +27,7 @@ function SignupPage() {
 			let result = response.json();
 			if (response.status>=200 && response.status<300){
 				localStorage.setItem("email", email);
+				localStorage.setItem("password", password);
 				navigate('/Homepage');
 				return result
 			}
