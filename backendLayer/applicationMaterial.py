@@ -28,12 +28,13 @@ class JobAppMaterial ():
         self.projects = jobAppDict['projects']
         self.additionalExperience = jobAppDict['additionalExperience']
         self.latex = jobAppDict['latex']
+        print(self.latex)
 
 class CoverLetter(JobAppMaterial):
     def __init__(self, jobAppJson):
         super().__init__(jobAppJson)
         self.materialType = "cover letter"
-        if self.latex == "True":
+        if self.latex:
             f = open("llm/latexCoverLetter.txt", "r", encoding="utf-8")
             self.template = f.read()
         else:
@@ -98,7 +99,7 @@ class Resume(JobAppMaterial):
     def __init__(self, jobAppJson):
         super().__init__(jobAppJson)
         self.materialType = "resume"
-        if self.latex == "True":
+        if self.latex:
             f = open("llm/latexResume.txt", "r", encoding="utf-8")
             self.template = f.read()
         else:
