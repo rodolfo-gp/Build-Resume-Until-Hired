@@ -222,7 +222,7 @@ To stop docker engine: ```stop docker```
         <a href="https://github.com/FahmiSar">
           <img src="https://github.com/FahmiSar.png" width="50" height="50" alt="FahmiSar" />
         </a>
-        <br /><strong>Fahmi Sar</strong>
+        <br /><strong>Fahmi Sardar</strong>
         <br /><span style="color:gray;">Frontend Developer</span>
       </td>
       <td align="center">

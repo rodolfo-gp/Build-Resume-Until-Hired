@@ -10,7 +10,7 @@ function SignupPage() {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [confirmPassword, setConfirmPassword] = useState("");
-  const [responsemessage, setMessage] = useState("");
+  	const [responsemessage, setMessage] = useState("");
 
 
     const URL = "https://api.bru-h.xyz/signup";
@@ -45,8 +45,8 @@ function SignupPage() {
 	return (
 		<div className="login-container">
 			<div className="login-card">
-				<h2>Welcome Back</h2>
-				<p>Please enter your details to sign in</p>
+				<h2>Create an account</h2>
+				<p>Sign up to get started with our platform</p>
 
 				<div className = "input-group">
 					<label>Full Name</label>
@@ -97,7 +97,7 @@ function SignupPage() {
 				</button>
 
 				<p>
-					Already have an account?<a href="/Login">Sign in</a>
+					Already have an account? <a href="/Login">Sign in</a>
 				</p>
 			</div>
           <p>{responsemessage}</p>
