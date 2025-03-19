@@ -2,11 +2,6 @@ import os
 import openai
 from dotenv import load_dotenv
 
-import os
-import openai
-from dotenv import load_dotenv
-
-
 load_dotenv()
 
 # Creates an OpenAi object and sends a prompt to ChatGPT
