@@ -207,7 +207,7 @@ To stop docker engine: ```stop docker```
           <img src="https://github.com/SenorYuen.png" width="50" height="50" alt="SenorYuen" />
         </a>
         <br /><strong>Adam Yuen</strong>
-        <br /><span style="color:gray;">Backend Developer<br />Management Team</span>
+        <br /><span style="color:gray;">Fullstack Developer<br />Management Team</span>
       </td>
       <td align="center">
         <a href="https://github.com/s0uptim3">
