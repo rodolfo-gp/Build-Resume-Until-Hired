@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import {FaEye, FaEyeSlash} from "react-icons/fa";
 
@@ -10,12 +10,16 @@ function Loginpage() {
 	const [password, setPassword] = useState("");
 	const [showPassword, setShowPassword] = useState(false);
 
-	localStorage.setItem("email", "")
+
 
 	const togglePasswordVisibility = () => {
 		setShowPassword(!showPassword);
 	}
 
+	useEffect(()=>{
+		localStorage.setItem("email", "")
+	},[])
+	
 	const URL = "https://api.bru-h.xyz/login";
 
 
