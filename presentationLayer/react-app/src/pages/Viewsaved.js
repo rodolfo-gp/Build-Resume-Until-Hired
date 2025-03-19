@@ -41,6 +41,8 @@ function Viewsaved(){
             .then((data)=>{
                 if (data["status"] == false){
                     setText(data["message"]);
+                    setList([]);
+                    setID();
                 }else{
                     setList(data["documents"]);
                 }
@@ -92,11 +94,11 @@ function Viewsaved(){
 
     return( 
         <div>
-        <div>
+        {documentlist.length > 0&&<div>
             {documentlist.map((item)=>(
                 <li onClick={() => Getonecv(item["id"])}>{JSON.stringify(item["doc_title"])}</li>
             ))}
-        </div>
+        </div>}
             <div>{textarea}</div>
             {currentID && <button onClick={()=> deletedoc(currentID)}>Delete</button>}
             <div>{deletemessage}</div>
