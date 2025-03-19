@@ -13,6 +13,7 @@ const OutputForm = () => {
         localStorage.setItem("doc_title", JSON.stringify(doc_title));
     }else{
         output = JSON.parse(localStorage.getItem("doc_body"));  
+        doc_title = JSON.parse(localStorage.getItem("doc_title"))
     }
 
 
