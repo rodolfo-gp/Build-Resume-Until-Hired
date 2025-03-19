@@ -6,12 +6,12 @@ import "../styles/Generation.css";
 const OutputForm = () => {
     // Retrieve state passed via navigate
     const location = useLocation();
-    const { output } = location.state || {};
+    const { output, docTitle } = location.state || {};
 
     return (
         <div className='output_page'>
-            <h1>Generated Cover Letter</h1>
-            <div className="cvGeneration_output">
+            <h1>Generated File</h1>
+            <div className="Generation_output">
                 {output && output.length > 0 ? (
                     output.map((line, index) => (
                         <p key={index}>{line}</p>

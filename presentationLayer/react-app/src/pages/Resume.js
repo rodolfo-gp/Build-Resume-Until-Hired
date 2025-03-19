@@ -57,7 +57,10 @@ function ResumeForm({ row, col }) {
 			}
 		}).then((data)=>{
 			const formattedText = data["doc_body"].split("\\n");
-			setOutput(formattedText)
+            const docTitle = data["doc_title"];
+
+            navigate("/Output", { state: { formattedText, docTitle } });
+            navigate("/Output", { state: { output: formattedText } });
 		});
 		return false;
 	}
@@ -90,15 +93,10 @@ function ResumeForm({ row, col }) {
 				<button
 					className="submit"
 					type="submit"
-					onClick={(event) => senddata(event)}
+					onClick={senddata}
 				>
 					Submit
 				</button>
-			</div>
-			<div className="rGeneration_output">
-				{output.map((line, index) => (
-					<p key={index}>{line}</p>
-				))}
 			</div>
 		</div>
 	);

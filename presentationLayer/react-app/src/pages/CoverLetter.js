@@ -51,8 +51,9 @@ function CoverLetterForm({ row, col }) {
             return response.json();
         }).then((data) => {
             const formattedText = data["doc_body"].split("\\n");
+            const docTitle = data["doc_title"];
 
-            // Navigate to the 'Output' page and pass the formattedText as state
+            navigate("/Output", { state: { formattedText, docTitle } });
             navigate("/Output", { state: { output: formattedText } });
         });
         return false;
@@ -85,7 +86,7 @@ function CoverLetterForm({ row, col }) {
                 <button
                     className="submit"
                     type="button"
-                    onClick={senddata}  // Call senddata here instead of navigate directly
+                    onClick={senddata}
                 >
                     Submit
                 </button>
