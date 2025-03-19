@@ -53,8 +53,7 @@ function CoverLetterForm({ row, col }) {
             const formattedText = data["doc_body"].split("\\n");
             const title = data["doc_title"];
 
-            navigate("/Output", { state: { doc_title: title } });
-            navigate("/Output", { state: { output: formattedText } });
+            navigate("/Output", { state: { output: formattedText, doc_title: title } });
         });
         return false;
     }
