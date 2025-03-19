@@ -1,14 +1,15 @@
 import { Link } from "react-router-dom";
+import "../styles/Navbar.css";
 
 function Navbar() {
   return (
-    <nav>
+    <nav className="navbar">
       <ul>
+        <li><Link to="/Login">Login Page</Link></li>
+        <li><Link to="/Signup">Signup Page</Link></li>
         <li><Link to="/Homepage">Homepage</Link></li>
-        <li><Link to="/Cover_Letter">CoverLetter</Link></li>
+        <li><Link to="/Cover_Letter">Cover Letter</Link></li>
         <li><Link to="/Resume">Resume</Link></li>
-        <li><Link to="/Login">LoginPage</Link></li>
-        <li><Link to="/Signup">SignupPage</Link></li>
       </ul>
     </nav>
   );
