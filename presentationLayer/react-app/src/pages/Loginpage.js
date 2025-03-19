@@ -11,6 +11,7 @@ function Loginpage() {
 	const [loginstatus, setLogin] = useState(false);
 	const [responsemessage, setMessage] = useState("");
 
+
 	const [showPassword, setShowPassword] = useState(false);
 
 	const togglePasswordVisibility = () => {
@@ -19,13 +20,14 @@ function Loginpage() {
 
 	const URL = "https://api.bru-h.xyz/Login";
 
+
 	const myHeaders = new Headers();
 	myHeaders.append("Content-Type", "application/json");
 
 	async function senddata(event) {
 		event.preventDefault();
 
-		const response = await fetch(URL, {
+		await fetch(URL, {
 			method: "POST",
 			headers: myHeaders,
 			body: JSON.stringify({
@@ -100,11 +102,14 @@ function Loginpage() {
 					Continue as Guest
 				</button>
 
+
 				<p>
 					Don't have an account? <a href="/Signup">Sign up</a>
 				</p>
 			</div>
+      <p>{responsemessage}</p>
 		</div>
+
 	);
 }
 
