@@ -6,7 +6,7 @@ import InputField from "../components/InputField";
 
 function CoverLetterForm({ row, col }) {
 	const navigate = useNavigate();
-	const [output, setoutput] = useState("");
+	const [output, setOutput] = useState([]);
 
 	const [formData, setFormData] = useState({
 		name: { value: "", placeholder: "Full Name" },
@@ -53,7 +53,8 @@ function CoverLetterForm({ row, col }) {
 				return result
 			}
 		}).then((data)=>{
-			setoutput(data["doc_body"])
+			const formattedText = data["doc_body"].split("\\n");
+			setOutput(formattedText)
 		});
 		return false;
 	}
@@ -89,7 +90,11 @@ function CoverLetterForm({ row, col }) {
 					Submit
 				</button>
 			</div>
-			<div>{output}</div>
+			<div>
+				{output.map((line, index) => (
+					<p key={index}>{line}</p>
+				))}
+			</div>
 		</div>
 	);
 }
