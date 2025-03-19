@@ -5,9 +5,10 @@ import "../styles/Form.css";
 
 function SignupPage(){
     const navigate = useNavigate();
-    const [username, setUsername] = useState("");
+    const [email, setemail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
+    const [responsemessage, setMessage] = useState("");
 
     const URL = "https://api.bru-h.xyz/signup";
 
@@ -20,12 +21,22 @@ function SignupPage(){
             method: "POST",
             headers: myHeaders,
             body: JSON.stringify({
-                email: username,
+                email: email,
                 password: password
             }),
-        });
-        return false;
-    }
+        }).then(response => {
+			let result = response.json();
+			if (response.status>=200 && response.status<300){
+				return result
+			}
+			else{
+				return result
+			}
+		}).then(data => {
+			setMessage(data["message"])
+		})
+		return false;
+	}
 
     //state variable to check if the passwords are the same
     let issame = password === confirmPassword
@@ -36,9 +47,9 @@ function SignupPage(){
 			<div className = "field-container">
                 <input
                     type = "text"
-                    value = {username}
-                    onChange = {(event) => setUsername(event.target.value)}
-                    placeholder = "Enter username..."
+                    value = {email}
+                    onChange = {(event) => setemail(event.target.value)}
+                    placeholder = "Enter email..."
                 />
             </div>
             <div className = "field-container">
@@ -66,6 +77,7 @@ function SignupPage(){
 			<button disabled={!issame} id="submitbutton" className="submit" type="button" onClick={(event)=>senddata(event)}>
 				Sign up
 			</button>
+            <p>{responsemessage}</p>
 		</div>
     );
 
