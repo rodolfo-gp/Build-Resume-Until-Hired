@@ -5,12 +5,9 @@ import "../styles/Form.css";
 
 
 function SignupPage() {
-	const navigate = useNavigate();
-	const [username, setUsername] = useState("");
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [confirmPassword, setConfirmPassword] = useState("");
-  	const [responsemessage, setMessage] = useState("");
 
 
     const URL = "https://api.bru-h.xyz/signup";
@@ -35,7 +32,6 @@ function SignupPage() {
 				return result
 			}
 		}).then(data => {
-			setMessage(data["message"])
 		})
 		return false;
 	}
@@ -47,16 +43,6 @@ function SignupPage() {
 			<div className="login-card">
 				<h2>Create an account</h2>
 				<p>Sign up to get started with our platform</p>
-
-				<div className = "input-group">
-					<label>Full Name</label>
-					<input
-						type="text"
-						value = {username}
-						onChange = {(event) => setUsername(event.target.value)}
-						placeholder="Enter your full name"
-					/>
-				</div>
 
 				<div className="input-group">
 					<label>Email</label>
@@ -82,7 +68,7 @@ function SignupPage() {
 					<label>Confirm Password</label>
 					<input
 						type = "password"
-						value = {password}
+						value = {confirmPassword}
 						onChange = {(event) => setConfirmPassword(event.target.value)}
 						placeholder = "Confirm password"
 					/>
@@ -90,6 +76,7 @@ function SignupPage() {
 
 				<button 
 					className="signin-button"
+					disabled={!issame}
 					type="submit"
 					onClick={(event) => senddata(event)}
 				>
@@ -100,7 +87,6 @@ function SignupPage() {
 					Already have an account? <a href="/Login">Sign in</a>
 				</p>
 			</div>
-          <p>{responsemessage}</p>
 		</div>
 	);
 
