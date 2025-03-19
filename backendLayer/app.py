@@ -249,6 +249,52 @@ def get_specific_user_document():
         return_request["message"] = e
         return jsonify(return_request), 500
     
+@app.route('/cv/user', methods=['DELETE'])
+def delete_user_document():
+    return_request = {
+        "message": "No document found",
+        "status": False
+    }
+    required_fields = ["email", "password", "doc_id"]
+    
+    try:
+        # Check missing fields
+        data = request.json
+        if check_missing_or_blank_fields(data, required_fields):
+            return_request["message"] = "Bad Request, Missing required fields"
+            return jsonify(return_request), 400
+        
+        # Validate user credentials
+        hashed_email = ch.hash_email(data["email"])
+        if not valid_credentials(hashed_email, data["password"]):
+            return_request["message"] = "Invalid user credentials"
+            return jsonify(return_request), 400
+        
+        try:
+            doc_id = int(data["doc_id"])
+            
+            # Attempt to delete the document
+            delete_result = mongo.db.user_cvs.delete_one({"email": hashed_email, "id": doc_id})
+
+            if delete_result.deleted_count > 0:
+                return_request["message"] = "Document deleted successfully"
+                return_request["status"] = True
+                return jsonify(return_request), 200
+            else:
+                return_request["message"] = "Document not found"
+                return jsonify(return_request), 404  
+            
+        except Exception as e:
+            print(f"Database Error: {e}")
+            return_request["message"] = f"Database Error: {str(e)}"
+            return jsonify(return_request), 500
+          
+    except Exception as e:
+        print(f"Error: {e}")
+        return_request["message"] = str(e)
+        return jsonify(return_request), 500
+
+    
 @app.route('/coverletter', methods=['POST'])
 def generate_coverletter():
     return_request = {
