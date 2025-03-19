@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 import { handleChange } from "../utils/FormValidation";
 import InputField from "../components/InputField";
+import "../styles/Generation.css";
 
 function CoverLetterForm({ row, col }) {
 	const navigate = useNavigate();
@@ -76,7 +77,7 @@ function CoverLetterForm({ row, col }) {
 			))}	
 
 			<div className="button-container">
-				<button 
+				<button
 					className="back-button"
 					type="button"
 					onClick={() => navigate("/Homepage")}
@@ -91,7 +92,7 @@ function CoverLetterForm({ row, col }) {
 					Submit
 				</button>
 			</div>
-			<div>
+			<div className="cvGeneration_output">
 				{output.map((line, index) => (
 					<p key={index}>{line}</p>
 				))}
