@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import {FaEye, FaEyeSlash} from "react-icons/fa";
 
-import "../styles/Form.css";
+import "../styles/LoginSignup.css";
 
 function Loginpage() {
 	const navigate = useNavigate();
@@ -10,10 +11,15 @@ function Loginpage() {
 	const [loginstatus, setLogin] = useState(false);
 	const [responsemessage, setMessage] = useState("");
 
-	/** This is how we send user login information to the flask backend
-	 *  TODO: Change the url to be the actual URL required for the backend
-	 */
-	const URL = "https://api.bru-h.xyz/login";
+
+	const [showPassword, setShowPassword] = useState(false);
+
+	const togglePasswordVisibility = () => {
+		setShowPassword(!showPassword);
+	}
+
+	const URL = "https://api.bru-h.xyz/Login";
+
 
 	const myHeaders = new Headers();
 	myHeaders.append("Content-Type", "application/json");
@@ -25,58 +31,85 @@ function Loginpage() {
 			method: "POST",
 			headers: myHeaders,
 			body: JSON.stringify({
-				email:email,
-				password:password
+				email: email,
+				password: password,
 			}),
-			keepalive:true
-		}).then(response => {
-			let result = response.json();
-			if (response.status>=200 && response.status<300){
-				setLogin(true);
-				return result
-			}
-			else{
-				return result
-			}
-		}).then(data => {
-			setMessage(data["message"])
+			keepalive: true,
 		})
+			.then((response) => {
+				let result = response.json();
+				if (response.status >= 200 && response.status < 300) {
+					setLogin(true);
+					return result;
+				} else {
+					return result;
+				}
+			})
+			.then((data) => {
+				setMessage(data["message"]);
+			});
 		return false;
 	}
 
 	return (
-		<form className="form-container">
-			<h3>Login</h3>
-			<div className = "field-container">
-                <input
-					required = {true}
-                    type = "text"
-                    value = {email}
-                    onChange = {(event) => setEmail(event.target.value)}
-                    placeholder = "Enter email..."
-                />
-            </div>
-            <div className = "field-container">
-                <input
-					required = {true}
-                    type = "password"
-                    value = {password}
-                    onChange={(event) => setPassword(event.target.value)}
-                    placeholder="Enter password..."
-                />
-            </div>
+		<div className="login-container">
+			<div className="login-card">
+				<h2>Welcome Back</h2>
+				<p>Please enter your details to sign in</p>
 
-			<button className="signup" type="button" onClick={() => navigate("/Signup")}>
-				Sign up
-			</button>
-			<button className="guest" type="button" onClick ={() => navigate("/Homepage",{ state: {loginstatus}})}>
-                Continue as Guest
-            </button>
-			<button className="submit" type="button" onClick={(event)=>senddata(event)} >
-				Log in
-			</button>
-			<p>{responsemessage}</p>
-		</form>
+				<div className="input-group">
+					<label>Email</label>
+					<input 
+						type="email"
+						value = {email}
+						onChange = {(event) => setEmail(event.target.value)}
+						placeholder="Enter your email"
+					/>
+				</div>
+
+				<div className="input-group">
+					<label>Password</label>
+					<div className = "password-wrapper">
+						<input 
+							type= {showPassword ? "text" : "password"}
+							value = {password}
+							onChange = {(event) => setPassword(event.target.value)}
+							placeholder="Enter your password"
+						/>
+						<button
+							type ="button"
+							class="toggle-button"
+							onClick = {togglePasswordVisibility}
+						>
+							{showPassword ? <FaEyeSlash/> : <FaEye/>}
+						</button>
+					</div>
+				</div>
+
+				<button 
+					className="signin-button"
+					type="submit"
+					onClick={(event) => senddata(event)}
+				>
+					Sign in
+				</button>
+
+				<button
+					className = "guest-button"
+					type = "button"
+					onClick ={() => navigate("/Homepage")}
+				>
+					Continue as Guest
+				</button>
+
+
+				<p>
+					Don't have an account? <a href="/Signup">Sign up</a>
+				</p>
+			</div>
+      <p>{responsemessage}</p>
+		</div>
+
 	);
 }
 
