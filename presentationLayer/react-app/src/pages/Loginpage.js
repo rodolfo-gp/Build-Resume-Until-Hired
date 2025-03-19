@@ -8,10 +8,6 @@ function Loginpage() {
 	const navigate = useNavigate();
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
-	const [loginstatus, setLogin] = useState(false);
-	const [responsemessage, setMessage] = useState("");
-
-
 	const [showPassword, setShowPassword] = useState(false);
 
 	const togglePasswordVisibility = () => {
@@ -39,14 +35,13 @@ function Loginpage() {
 			.then((response) => {
 				let result = response.json();
 				if (response.status >= 200 && response.status < 300) {
-					setLogin(true);
+					localStorage.setItem("email", email)
 					return result;
 				} else {
 					return result;
 				}
 			})
 			.then((data) => {
-				setMessage(data["message"]);
 			});
 		return false;
 	}
@@ -107,7 +102,6 @@ function Loginpage() {
 					Don't have an account? <a href="/Signup">Sign up</a>
 				</p>
 			</div>
-      		<p>{responsemessage}</p>
 		</div>
 
 	);
