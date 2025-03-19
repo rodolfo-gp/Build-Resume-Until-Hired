@@ -1,6 +1,11 @@
 /* Header.css */
 
 .header-container{
+    width: 100%;
+    overflow: hidden;
+
+    height: var(--header-height);
+
     display: flex;
     justify-content: flex-start;
     align-items: center; /*vertically centers items*/
@@ -8,10 +13,7 @@
     width: 100%;
     overflow: hidden;
 
-    border: 2px solid red;
-}
-
-.logo{
-    width: 20%;
-    margin-right: auto; 
+    flex-shrink: 0;
+    
+    border-bottom: 2px solid skyblue;
 }

@@ -15,3 +15,8 @@
 .group-name{
     padding: 10px;
 }
+
+footer{
+    height: var(--footer-height);
+    margin-top: auto; /*ensures the footer is always at the bottom*/
+  }
