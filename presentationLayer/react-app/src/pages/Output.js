@@ -19,6 +19,7 @@ const OutputForm = () => {
                 ) : (
                     <p>No output available</p>
                 )}
+
             </div>
         </div>
     );
