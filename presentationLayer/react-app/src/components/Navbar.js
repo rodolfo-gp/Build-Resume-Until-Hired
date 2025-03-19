@@ -1,10 +1,19 @@
+import React, {useState,useEffect} from "react";
 import { Link } from "react-router-dom";
 import "../styles/Navbar.css";
 
 function Navbar() {
-  const email = localStorage.getItem("email")
+  const [email, setEmail] = useState(null);
+  const [password, setPassword] = useState(null);
 
-  let isloggedin = (email != null)
+  const [isloggedin, setLoggedin] = useState(false);
+  useEffect(()=>{
+    setEmail(localStorage.getItem("email"))
+    setPassword(localStorage.getItem("password"))
+    setLoggedin(email != null && password != null && email != "" && password != "")
+  },[isloggedin, email, password])
+
+   
   return (
     <nav className="navbar">
       <ul>
