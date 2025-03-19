@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 
 import { handleChange } from "../utils/FormValidation";
 import InputField from "../components/InputField";
-import "../styles/Generation.css";
 
 function CoverLetterForm({ row, col }) {
 	const navigate = useNavigate();
@@ -44,60 +43,55 @@ function CoverLetterForm({ row, col }) {
 	myHeaders.append("Content-Type", "application/json");
 
 	async function senddata() {
-		await fetch(URL, {
-			method: "POST",
-			headers: myHeaders,
-			body: JSON.stringify(formData),
-		}).then((response)=>{
-			let result = response.json();
-			if (response.status >= 200 && response.status < 300) {
-				return result
-			}
-		}).then((data)=>{
-			const formattedText = data["doc_body"].split("\\n");
-			setOutput(formattedText)
-		});
-		return false;
-	}
+        await fetch(URL, {
+            method: "POST",
+            headers: myHeaders,
+            body: JSON.stringify(formData),
+        }).then((response) => {
+            return response.json();
+        }).then((data) => {
+            const formattedText = data["doc_body"].split("\\n");
 
-	return (
-		<div className="form-container">
-			<h3>Enter your Cover Letter Information</h3>
-			{Object.entries(formData).map(([field, data]) => (
-				<InputField
-					field={field}
-					value={data.value}
-					handleChange={handleChange}
-					setFormData={setFormData}
-					textAreaFields={textAreaFields}
-					placeholder={data.placeholder}
-					row={row}
-					col={col}
-				/>
-			))}
-			<div className="button-container">
-				<button
-					className="back-button"
-					type="button"
-					onClick={() => navigate("/Homepage")}
-				>
-					Back
-				</button>
-				<button
-					className="submit"
-					type="submit"
-					onClick={(event) => senddata(event)}
-				>
-					Submit
-				</button>
-			</div>
-			<div className="cvGeneration_output">
-				{output.map((line, index) => (
-					<p key={index}>{line}</p>
-				))}
-			</div>
-		</div>
-	);
+            // Navigate to the 'Output' page and pass the formattedText as state
+            navigate("/Output", { state: { output: formattedText } });
+        });
+        return false;
+    }
+
+    return (
+        <div className="form-container">
+            <h3>Enter your Cover Letter Information</h3>
+            {Object.entries(formData).map(([field, data]) => (
+                <InputField
+                    key={field}
+                    field={field}
+                    value={data.value}
+                    handleChange={handleChange}
+                    setFormData={setFormData}
+                    textAreaFields={textAreaFields}
+                    placeholder={data.placeholder}
+                    row={row}
+                    col={col}
+                />
+            ))}
+            <div className="button-container">
+                <button
+                    className="back-button"
+                    type="button"
+                    onClick={() => navigate("/Homepage")}
+                >
+                    Back
+                </button>
+                <button
+                    className="submit"
+                    type="button"
+                    onClick={senddata}  // Call senddata here instead of navigate directly
+                >
+                    Submit
+                </button>
+            </div>
+        </div>
+    );
 }
 
 export default CoverLetterForm;
