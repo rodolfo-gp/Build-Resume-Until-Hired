@@ -26,7 +26,7 @@ function CoverLetterForm({ row, col }) {
 		projects: { value: "", placeholder: "Name of projects you have worked on" },
 		jobDesc: { value: "", placeholder: "Description of job" },
 		template: {value: "", placeholder: "Template for Cover Letter (Optional)"},
-		latex: {value: false, placeholder: ""}
+		latex: {value: false}
 	});
 
 	const textAreaFields = [
@@ -51,9 +51,9 @@ function CoverLetterForm({ row, col }) {
             return response.json();
         }).then((data) => {
             const formattedText = data["doc_body"].split("\\n");
-            const doc_title = data["doc_title"];
+            const title = data["doc_title"];
 
-            navigate("/Output", { state: { formattedText, doc_title } });
+            navigate("/Output", { state: { doc_title: title } });
             navigate("/Output", { state: { output: formattedText } });
         });
         return false;

@@ -45,7 +45,7 @@ const OutputForm = () => {
 
     return (
         <div className='output_page'>
-            <h1>Generated File</h1>
+            <h1 className='header'>Generated File</h1>
             <div className="Generation_output">
                 {output && output.length > 0 ? (
                     output.map((line, index) => (
@@ -54,6 +54,7 @@ const OutputForm = () => {
                 ) : (
                     <p>No output available</p>
                 )}
+
             </div>
             <div className='button&response'>
             {email && password && <button onClick={()=>Savedoc()}>Save</button>}
