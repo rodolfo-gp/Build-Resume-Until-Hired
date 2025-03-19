@@ -18,7 +18,7 @@ function Loginpage() {
 		setShowPassword(!showPassword);
 	}
 
-	const URL = "https://api.bru-h.xyz/Login";
+	const URL = "https://api.bru-h.xyz/login";
 
 
 	const myHeaders = new Headers();
