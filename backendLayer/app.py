@@ -3,6 +3,8 @@ import cryptographic_helpers as ch
 from flask import Flask, jsonify, request
 from flask_pymongo import PyMongo
 import os
+import json
+import datetime
 
 from applicationMaterial import (CoverLetter, Resume)
 from llm.gptPromptingutilities import gpt_prompter
@@ -200,14 +202,45 @@ def save_cv():
     
 @app.route('/coverletter', methods=['POST'])
 def generate_coverletter():
-    data = request.json
-    cover_letter = CoverLetter(data)
-    prompt = cover_letter.createCoverLetterPrompt()
-    output = gpt_prompter(prompt)
-    print(output)
-    return
+    return_request = {
+        "doc_title": datetime.datetime.now(),
+        "doc_body": "",
+        "latex" : False
+    }
+    try:
+        data = request.get_json()
+        if data is None:
+            return_request["doc_body"] = "Bad Request, Missing Data"
+            return jsonify(return_request), 400
+
+        cover_letter = CoverLetter(json.dumps(data))
+        prompt = cover_letter.createCoverLetterPrompt()
+        output = gpt_prompter(prompt)
+        return_request["doc_body"] = output.replace("\n", "\\n ")
+        return_request["latex"] = cover_letter.latex
+        return jsonify(return_request), 200
+    except Exception as e:
+        print(f"Error: {e}")
+        return_request["doc_body"] = "Bad request"
+        return jsonify(return_request), 500
+
 
 @app.route('/resume', methods=['POST'])
 def generate_resume():
-
-    return
+    return_request = {
+        "doc_title": datetime.datetime.now(),
+        "doc_body": "",
+        "latex" : False
+    }
+    try:
+        data = request.get_json()
+        cover_letter = Resume(json.dumps(data))
+        prompt = cover_letter.createResumeLetterPrompt()
+        output = gpt_prompter(prompt)
+        return_request["doc_body"] = output.replace("\n", "\\n ")
+        return_request["latex"] = cover_letter.latex
+        return jsonify(return_request), 200
+    except Exception as e:
+        print(f"Error: {e}")
+        return_request["doc_body"] = "Bad request"
+        return jsonify(return_request), 500

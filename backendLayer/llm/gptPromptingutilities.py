@@ -33,7 +33,7 @@ def gpt_prompter(full_prompt):
                 {"role": "system", "content": header},
                 {"role": "user", "content": full_prompt}
             ],
-            max_tokens=1000,
+            max_tokens=3000,
             temperature=0.5
         )
 
