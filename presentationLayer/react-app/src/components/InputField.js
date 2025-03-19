@@ -12,6 +12,7 @@ function InputField({
 	row,
 	col,
 }) {
+	const isTextArea = textAreaFields.includes(field);
 
 	const isLatexField = field === "latex";
 
@@ -45,7 +46,19 @@ function InputField({
 				<span>Use LaTeX for Formatting</span>
 			</label>
 		);
-	}else {
+	} else if (isTextArea) {
+		inputElement = (
+			<textarea
+				name={field}
+				id={field}
+				value={value}
+				onChange={(event) => handleChange(event, setFormData)}
+				placeholder={placeholder}
+				rows={row}
+				cols={col}
+			/>
+		);
+	} else {
 		inputElement = (
 			<input
 				type="text"

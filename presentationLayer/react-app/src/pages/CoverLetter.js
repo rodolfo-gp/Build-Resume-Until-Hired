@@ -8,7 +8,7 @@ import InputField from "../components/InputField";
  * The CSS for this page comes from the input field component
  */
 
-function CoverLetterForm() {
+function CoverLetterForm({row, col}) {
 	const navigate = useNavigate();
 	const [output, setOutput] = useState([]);
 
@@ -51,6 +51,14 @@ function CoverLetterForm() {
 		["jobDesc"],
 		["template"],
 		["latex"],
+	];
+
+	const textAreaFields = [
+		"workExperience",
+		"additionalExperience",
+		"projects",
+		"jobDesc",
+		"template"
 	];
 
 	const URL = "https://api.bru-h.xyz/coverletter";
@@ -102,7 +110,10 @@ function CoverLetterForm() {
 								value={leftEntry.value}
 								handleChange={handleChange}
 								setFormData={setFormData}
+								textAreaFields={textAreaFields}
 								placeholder={leftEntry.placeholder}
+								row = {row}
+								col = {col}
 							/>
 							{rightEntry && (
 								<InputField
@@ -110,7 +121,10 @@ function CoverLetterForm() {
 									value={rightEntry.value}
 									handleChange={handleChange}
 									setFormData={setFormData}
+									textAreaFields={textAreaFields}
 									placeholder={rightEntry.placeholder}	
+									row = {row}
+									col = {col}
 								/>
 							)}
 						</div>

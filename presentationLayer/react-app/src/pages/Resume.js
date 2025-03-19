@@ -34,6 +34,15 @@ function ResumeForm({ row, col }) {
 		latex: {value: ""}
 	});
 
+	const textAreaFields = [
+		"skills",
+		"workExperience",
+		"additionalExperience",
+		"projects",
+		"jobDesc",
+		"template",
+	];
+
 	const fieldGroups = [
 		["name"],
 		["email"],
@@ -96,7 +105,10 @@ function ResumeForm({ row, col }) {
 								value={leftEntry.value}
 								handleChange={handleChange}
 								setFormData={setFormData}
-								placeholder={leftEntry.placeholder}
+								textAreaFields={textAreaFields}
+								placeholder={leftEntry.placeholder}	
+								row = {row}
+								col = {col}
 							/>
 							{rightEntry && (
 								<InputField
@@ -104,7 +116,10 @@ function ResumeForm({ row, col }) {
 									value={rightEntry.value}
 									handleChange={handleChange}
 									setFormData={setFormData}
+									textAreaFields={textAreaFields}
 									placeholder={rightEntry.placeholder}	
+									row = {row}
+									col = {col}
 								/>
 							)}
 						</div>
