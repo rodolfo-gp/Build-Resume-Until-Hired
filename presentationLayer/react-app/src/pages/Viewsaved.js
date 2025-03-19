@@ -13,6 +13,8 @@ function Viewsaved(){
     useEffect(() =>{
         if (email != null && password != null){
         Getcvs()
+        }else{
+        setText("Login to see saved documents")
         }
     }, [])
 
