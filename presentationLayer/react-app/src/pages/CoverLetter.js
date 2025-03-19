@@ -6,6 +6,7 @@ import InputField from "../components/InputField";
 
 function CoverLetterForm({ row, col }) {
 	const navigate = useNavigate();
+	const [output, setoutput] = useState("");
 
 	const [formData, setFormData] = useState({
 		name: { value: "", placeholder: "Full Name" },
@@ -46,6 +47,13 @@ function CoverLetterForm({ row, col }) {
 			method: "POST",
 			headers: myHeaders,
 			body: JSON.stringify(formData),
+		}).then((response)=>{
+			let result = response.json();
+			if (response.status >= 200 && response.status < 300) {
+				return result
+			}
+		}).then((data)=>{
+			setoutput(data["doc_body"])
 		});
 		return false;
 	}
@@ -81,6 +89,7 @@ function CoverLetterForm({ row, col }) {
 					Submit
 				</button>
 			</div>
+			<div>{output}</div>
 		</div>
 	);
 }
