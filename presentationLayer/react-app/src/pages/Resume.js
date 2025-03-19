@@ -6,6 +6,7 @@ import InputField from "../components/InputField";
 
 function ResumeForm({ row, col }) {
 	const navigate = useNavigate();
+		const [output, setoutput] = useState("");
 
 	const [formData, setFormData] = useState({
 		name: { value: "", placeholder: "Full Name" },
@@ -26,6 +27,7 @@ function ResumeForm({ row, col }) {
 		projects: { value: "", placeholder: "Name of projects you have worked on" },
 		jobDesc: { value: "", placeholder: "Description of job" },
 		template: { value: "", placeholder: "Template for Resume (Optional)" },
+		latex: { value: "", placeholder: "Latex templating goes here"}
 	});
 
 	const textAreaFields = [
@@ -47,6 +49,13 @@ function ResumeForm({ row, col }) {
 			method: "POST",
 			headers: myHeaders,
 			body: JSON.stringify(formData),
+		}).then((response)=>{
+			let result = response.json();
+			if (response.status >= 200 && response.status < 300) {
+				return result
+			}
+		}).then((data)=>{
+			setoutput(data["doc_body"])
 		});
 		return false;
 	}
@@ -84,6 +93,7 @@ function ResumeForm({ row, col }) {
 					Submit
 				</button>
 			</div>
+			<div>{output}</div>
 		</div>
 	);
 }
