@@ -102,12 +102,14 @@
     background-color: #f0f0f0;
 }
 
-.login-card > p {
+.login-card p {
     font-size: 14px;
     margin-top: 10px
 }
 
-.login-card > a{
+.login-card a{
     color: #007bff;
     text-decoration: none;
+    cursor: pointer;
+    
 }
