@@ -12,6 +12,7 @@ import Loginpage from "./pages/Loginpage";
 import CoverLetter from "./pages/CoverLetter";
 import Resume from "./pages/Resume";
 import SignupPage from "./pages/SignupPage";
+import Output from "./pages/Output";
 
 import "./App.css";
 
@@ -29,6 +30,7 @@ function App() {
 				<Route path="/Login" element={<Loginpage />} />
 				<Route path="/Signup" element={<SignupPage />} />
 				<Route path="/Homepage" element={<Homepage />} />
+				<Route path="/Output" element={<Output />} />
 				<Route
 					path="/Cover_Letter"
 					element={<CoverLetter row={textAreaRow} col={textAreaCol} />}
