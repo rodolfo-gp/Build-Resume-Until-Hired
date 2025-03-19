@@ -1,12 +1,12 @@
 from flask_cors import CORS
-import cryptographic_helpers as ch
+import helpers.cryptographic_helpers as ch
 from flask import Flask, jsonify, request
 from flask_pymongo import PyMongo
 import os
 import json
 import datetime
 
-from applicationMaterial import (CoverLetter, Resume)
+from helpers.applicationMaterial import (CoverLetter, Resume)
 from llm.gptPromptingutilities import gpt_prompter
 
 app = Flask(__name__)

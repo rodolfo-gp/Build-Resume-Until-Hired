@@ -1,4 +1,4 @@
-import backendLayer.cryptographic_helpers as ch
+import backendLayer.helpers.cryptographic_helpers as ch
 from flask import Flask, jsonify, request
 from flask_pymongo import PyMongo 
 
