@@ -6,7 +6,7 @@ import "../styles/Generation.css";
 const OutputForm = () => {
     // Retrieve state passed via navigate
     const location = useLocation();
-    const { output, docTitle } = location.state || {};
+    const { output, doc_title } = location.state || {};
 
     return (
         <div className='output_page'>
