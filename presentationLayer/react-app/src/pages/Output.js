@@ -1,10 +1,10 @@
 import React, {useState, useEffect} from 'react';
 import { useLocation } from 'react-router-dom';
+import { jsPDF } from 'jspdf';
 
 import "../styles/Generation.css";
 
 const OutputForm = () => {
-    // Retrieve state passed via navigate
     const location = useLocation();
     let { output, doc_title } = location.state || {};
     const [responsemessage, setMessage] = useState("");
@@ -29,10 +29,10 @@ const OutputForm = () => {
 
 	const URL = localStorage.getItem("url") + "/cv/save"
 
-	const myHeaders = new Headers();
-	myHeaders.append("Content-Type", "application/json");
+    const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
 
-    async function Savedoc(){
+    async function Savedoc() {
         await fetch(URL, {
             method: "POST",
 			headers: myHeaders,
@@ -43,14 +43,37 @@ const OutputForm = () => {
                 doc_body:output,
                 doc_title:newdoc_title
             }),
-        }).then((response)=>{
-			if (response.status >= 200 && response.status < 300) {
-                setMessage("Save Successful")
-			}else{
-                setMessage("Save failed")
+        }).then((response) => {
+            if (response.status >= 200 && response.status < 300) {
+                setMessage("Save Successful");
+            } else {
+                setMessage("Save failed");
             }
-        })
+        });
     }
+
+    const downloadPDF = () => {
+        const doc = new jsPDF();
+        doc.setFont("helvetica", "normal");
+
+        // Add title if available
+        if (doc_title) {
+            doc.setFontSize(18);
+            doc.text(doc_title.toString(), 20, 20);
+            doc.setFontSize(12);
+            doc.text(" ", 20, 30);
+        }
+
+        // Add content line by line
+        let y = 40;
+        output.forEach((line) => {
+            const text = typeof line === "string" ? line : JSON.stringify(line);
+            doc.text(text, 20, y);
+            y += 10;
+        });
+
+        doc.save(doc_title ? `${doc_title}.pdf` : "Generated_Document.pdf");
+    };
 
     return (
         <div className='output_page'>
@@ -63,7 +86,6 @@ const OutputForm = () => {
                 ) : (
                     <p>No output available</p>
                 )}
-
             </div>
             <input
             type="title"
@@ -72,11 +94,12 @@ const OutputForm = () => {
             placeholder="(Optional) Enter Document Title"
             />
             <div className='button&response'>
-            {email && password && <button onClick={()=>Savedoc()}>Save</button>}
-            {responsemessage}
+                {email && password && <button onClick={Savedoc}>Save</button>}
+                <button onClick={downloadPDF}>Download PDF</button>
+                {responsemessage}
             </div>
         </div>
     );
-}
+};
 
 export default OutputForm;
