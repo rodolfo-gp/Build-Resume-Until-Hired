@@ -42,13 +42,14 @@ div.header-container {
     color: rgb(255, 255, 255);
     font-size: 18px;
     font-family: monospace;
+    font-weight: bold;
     padding: 10px 15px;
     border-radius: 8px;
     transition: 0.3s ease-in-out;
 }
 
 .navbar a:hover {
-    background: #007bff;
+    background: #000000;
     color: white;
 }
 
