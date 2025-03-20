@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
+import { useUser } from "../context/UserContext";
 
 function Viewsaved(){
-    const email = localStorage.getItem("email");  
-    const password = localStorage.getItem("password");
+    const { email, password, login, logout } = useUser();
     const [documentlist, setList] = useState([]);
     const [textarea, setText] = useState(""); 
     const [currentID, setID] = useState();
     const [deletemessage, setDelete] = useState("");
+
 
     const myHeaders = new Headers();
 	myHeaders.append("Content-Type", "application/json");

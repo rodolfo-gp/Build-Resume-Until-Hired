@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import * as HTMLDocx from 'html-docx-js/dist/html-docx.js'; // Import the html-docx-js library
 import { saveAs } from 'file-saver'; // Import file-saver
+import { useUser } from "../context/UserContext"; //Importing context
 
 import "../styles/Generation.css";
 
@@ -10,6 +11,7 @@ const OutputForm = () => {
     let { output, doc_title } = location.state || {};
     const [responsemessage, setMessage] = useState("");
     const [newdoc_title, setDoc_Title] = useState("");
+    const { email, password, login, logout } = useUser();
 
     useEffect(() => {
         setDoc_Title(doc_title);
@@ -22,9 +24,6 @@ const OutputForm = () => {
         output = JSON.parse(localStorage.getItem("doc_body"));
         doc_title = JSON.parse(localStorage.getItem("doc_title"));
     }
-
-    const email = localStorage.getItem("email");
-    const password = localStorage.getItem("password");
 
     const URL = localStorage.getItem("url") + "/cv/save";
 

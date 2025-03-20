@@ -1,14 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { useUser } from "../context/UserContext";
 
 import "../styles/LoginSignup.css";
 
 function Loginpage() {
 	const navigate = useNavigate();
-	const [email, setEmail] = useState();
-	const [password, setPassword] = useState();
+	const [inputemail, setEmail] = useState();
+	const [inputpassword, setPassword] = useState();
 	const [showPassword, setShowPassword] = useState(false);
+	const { email, password, login, logout } = useUser()  || {};
+
+	useEffect(() => {
+		if (email) {
+		  console.log('User logged in with email:', email);
+		}
+	  }, [email]);
 
 	const togglePasswordVisibility = () => {
 		setShowPassword(!showPassword);
@@ -26,16 +34,15 @@ function Loginpage() {
 			method: "POST",
 			headers: myHeaders,
 			body: JSON.stringify({
-				email: email,
-				password: password,
+				email: inputemail,
+				password: inputpassword,
 			}),
 			keepalive: true,
 		})
 			.then((response) => {
 				let result = response.json();
 				if (response.status >= 200 && response.status < 300) {
-					localStorage.setItem("email", email);
-					localStorage.setItem("password", password);
+					login(inputemail, inputpassword);
 					navigate("/Homepage");
 					return result;
 				} else {
@@ -57,7 +64,7 @@ function Loginpage() {
 					<div className="credential-wrapper">
 						<input
 							type="email"
-							value={email}
+							value={inputemail}
 							onChange={(event) => setEmail(event.target.value)}
 							placeholder="Enter your email"
 						/>
@@ -69,7 +76,7 @@ function Loginpage() {
 					<div className="credential-wrapper">
 						<input
 							type={showPassword ? "text" : "password"}
-							value={password}
+							value={inputpassword}
 							onChange={(event) => setPassword(event.target.value)}
 							placeholder="Enter your password"
 						/>
