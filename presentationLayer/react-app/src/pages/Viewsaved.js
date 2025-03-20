@@ -13,7 +13,7 @@ function Viewsaved(){
 
 	const URL = localStorage.getItem("url") + "/cv";
     useEffect(() =>{
-        if (email != null && password != null){
+        if (email != null && password != null && email && password){
         Getcvs()
         }else{
         setText("Login to see saved documents")
