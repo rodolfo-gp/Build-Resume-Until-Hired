@@ -56,7 +56,7 @@ function Loginpage() {
 				<p>Please enter your details to sign in</p>
 
 				<div className="input-group">
-					<label>email</label>
+					<label>Email</label>
 					<div className="credential-wrapper">
 						<input
 							type="email"
