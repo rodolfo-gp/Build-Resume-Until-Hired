@@ -39,20 +39,25 @@
     border-radius: 5px;
 }
 
-.password-wrapper {
+.credential-wrapper {
     position: relative;
     display: flex;
     align-items: center;
+    gap: 8px;
 }
 
 /* Style the input field */
-.password-wrapper > input {
+.credential-wrapper > input {
     width: 100%;
     padding: 10px;
     padding-right: 40px; /* Space for the icon */
     border: 1px solid #ddd;
     border-radius: 5px;
 }
+.show-password-icon{
+    font-size: 20px;
+}
+
 
 
 .toggle-password{

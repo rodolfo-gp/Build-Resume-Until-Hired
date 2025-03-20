@@ -1,6 +1,6 @@
-import React, { useState} from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import {FaEye, FaEyeSlash} from "react-icons/fa";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 import "../styles/LoginSignup.css";
 
@@ -10,14 +10,11 @@ function Loginpage() {
 	const [password, setPassword] = useState();
 	const [showPassword, setShowPassword] = useState(false);
 
-
-
 	const togglePasswordVisibility = () => {
 		setShowPassword(!showPassword);
-	}
+	};
 
 	const URL = localStorage.getItem("url") + "/login";
-
 
 	const myHeaders = new Headers();
 	myHeaders.append("Content-Type", "application/json");
@@ -37,16 +34,15 @@ function Loginpage() {
 			.then((response) => {
 				let result = response.json();
 				if (response.status >= 200 && response.status < 300) {
-					localStorage.setItem("email", email)
-					localStorage.setItem("password", password)
-					navigate('/Homepage')
+					localStorage.setItem("email", email);
+					localStorage.setItem("password", password);
+					navigate("/Homepage");
 					return result;
 				} else {
 					return result;
 				}
 			})
-			.then((data) => {
-			});
+			.then((data) => {});
 		return false;
 	}
 
@@ -58,34 +54,40 @@ function Loginpage() {
 
 				<div className="input-group">
 					<label>Email</label>
-					<input 
-						type="email"
-						value = {email}
-						onChange = {(event) => setEmail(event.target.value)}
-						placeholder="Enter your email"
-					/>
+					<div className="credential-wrapper">
+						<input
+							type="email"
+							value={email}
+							onChange={(event) => setEmail(event.target.value)}
+							placeholder="Enter your email"
+						/>
+					</div>
 				</div>
 
 				<div className="input-group">
 					<label>Password</label>
-					<div className = "password-wrapper">
-						<input 
-							type= {showPassword ? "text" : "password"}
-							value = {password}
-							onChange = {(event) => setPassword(event.target.value)}
+					<div className="credential-wrapper">
+						<input
+							type={showPassword ? "text" : "password"}
+							value={password}
+							onChange={(event) => setPassword(event.target.value)}
 							placeholder="Enter your password"
 						/>
 						<button
-							type ="button"
+							type="button"
 							class="toggle-button"
-							onClick = {togglePasswordVisibility}
+							onClick={togglePasswordVisibility}
 						>
-							{showPassword ? <FaEyeSlash/> : <FaEye/>}
+							{showPassword ? (
+								<FaEyeSlash className="show-password-icon" />
+							) : (
+								<FaEye className="show-password-icon" />
+							)}
 						</button>
 					</div>
 				</div>
 
-				<button 
+				<button
 					className="signin-button"
 					type="submit"
 					onClick={(event) => senddata(event)}
@@ -94,20 +96,18 @@ function Loginpage() {
 				</button>
 
 				<button
-					className = "guest-button"
-					type = "button"
-					onClick ={() => navigate("/Homepage")}
+					className="guest-button"
+					type="button"
+					onClick={() => navigate("/Homepage")}
 				>
 					Continue as Guest
 				</button>
-
 
 				<p>
 					Don't have an account? <a href="/Signup">Sign up</a>
 				</p>
 			</div>
 		</div>
-
 	);
 }
 
