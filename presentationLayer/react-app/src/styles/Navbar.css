@@ -30,6 +30,7 @@ div.header-container {
     list-style: none;
     padding: 0;
     margin: 0;
+
     display: flex;
     justify-content: center;
     align-items: center; /* Ensures nav links are vertically aligned */
