@@ -75,6 +75,29 @@ const OutputForm = () => {
         doc.save(doc_title ? `${doc_title}.pdf` : "Generated_Document.pdf");
     };
 
+    const downloadPDF = () => {
+        const doc = new jsPDF();
+        doc.setFont("helvetica", "normal");
+
+        // Add title if available
+        if (doc_title) {
+            doc.setFontSize(18);
+            doc.text(doc_title.toString(), 20, 20);
+            doc.setFontSize(12);
+            doc.text(" ", 20, 30);
+        }
+
+        // Add content line by line
+        let y = 40;
+        output.forEach((line) => {
+            const text = typeof line === "string" ? line : JSON.stringify(line);
+            doc.text(text, 20, y);
+            y += 10;
+        });
+
+        doc.save(doc_title ? `${doc_title}.pdf` : "Generated_Document.pdf");
+    };
+
     return (
         <div className='output_page'>
             <h1 className='header'>Generated File</h1>
@@ -96,10 +119,13 @@ const OutputForm = () => {
             <div className='button&response'>
                 {email && password && <button onClick={Savedoc}>Save</button>}
                 <button onClick={downloadPDF}>Download PDF</button>
+                {email && password && <button onClick={Savedoc}>Save</button>}
+                <button onClick={downloadPDF}>Download PDF</button>
                 {responsemessage}
             </div>
         </div>
     );
+};
 };
 
 export default OutputForm;
