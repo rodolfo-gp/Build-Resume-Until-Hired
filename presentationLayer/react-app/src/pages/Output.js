@@ -9,10 +9,10 @@ const OutputForm = () => {
     let { output, doc_title } = location.state || {};
     const [responsemessage, setMessage] = useState("");
     if (output != null){
-        localStorage.setItem("doc_body", JSON.stringify(output));    
+        localStorage.setItem("doc_body", JSON.stringify(output));
         localStorage.setItem("doc_title", JSON.stringify(doc_title));
     }else{
-        output = JSON.parse(localStorage.getItem("doc_body"));  
+        output = JSON.parse(localStorage.getItem("doc_body"));
         doc_title = JSON.parse(localStorage.getItem("doc_title"))
     }
 
@@ -21,7 +21,7 @@ const OutputForm = () => {
     const password = localStorage.getItem("password")
 
 	const URL = localStorage.getItem("url") + "/cv/save"
-    
+
 	const myHeaders = new Headers();
 	myHeaders.append("Content-Type", "application/json");
 
