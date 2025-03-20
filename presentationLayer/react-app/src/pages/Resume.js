@@ -27,7 +27,7 @@ function ResumeForm({ row, col }) {
 		projects: { value: "", placeholder: "Name of projects you have worked on" },
 		jobDesc: { value: "", placeholder: "Description of job" },
 		template: { value: "", placeholder: "Template for Resume (Optional)" },
-		latex: {value: false}
+		latex: false 
 	});
 
 	const textAreaFields = [
@@ -66,18 +66,31 @@ function ResumeForm({ row, col }) {
 		<div className="form-container">
 			<h3>Enter your Resume Information</h3>
 
-			{Object.entries(formData).map(([field, data]) => (
-				<InputField
-					field={field}
-					value={data.value}
-					handleChange={handleChange}
-					setFormData={setFormData}
-					textAreaFields={textAreaFields}
-					placeholder={data.placeholder}
-					row={row}
-					col={col}
-				/>
-			))}
+			{Object.entries(formData).map(([field, data]) => 
+				field !== "latex" ? (
+					<InputField
+						key={field}
+						field={field}
+						value={data.value}
+						handleChange={handleChange}
+						setFormData={setFormData}
+						textAreaFields={textAreaFields}
+						placeholder={data.placeholder}
+						row={row}
+						col={col}
+					/>
+				) : (
+					<label key={field}>
+						<input
+							type="checkbox"
+							name="latex"
+							checked={formData.latex}
+							onChange={(e) => handleChange(e, setFormData)}
+						/>
+						Use LaTeX
+					</label>
+				)
+			)}
 
 			<div className="button-container">
 				<button
