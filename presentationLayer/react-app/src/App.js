@@ -17,6 +17,7 @@ import Viewsaved from "./pages/Viewsaved";
 
 import "./App.css";
 
+localStorage.setItem("url", "https://api.bru-h.xyz")
 
 // Constants
 const textAreaRow = "4";

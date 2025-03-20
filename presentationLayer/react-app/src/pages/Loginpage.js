@@ -16,7 +16,7 @@ function Loginpage() {
 		setShowPassword(!showPassword);
 	}
 
-	const URL = "https://api.bru-h.xyz/login";
+	const URL = localStorage.getItem("url") + "/login";
 
 
 	const myHeaders = new Headers();

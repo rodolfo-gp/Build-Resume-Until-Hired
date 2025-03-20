@@ -20,7 +20,7 @@ const OutputForm = () => {
     const email = localStorage.getItem("email")
     const password = localStorage.getItem("password")
 
-    const URL = "https://api.bru-h.xyz/cv/save"
+	const URL = localStorage.getItem("url") + "/cv/save"
     
 	const myHeaders = new Headers();
 	myHeaders.append("Content-Type", "application/json");

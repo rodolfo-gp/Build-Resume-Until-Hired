@@ -35,7 +35,7 @@ function ResumeForm({ row, col }) {
 		projects: { value: "", placeholder: "Name of projects you have worked on" },
 		jobDesc: { value: "", placeholder: "Description of job" },
 		template: { value: "", placeholder: "Template for Resume (Optional)" },
-		latex: {value: false}
+		latex: false 
 	});
 
 	const textAreaFields = [
@@ -62,7 +62,7 @@ function ResumeForm({ row, col }) {
 		["latex"],
 	];
 
-	const URL = "https://api.bru-h.xyz/resume";
+	const URL = localStorage.getItem("url") + "/resume";
 
 	const myHeaders = new Headers();
 	myHeaders.append("Content-Type", "application/json");
@@ -87,6 +87,7 @@ function ResumeForm({ row, col }) {
 
 	return (
 		<div className="form-container">
+
 			<div>
 				<h3>Enter your Resume Information</h3>
 				<p>Provide details to build your professional resume.</p>
@@ -151,6 +152,7 @@ function ResumeForm({ row, col }) {
 
 			
 			{/** End of two-column-grid*/}
+
 			</div>
 		
 		{/** End of form-container */}

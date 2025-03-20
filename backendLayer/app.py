@@ -18,7 +18,7 @@ mongo = PyMongo(app)
 
 @app.route("/", methods=['GET'])
 def test():
-    return "Hello From Flask"
+    return "Hello From flask :)"
 
 @app.route('/signup', methods=['POST'])
 def signup():
@@ -47,7 +47,7 @@ def signup():
             mongo.db.users.insert_one(newUser)
             return_request["message"] = "User Created Successfully"
             return_request["status"] = True
-            return jsonify(return_request), 
+            return jsonify(return_request), 200
         
         except Exception as e:
             print(f"Database Error: {e}")

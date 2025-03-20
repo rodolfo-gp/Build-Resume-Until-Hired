@@ -10,7 +10,7 @@ function SignupPage() {
 	const [password, setPassword] = useState("");
 	const [confirmPassword, setConfirmPassword] = useState("");
 
-    const URL = "https://api.bru-h.xyz/signup";
+	const URL = localStorage.getItem("url") + "/signup";
 
 	const myHeaders = new Headers();
 	myHeaders.append("Content-Type", "application/json");

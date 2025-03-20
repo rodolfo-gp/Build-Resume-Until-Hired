@@ -27,7 +27,7 @@ function CoverLetterForm({row, col}) {
         projects: { value: "", placeholder: "Name of projects you have worked on" },
         jobDesc: { value: "", placeholder: "Description of job" },
         template: { value: "", placeholder: "Template for Cover Letter (Optional)" },
-        latex: false // Now it's a boolean
+        latex: false 
     });
     
 
@@ -55,7 +55,7 @@ function CoverLetterForm({row, col}) {
 			["latex"],
 		];
 
-	const URL = "https://api.bru-h.xyz/coverletter";
+	const URL = localStorage.getItem("url") + "/coverletter";
 
 	const myHeaders = new Headers();
 	myHeaders.append("Content-Type", "application/json");
