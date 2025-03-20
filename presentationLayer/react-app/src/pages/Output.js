@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import { jsPDF } from 'jspdf';
-
+import * as HTMLDocx from 'html-docx-js/dist/html-docx.js'; // Import the html-docx-js library
+import { saveAs } from 'file-saver'; // Import file-saver
 
 import "../styles/Generation.css";
 
@@ -15,7 +15,6 @@ const OutputForm = () => {
         setDoc_Title(doc_title);
     }, []);
 
-
     if (output != null) {
         localStorage.setItem("doc_body", JSON.stringify(output));
         localStorage.setItem("doc_title", JSON.stringify(newdoc_title));
@@ -24,8 +23,8 @@ const OutputForm = () => {
         doc_title = JSON.parse(localStorage.getItem("doc_title"));
     }
 
-    const email = localStorage.getItem("email")
-    const password = localStorage.getItem("password")
+    const email = localStorage.getItem("email");
+    const password = localStorage.getItem("password");
 
     const URL = localStorage.getItem("url") + "/cv/save";
 
@@ -52,32 +51,23 @@ const OutputForm = () => {
         });
     }
 
-    const downloadPDF = () => {
-        const doc = new jsPDF();
-        doc.setFont("times", "normal");
+    const downloadDOCX = () => {
+        // Convert output to HTML format without including the title in the body
+        const htmlContent = `
+            <html>
+                <body>
+                    <div>
+                        ${output.map(line => `<p>${line}</p>`).join('')}
+                    </div>
+                </body>
+            </html>
+        `;
 
+        // Convert the HTML content to DOCX
+        const docxBlob = HTMLDocx.asBlob(htmlContent);
 
-        doc.setFontSize(12);
-
-        let y = 20;
-
-        output.forEach((line) => {
-            const text = typeof line === "string" ? line : JSON.stringify(line);
-
-
-            const splitText = doc.splitTextToSize(text, 180);
-            doc.text(splitText, 20, y);
-
-
-            y += splitText.length * 5;
-            if (y > 280) {
-                doc.addPage();
-                y = 20;
-            }
-        });
-
-
-        doc.save(newdoc_title ? `${newdoc_title}.pdf` : "Generated_Document.pdf");
+        // Use FileSaver's saveAs function to save the DOCX file
+        saveAs(docxBlob, `${newdoc_title || "Generated_Document"}.docx`);
     };
 
     return (
@@ -100,7 +90,7 @@ const OutputForm = () => {
             />
             <div className='button&response'>
                 {email && password && <button onClick={Savedoc}>Save</button>}
-                <button onClick={downloadPDF}>Download PDF</button>
+                <button onClick={downloadDOCX}>Download DOCX</button>
                 {responsemessage}
             </div>
         </div>
