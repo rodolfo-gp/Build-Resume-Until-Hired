@@ -79,8 +79,7 @@ function ResumeForm({ row, col }) {
 			}
 		}).then((data)=>{
 			const formattedText = data["doc_body"].split("\\n");
-            const title = data["doc_title"];
-            navigate("/Output", { state: { output: formattedText, doc_title: title } });
+            navigate("/Output", { state: { output: formattedText, doc_title: 'Resume' } });
 		});
 		return false;
 	}
