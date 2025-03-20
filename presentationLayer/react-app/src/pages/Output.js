@@ -11,14 +11,14 @@ const OutputForm = () => {
     const [newdoc_title, setDoc_Title] = useState("");
 
     useEffect(()=>{
-           setDoc_Title(doc_title); 
+           setDoc_Title(doc_title);
     },[])
 
     if (output != null){
-        localStorage.setItem("doc_body", JSON.stringify(output));    
+        localStorage.setItem("doc_body", JSON.stringify(output));
         localStorage.setItem("doc_title", JSON.stringify(newdoc_title));
     }else{
-        output = JSON.parse(localStorage.getItem("doc_body"));  
+        output = JSON.parse(localStorage.getItem("doc_body"));
         doc_title = JSON.parse(localStorage.getItem("doc_title"));
 
     }
@@ -28,7 +28,7 @@ const OutputForm = () => {
     const password = localStorage.getItem("password")
 
 	const URL = localStorage.getItem("url") + "/cv/save"
-    
+
 	const myHeaders = new Headers();
 	myHeaders.append("Content-Type", "application/json");
 
@@ -65,7 +65,7 @@ const OutputForm = () => {
                 )}
 
             </div>
-            <input 
+            <input
             type="title"
             value = {newdoc_title}
             onChange={(event)=>setDoc_Title(event.target.value)}
