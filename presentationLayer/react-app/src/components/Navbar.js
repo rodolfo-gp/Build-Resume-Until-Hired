@@ -7,10 +7,9 @@ function Navbar() {
 
   return (
     <div className="header-container">
+      <img src="/images/bruh_logo.png" alt="Logo" />
       <nav className="navbar">
-
         <ul>
-          <img src="/images/bruh_logo.png" alt="Logo" />
           <li><Link to="/Login">Login Page</Link></li>
           <li><Link to="/Signup">Signup Page</Link></li>
           <li><Link to="/Homepage">Homepage</Link></li>
