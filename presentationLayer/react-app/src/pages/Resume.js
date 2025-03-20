@@ -39,7 +39,7 @@ function ResumeForm({ row, col }) {
 		"template",
 	];
 
-	const URL = "https://api.bru-h.xyz/resume";
+	const URL = localStorage.getItem("url") + "/resume";
 
 	const myHeaders = new Headers();
 	myHeaders.append("Content-Type", "application/json");

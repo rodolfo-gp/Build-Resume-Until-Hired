@@ -11,7 +11,7 @@ function Viewsaved(){
     const myHeaders = new Headers();
 	myHeaders.append("Content-Type", "application/json");
 
-    const URL = "https://api.bru-h.xyz/cv";
+	const URL = localStorage.getItem("url") + "/cv";
     useEffect(() =>{
         if (email != null && password != null){
         Getcvs()
