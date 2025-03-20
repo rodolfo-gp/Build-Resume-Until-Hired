@@ -1,14 +1,16 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { useUser } from '../context/UserContext';  // Import the custom hook
 
 import "../styles/LoginSignup.css";
 
 function Loginpage() {
 	const navigate = useNavigate();
-	const [email, setEmail] = useState();
-	const [password, setPassword] = useState();
+	const [inputemail, setemail] = useState();
+	const [inputpassword, setPassword] = useState();
 	const [showPassword, setShowPassword] = useState(false);
+	const {login} = useUser();
 
 	const togglePasswordVisibility = () => {
 		setShowPassword(!showPassword);
@@ -26,16 +28,17 @@ function Loginpage() {
 			method: "POST",
 			headers: myHeaders,
 			body: JSON.stringify({
-				email: email,
-				password: password,
+				email: inputemail,
+				password: inputpassword,
 			}),
 			keepalive: true,
 		})
 			.then((response) => {
 				let result = response.json();
 				if (response.status >= 200 && response.status < 300) {
-					localStorage.setItem("email", email);
-					localStorage.setItem("password", password);
+					localStorage.setItem("email", inputemail);
+					localStorage.setItem("password", inputpassword);
+					login(inputemail, inputpassword);
 					navigate("/Homepage");
 					return result;
 				} else {
@@ -53,12 +56,12 @@ function Loginpage() {
 				<p>Please enter your details to sign in</p>
 
 				<div className="input-group">
-					<label>Email</label>
+					<label>newemail</label>
 					<div className="credential-wrapper">
 						<input
 							type="email"
-							value={email}
-							onChange={(event) => setEmail(event.target.value)}
+							value={inputemail}
+							onChange={(event) => setemail(event.target.value)}
 							placeholder="Enter your email"
 						/>
 					</div>
@@ -69,7 +72,7 @@ function Loginpage() {
 					<div className="credential-wrapper">
 						<input
 							type={showPassword ? "text" : "password"}
-							value={password}
+							value={inputpassword}
 							onChange={(event) => setPassword(event.target.value)}
 							placeholder="Enter your password"
 						/>

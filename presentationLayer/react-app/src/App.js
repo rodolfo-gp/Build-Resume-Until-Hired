@@ -13,6 +13,7 @@ import Resume from "./pages/Resume";
 import SignupPage from "./pages/SignupPage";
 import Output from "./pages/Output";
 import Viewsaved from "./pages/Viewsaved";
+import { UserProvider } from "./context/UserContext";
 
 import "./App.css";
 
@@ -24,6 +25,7 @@ const textAreaCol = "50";
 
 function App() {
 	return (
+	<UserProvider>
 		<BrowserRouter>
 			<Navbar />
 			<Routes>
@@ -44,6 +46,7 @@ function App() {
 			</Routes>
 			<Footer />
 		</BrowserRouter>
+	</UserProvider>
 	);
 }
 
