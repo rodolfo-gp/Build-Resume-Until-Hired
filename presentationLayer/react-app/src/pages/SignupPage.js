@@ -15,11 +15,11 @@ function SignupPage() {
 
 	const togglePasswordVisibility = () => {
 		setShowPassword(!showPassword);
-	}
+	};
 
 	const toggleConfirmedPasswordVisibility = () => {
 		setShowConfirmedPassword(!showConfirmedPassword);
-	}
+	};
 
 	const URL = localStorage.getItem("url") + "/signup";
 
@@ -103,14 +103,14 @@ function SignupPage() {
 							placeholder="Confirm password"
 						/>
 						<button
-							type = "button"
-							class = "toggle-button"
+							type="button"
+							class="toggle-button"
 							onClick={toggleConfirmedPasswordVisibility}
 						>
 							{showConfirmedPassword ? (
-								<FaEyeSlash className="show-password-icon"/>
+								<FaEyeSlash className="show-password-icon" />
 							) : (
-								<FaEye className="show-password-icon"/>
+								<FaEye className="show-password-icon" />
 							)}
 						</button>
 					</div>
