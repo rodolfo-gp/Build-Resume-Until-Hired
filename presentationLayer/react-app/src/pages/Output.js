@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import { useLocation } from 'react-router-dom';
 import { jsPDF } from 'jspdf';
+import { jsPDF } from 'jspdf';
 
 import "../styles/Generation.css";
 
@@ -23,7 +24,6 @@ const OutputForm = () => {
 
     }
 
-
     const email = localStorage.getItem("email")
     const password = localStorage.getItem("password")
 
@@ -32,6 +32,7 @@ const OutputForm = () => {
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
 
+    async function Savedoc() {
     async function Savedoc() {
         await fetch(URL, {
             method: "POST",
@@ -48,9 +49,38 @@ const OutputForm = () => {
                 setMessage("Save Successful");
             } else {
                 setMessage("Save failed");
+        }).then((response) => {
+            if (response.status >= 200 && response.status < 300) {
+                setMessage("Save Successful");
+            } else {
+                setMessage("Save failed");
             }
         });
+        });
     }
+
+    const downloadPDF = () => {
+        const doc = new jsPDF();
+        doc.setFont("helvetica", "normal");
+
+        // Add title if available
+        if (doc_title) {
+            doc.setFontSize(18);
+            doc.text(doc_title.toString(), 20, 20);
+            doc.setFontSize(12);
+            doc.text(" ", 20, 30);
+        }
+
+        // Add content line by line
+        let y = 40;
+        output.forEach((line) => {
+            const text = typeof line === "string" ? line : JSON.stringify(line);
+            doc.text(text, 20, y);
+            y += 10;
+        });
+
+        doc.save(doc_title ? `${doc_title}.pdf` : "Generated_Document.pdf");
+    };
 
     const downloadPDF = () => {
         const doc = new jsPDF();
