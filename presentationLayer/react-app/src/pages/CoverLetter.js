@@ -4,7 +4,11 @@ import { useNavigate } from "react-router-dom";
 import { handleChange } from "../utils/FormValidation";
 import InputField from "../components/InputField";
 
-function CoverLetterForm({ row, col }) {
+/**
+ * The CSS for this page comes from the input field component
+ */
+
+function CoverLetterForm({row, col}) {
 	const navigate = useNavigate();
 	const [output, setOutput] = useState([]);
 
@@ -34,6 +38,22 @@ function CoverLetterForm({ row, col }) {
 		"jobDesc",
 		"template"
 	];
+		/** This is out the page is going to be laid out */
+		const fieldGroups = [
+			["name"],
+			["email"],
+			["address", "phone"],
+			["education"],
+			["recipientInfo"],
+			["companyName", "companyLocation"],
+			["skills"],
+			["workExperience"],
+			["additionalExperience"],
+			["projects"],
+			["jobDesc"],
+			["template"],
+			["latex"],
+		];
 
 	const URL = localStorage.getItem("url") + "/coverletter";
 
@@ -60,53 +80,82 @@ function CoverLetterForm({ row, col }) {
     }
     
 
-    return (
-        <div className="form-container">
-            <h3>Enter your Cover Letter Information</h3>
-            {Object.entries(formData).map(([field, data]) => 
-                field !== "latex" ? (
-                    <InputField
-                        key={field}
-                        field={field}
-                        value={data.value}
-                        handleChange={handleChange}
-                        setFormData={setFormData}
-                        textAreaFields={textAreaFields}
-                        placeholder={data.placeholder}
-                        row={row}
-                        col={col}
-                    />
-                ) : (
-                    <label key={field}>
-                        <input
-                            type="checkbox"
-                            name="latex"
-                            checked={formData.latex}
-                            onChange={(e) => handleChange(e, setFormData)}
-                        />
-                        Use LaTeX
-                    </label>
-                )
-            )}
+	return (
+		<div className="form-container">
+			<div>
+				<h3>Enter your Cover Letter Information</h3>
+				<p>Provide details below to build your professional cover letter.</p>
+			</div>
 
-            <div className="button-container">
-                <button
-                    className="back-button"
-                    type="button"
-                    onClick={() => navigate("/Homepage")}
-                >
-                    Back
-                </button>
-                <button
-                    className="submit"
-                    type="button"
-                    onClick={senddata}
-                >
-                    Submit
-                </button>
-            </div>
-        </div>
-    );
+			{/**
+			 * This looks confusing but .map() is a function
+			 * So it can have a return given there's {}
+			 */}
+			<div className = "two-column-grid">
+				{fieldGroups.map((fields, index) => {
+					/** we are destructing to make the later part of the code more readable */
+					const [leftName, rightName] = fields;
+					const leftEntry = formData[leftName];
+					const rightEntry = rightName ? formData[rightName] : null;
+
+					return (
+						<div className="row">
+							<InputField
+								field={leftName}
+								value={leftEntry.value}
+								handleChange={handleChange}
+								setFormData={setFormData}
+								textAreaFields={textAreaFields}
+								placeholder={leftEntry.placeholder}
+								row = {row}
+								col = {col}
+							/>
+							{rightEntry && (
+								<InputField
+									field={rightName}
+									value={rightEntry.value}
+									handleChange={handleChange}
+									setFormData={setFormData}
+									textAreaFields={textAreaFields}
+									placeholder={rightEntry.placeholder}	
+									row = {row}
+									col = {col}
+								/>
+							)}
+						</div>
+					);
+				})}
+
+				{/**Buttons */}
+				<div className="button-container">
+					<button
+						className="back-button"
+						type="button"
+						onClick={() => navigate("/Homepage")}
+					>
+						Main Menu
+					</button>
+					<button
+						className="submit"
+						type="submit"
+						onClick={(event) => senddata(event)}
+					>
+						Generate Letter →
+					</button>
+				</div>
+
+				<div>
+					{output.map((line, index) => (
+						<p key={index}>{line}</p>
+					))}
+				</div>
+			
+			{/** End of two-column-grid*/}
+			</div>
+		
+		{/** End of form-container */}
+		</div>
+	);
 }
 
 export default CoverLetterForm;
