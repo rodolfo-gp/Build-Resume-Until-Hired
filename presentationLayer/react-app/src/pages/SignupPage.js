@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { useUser } from '../context/UserContext';  // Import the custom hook
 
 import "../styles/Form.css";
 
@@ -9,9 +10,9 @@ function SignupPage() {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [confirmPassword, setConfirmPassword] = useState("");
-
 	const [showPassword, setShowPassword] = useState(false);
 	const [showConfirmedPassword, setShowConfirmedPassword] = useState(false);
+	const {login} = useUser();
 
 	const togglePasswordVisibility = () => {
 		setShowPassword(!showPassword);
@@ -40,6 +41,7 @@ function SignupPage() {
 				if (response.status >= 200 && response.status < 300) {
 					localStorage.setItem("email", email);
 					localStorage.setItem("password", password);
+					login(email, password)
 					navigate("/Homepage");
 					return result;
 				} else {
