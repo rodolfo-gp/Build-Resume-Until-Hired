@@ -1,29 +1,25 @@
 div.header-container {
     width: 100%;
-    overflow: hidden;
-
     height: 100px;
-
     display: flex;
-    justify-content: center;
-    align-items: center; /* Vertically centers items */
-
+    align-items: center;
+    justify-content: space-between;
     flex-shrink: 0;
-    border-bottom: 2px solid skyblue;
+    border-bottom: none; /* Removed border-bottom */
 }
 
 .navbar {
     background: white;
     border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: none; /* Removed shadow */
+    border: none; /* Ensure no border */
     padding: 15px 30px;
     text-align: center;
     transition: 0.3s ease-in-out;
-
     display: flex;
-    align-items: center; /* Ensures logo and links are vertically centered */
-    justify-content: center; /* Centers items horizontally */
-    gap: 20px; /* Spacing between logo and navigation links */
+    align-items: flex-end;
+    justify-content: center;
+    gap: 20px;
 }
 
 .navbar:hover {
@@ -34,15 +30,10 @@ div.header-container {
     list-style: none;
     padding: 0;
     margin: 0;
-
     display: flex;
     justify-content: center;
     align-items: center; /* Ensures nav links are vertically aligned */
     gap: 20px; /* Adds space between links */
-}
-
-.navbar ul li {
-    margin: 0;
 }
 
 .navbar a {
@@ -60,8 +51,10 @@ div.header-container {
 }
 
 img {
-    width: 50px;
+    margin: 10px;
+    width: 70px;
     height: auto;
+    align-self: flex-start; /* Ensures logo stays aligned at the top of the container */
 }
 
 /* Responsive Design */
