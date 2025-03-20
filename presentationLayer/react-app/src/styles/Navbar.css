@@ -1,3 +1,17 @@
+div.header-container {
+    width: 100%;
+    overflow: hidden;
+
+    height: 100px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Vertically centers items */
+
+    flex-shrink: 0;
+    border-bottom: 2px solid skyblue;
+}
+
 .navbar {
     background: white;
     border-radius: 12px;
@@ -5,26 +19,31 @@
     padding: 15px 30px;
     text-align: center;
     transition: 0.3s ease-in-out;
-}
 
+    display: flex;
+    align-items: center; /* Ensures logo and links are vertically centered */
+    justify-content: center; /* Centers items horizontally */
+    gap: 20px; /* Spacing between logo and navigation links */
+}
 
 .navbar:hover {
     transform: translateY(-5px);
 }
 
-
 .navbar ul {
     list-style: none;
     padding: 0;
     margin: 0;
+
     display: flex;
     justify-content: center;
+    align-items: center; /* Ensures nav links are vertically aligned */
+    gap: 20px; /* Adds space between links */
 }
 
 .navbar ul li {
-    margin: 0 15px;
+    margin: 0;
 }
-
 
 .navbar a {
     text-decoration: none;
@@ -40,8 +59,20 @@
     color: white;
 }
 
-/*This is for screens <768px width*/
+img {
+    width: 50px;
+    height: auto;
+}
+
+/* Responsive Design */
+
+/* For screens < 768px */
 @media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        padding: 10px 20px;
+    }
+
     .navbar ul {
         flex-direction: column;
         align-items: center;
@@ -52,12 +83,8 @@
     }
 }
 
-/*This is for screens <480px width*/
+/* For screens < 480px */
 @media (max-width: 480px) {
-    .navbar {
-        padding: 10px 20px;
-    }
-
     .navbar a {
         font-size: 16px;
         padding: 8px 12px;
