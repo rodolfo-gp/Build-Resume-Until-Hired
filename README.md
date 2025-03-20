@@ -125,9 +125,9 @@ These are the things required to run a local version of the app
    cd react-app
    npm install
    ```
-4. Enter your backend API in `config.js` Alex Help
+4. Enter your backend API in `app.js` 
    ```js
-   const API_KEY = 'localhost:5000';
+   localStorage.setItem("url", "localhost:5000");
    ```
 5. go to backendLayer dir
    ```sh
