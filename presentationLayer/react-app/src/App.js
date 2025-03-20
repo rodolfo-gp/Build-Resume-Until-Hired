@@ -2,7 +2,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import React from "react";
 
 // Additional Components
-import Header from "./components/Header";
 import Footer from "./components/Footer";
 
 // Importing Pages
@@ -26,7 +25,6 @@ const textAreaCol = "50";
 function App() {
 	return (
 		<BrowserRouter>
-			<Header />
 			<Navbar />
 			<Routes>
 				<Route path="/" element={<Loginpage />} />
