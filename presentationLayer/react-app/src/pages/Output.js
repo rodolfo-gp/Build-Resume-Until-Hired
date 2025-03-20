@@ -58,9 +58,14 @@ const OutputForm = () => {
                 )}
 
             </div>
+            <input 
+            type="title"
+            value = {doc_title}
+            placeholder="(Optional) Enter Document Title"
+            />
             <div className='button&response'>
             {email && password && <button onClick={()=>Savedoc()}>Save</button>}
-                {responsemessage}
+            {responsemessage}
             </div>
         </div>
     );

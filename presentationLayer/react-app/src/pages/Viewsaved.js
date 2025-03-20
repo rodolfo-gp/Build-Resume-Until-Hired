@@ -96,7 +96,7 @@ function Viewsaved(){
         <div>
         {documentlist.length > 0&&<div>
             {documentlist.map((item)=>(
-                <li onClick={() => Getonecv(item["id"])}>{JSON.stringify(item["doc_title"])}</li>
+                <li onClick={() => Getonecv(item["id"])}>{item["doc_title"]}</li>
             ))}
         </div>}
             <div>{textarea}</div>

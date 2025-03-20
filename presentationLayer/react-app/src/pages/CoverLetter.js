@@ -74,8 +74,7 @@ function CoverLetterForm({row, col}) {
         }).then((response) => response.json())
         .then((data) => {
             const formattedText = data["doc_body"].split("\\n");
-            const title = data["doc_title"];
-            navigate("/Output", { state: { output: formattedText, doc_title: title } });
+            navigate("/Output", { state: { output: formattedText, doc_title: 'Cover Letter' } });
         });
     }
     
