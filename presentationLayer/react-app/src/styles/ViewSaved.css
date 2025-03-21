@@ -1,0 +1,90 @@
+/*ViewSaved.css*/
+
+
+.viewer{
+    display: flex;
+    flex-direction: column;
+
+    justify-content: flex-start;
+    align-items: center;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    width: 100%;
+
+}
+
+.viewer-wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+    width: 80%;
+    margin:20px auto;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+
+}
+
+.title-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+
+    gap: 20px;
+    padding: 10px;
+    
+    width: 50%;
+    
+    border-bottom: #007bff;
+}
+
+.title-container button{
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.title-container button:hover{
+    background: #007bff;
+    color: white;
+}
+
+.title-container button.active{
+    background: #007bff;
+    color: white;
+}
+
+
+.content-container{
+    width: 80%;
+    height: 100%;
+
+    background-color: #e5e7e9;
+
+    margin: 30px 0;
+    padding: 20px;
+
+    border-radius: 10px;
+    border: none;
+
+    overflow-x: hidden;
+    overflow-y: auto;
+
+}
+
+.delete-button{
+    border-radius: 10px;
+    background-color: red;
+}
+
+.delete-button:hover{
+    background-color: rgb(245, 47, 47);
+}
+
