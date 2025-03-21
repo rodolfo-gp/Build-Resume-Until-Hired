@@ -10,7 +10,8 @@ function Loginpage() {
 	const [inputemail, setemail] = useState();
 	const [inputpassword, setPassword] = useState();
 	const [showPassword, setShowPassword] = useState(false);
-	const {login} = useUser();
+	const {email, login} = useUser();
+	const [errormessage, setErrorMessage] = useState("");
 
 	const togglePasswordVisibility = () => {
 		setShowPassword(!showPassword);
@@ -42,6 +43,7 @@ function Loginpage() {
 					navigate("/Homepage");
 					return result;
 				} else {
+					setErrorMessage("Incorrect Username or Password")
 					return result;
 				}
 			})
@@ -109,6 +111,11 @@ function Loginpage() {
 				<p>
 					Don't have an account? <a href="/Signup">Sign up</a>
 				</p>
+				{!email&& 
+				<p>
+				{errormessage}
+				</p>
+				}
 			</div>
 		</div>
 	);
