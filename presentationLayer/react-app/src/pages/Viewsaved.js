@@ -89,7 +89,7 @@ function Viewsaved() {
 		}).then((response) => {
 			if (response.status >= 200 && response.status < 300) {
 				setDelete("Deletion successful");
-				setText("");
+				setText([]);
 				Getcvs();
 			} else {
 				setDelete("Deletion failed");
