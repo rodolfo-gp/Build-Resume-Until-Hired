@@ -59,7 +59,6 @@ function ResumeForm({ row, col }) {
 		["projects"],
 		["jobDesc"],
 		["template"],
-		["latex"],
 	];
 
 	const URL = localStorage.getItem("url") + "/resume";

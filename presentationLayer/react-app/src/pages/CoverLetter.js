@@ -52,7 +52,6 @@ function CoverLetterForm({row, col}) {
 			["projects"],
 			["jobDesc"],
 			["template"],
-			["latex"],
 		];
 
 	const URL = localStorage.getItem("url") + "/coverletter";
