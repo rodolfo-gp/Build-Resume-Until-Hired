@@ -6,13 +6,13 @@ div.header-container {
     align-items: center;
     justify-content: space-between;
     flex-shrink: 0;
-    border-bottom: none;/* Removed border-bottom */
+    border-bottom: none;
 }
 
 .navbar {
     background: transparent;
     border-radius: 12px;
-    border: none; /* Ensure no border */
+    border: none;
     padding: 15px 30px;
     text-align: center;
     transition: 0.3s ease-in-out;
@@ -61,20 +61,44 @@ img {
 
 /* Responsive Design */
 
-/* For screens < 768px */
+.hamburger {
+    display: none;
+    font-size: 30px;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    position: absolute;
+    top: 30px;
+    right: 20px;
+}
+
+/* Show hamburger button on small screens */
 @media (max-width: 768px) {
+    .hamburger {
+        display: block;
+    }
+
     .navbar {
+        display: none;
         flex-direction: column;
-        padding: 10px 20px;
+        width: 20%;
+        position: absolute;
+        top: 80px;
+        right: 0;
+        background: rgba(0, 0, 0, 0.8);
+        padding: 20px;
+        z-index: 1000;
     }
 
     .navbar ul {
         flex-direction: column;
-        align-items: center;
+        gap: 15px;
     }
 
-    .navbar ul li {
-        margin: 10px 0;
+    /* Show menu when active */
+    .navbar.active {
+        display: flex;
     }
 }
 
@@ -83,5 +107,16 @@ img {
     .navbar a {
         font-size: 16px;
         padding: 8px 12px;
+    }
+
+    .navbar {
+        display: none;
+        flex-direction: column;
+        width: 50%;
+        position: absolute;
+        top: 80px;
+        right: 0;
+        background: rgba(0, 0, 0, 0.8);
+        padding: 20px;
     }
 }
