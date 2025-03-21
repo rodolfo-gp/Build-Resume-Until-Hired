@@ -8,8 +8,9 @@
 
 /*Generic - removing styling to make custom styling easier*/
 body,html, #root{
-  height: 100%;
-  width: 100%;
+  background: linear-gradient(to top, rgb(0, 0, 0), #127599);
+  height: 100vh;
+  width: 100vw;
   padding: 0;
   margin: 0;
 

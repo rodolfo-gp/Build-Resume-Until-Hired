@@ -106,10 +106,10 @@ function Viewsaved() {
 				{documentlist.length > 0 && (
 					<div className="title-container">
 						{documentlist.map((item,index) => (
-							<button 
+							<button
                                 onClick={() => handleButtonClick(index, item["id"])}
                                 className = {currentButton === index ? "active" : ""}
-                            >	
+                            >
                                 {item["doc_title"]}
 							</button>
 						))}
@@ -118,7 +118,11 @@ function Viewsaved() {
 
 				{currentID && (
 					<>
-						<div className="content-container">{textarea}</div>
+						<div className="content-container">{
+							textarea.map((line, index) => (
+							<p key={index}>{line}</p>
+							))}
+						</div>
 						<button
 							className="delete-button button"
 							onClick={() => deletedoc(currentID)}

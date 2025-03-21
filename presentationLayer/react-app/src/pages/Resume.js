@@ -35,7 +35,7 @@ function ResumeForm({ row, col }) {
 		projects: { value: "", placeholder: "Name of projects you have worked on" },
 		jobDesc: { value: "", placeholder: "Description of job" },
 		template: { value: "", placeholder: "Template for Resume (Optional)" },
-		latex: false 
+		latex: false
 	});
 
 	const textAreaFields = [
@@ -87,8 +87,8 @@ function ResumeForm({ row, col }) {
 		<div className="form-container">
 
 			<div>
-				<h3>Enter your Resume Information</h3>
-				<p>Provide details to build your professional resume.</p>
+				<h3 className="title">Enter your Resume Information</h3>
+				<p className="subtitle">Provide details to build your professional resume.</p>
 			</div>
 
 			{/**
@@ -110,7 +110,7 @@ function ResumeForm({ row, col }) {
 								handleChange={handleChange}
 								setFormData={setFormData}
 								textAreaFields={textAreaFields}
-								placeholder={leftEntry.placeholder}	
+								placeholder={leftEntry.placeholder}
 								row = {row}
 								col = {col}
 							/>
@@ -121,7 +121,7 @@ function ResumeForm({ row, col }) {
 									handleChange={handleChange}
 									setFormData={setFormData}
 									textAreaFields={textAreaFields}
-									placeholder={rightEntry.placeholder}	
+									placeholder={rightEntry.placeholder}
 									row = {row}
 									col = {col}
 								/>
@@ -148,11 +148,11 @@ function ResumeForm({ row, col }) {
 					</button>
 				</div>
 
-			
+
 			{/** End of two-column-grid*/}
 
 			</div>
-		
+
 		{/** End of form-container */}
 		</div>
 	);
