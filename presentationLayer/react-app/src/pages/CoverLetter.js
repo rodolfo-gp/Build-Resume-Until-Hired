@@ -10,7 +10,6 @@ import InputField from "../components/InputField";
 
 function CoverLetterForm({row, col}) {
 	const navigate = useNavigate();
-	const [output, setOutput] = useState([]);
 
     const [formData, setFormData] = useState({
         name: { value: "", placeholder: "Full Name" },
