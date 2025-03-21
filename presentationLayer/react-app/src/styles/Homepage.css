@@ -1,6 +1,7 @@
 /* Homepage.css */
 .homepage-container{
     display: flex;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
     gap: 50px;
@@ -10,17 +11,11 @@
     padding: 3px;
 }
 
-/*This is for screens with a width of >712px*/
-@media (min-width: 712px){
-    .homepage-container {
-        flex-direction: row;
-    }
-}
-
-/*This is for screens with a width of <712px */
-@media (max-width: 712px){
+/*This is for screens with a width of <850px */
+@media (max-width: 850px){
     .homepage-container {
         flex-direction: column;
+        align-items: center;
     }
 
 }

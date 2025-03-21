@@ -1,7 +1,7 @@
 div.header-container {
 
     width: 100%;
-    height: 100px;
+    height: var(--header-height);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -38,13 +38,15 @@ div.header-container {
 
 .navbar a {
     text-decoration: none;
-    color: rgb(255, 255, 255);
+    color: white;
     font-size: 18px;
     font-family: monospace;
     font-weight: bold;
-    padding: 10px 15px;
+    padding: 10px 20px;
     border-radius: 8px;
     transition: 0.3s ease-in-out;
+
+    display: inline-block;
 }
 
 .navbar a:hover {
@@ -61,62 +63,56 @@ img {
 
 /* Responsive Design */
 
-.hamburger {
+.hamburger{
     display: none;
     font-size: 30px;
     background: none;
     border: none;
-    color: white;
     cursor: pointer;
-    position: absolute;
-    top: 30px;
-    right: 20px;
+    color: white;
 }
 
-/* Show hamburger button on small screens */
-@media (max-width: 768px) {
-    .hamburger {
-        display: block;
+/* For screens < 850px */
+@media (max-width: 850px) {
+    .hamburger{
+        display: inline-block;
+        margin: 10px;
     }
 
     .navbar {
-        display: none;
-        flex-direction: column;
-        width: 20%;
         position: absolute;
-        top: 80px;
+        top: 60px;
         right: 0;
-        background: rgba(0, 0, 0, 0.8);
-        padding: 20px;
-        z-index: 1000;
+        width: 100%;
+        background: rgba(0,0,0,0.9);
+        text-align: center;
+        padding: 10px 0;
+        flex-direction: column;
+        display: none; /*Nav bar will be invisible by default for mobile*/
+    }
+
+    .navbar.open{
+        display: block;
+        position: absolute;
+        top: var(--header-height);
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: rgba(0,0,0,0.9);
+
+        z-index: 99999; /*once opened navbar is ontop of everything*/
     }
 
     .navbar ul {
         flex-direction: column;
-        gap: 15px;
+        padding: 0;
+        margin: 0;
     }
 
     /* Show menu when active */
     .navbar.active {
         display: flex;
     }
-}
 
-/* For screens < 480px */
-@media (max-width: 480px) {
-    .navbar a {
-        font-size: 16px;
-        padding: 8px 12px;
-    }
 
-    .navbar {
-        display: none;
-        flex-direction: column;
-        width: 50%;
-        position: absolute;
-        top: 80px;
-        right: 0;
-        background: rgba(0, 0, 0, 0.8);
-        padding: 20px;
-    }
 }
