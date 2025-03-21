@@ -112,9 +112,9 @@ function Loginpage() {
 					Don't have an account? <a href="/Signup">Sign up</a>
 				</p>
 				{!email&& 
-				<p>
+				<h5 className="error">
 				{errormessage}
-				</p>
+				</h5>
 				}
 			</div>
 		</div>

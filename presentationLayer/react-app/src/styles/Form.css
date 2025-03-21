@@ -163,3 +163,7 @@ label span{
     }
 
 }
+
+.error{
+    color: red;
+}

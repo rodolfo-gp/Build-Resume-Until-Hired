@@ -130,6 +130,9 @@ function SignupPage() {
 				<p>
 					Already have an account? <a href="/Login">Sign in</a>
 				</p>
+				{!issame && (<h5 className = "error">
+					Passwords do not match
+				</h5>)}
 			</div>
 		</div>
 	);
