@@ -8,21 +8,17 @@
 
 /*Generic - removing styling to make custom styling easier*/
 body,html, #root{
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
   padding: 0;
   margin: 0;
 
-  display: flex;
-  flex-direction: column;
-
   overflow-x: hidden;
-  overflow-y: hidden;
-
 }
 
 #root{
-  box-sizing: border-box; 
+  flex: 1;
+  overflow-y: auto;
 }
 
 
