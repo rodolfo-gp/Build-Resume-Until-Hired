@@ -1,30 +1,56 @@
-from gptPromptingutilities import gpt_prompter
+import sys
+import os
+
+# Get the parent directory and add it to sys.path
+parent_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "../"))
+sys.path.append(parent_dir)
+
+
+from llm.gptPromptingutilities import gpt_prompter
+
+'''
+Testing File to test the original JobAppMaterial class and the gpt prompter. Depricated
+'''
 
 # Constants:
 name = "Zaid Shaikh the FBI Agent"
 profession = "Software Engineer"
-education = "University of Calgary, Schulich School of Engineering, Software Engineering Undergraduate"
 address = "123 1st Street NW"
-recipientAddress = "Tip Top Tailors, 3625 Shaganapi Trail NW, Calgary NW"
-recipientName = "Rodolfo Fox-Pereira "
+profession = "Software Engineer"
 phone = "1234567890"
-socials = "zaid@linkedin.com"
+socials = "zaid@mail.com, linkedin.com/zaid"
+
+education = "University of Calgary, Schulich School of Engineering, Software Engineering Undergraduate"
 skills = ["c++", "c", "java", "complaining", "sleeping", "yelling at customers", "sleeping"]
 experience = """
-Sandoz Canada, Calgary, Alberta (Remote)	September 2024 - Present 
-Software Engineering Researcher 
-•	Collaborating in a government funded research project to develop a Chatbot for Sandoz to improve access to reliable and comprehensive drug information to improve user experience
-•	Developing a RAG (Retrieval Augmented Generation) application for the chatbot to improve its dependence on updated training data
-University of Calgary, Calgary, Alberta	May 2024 – Present 
-Software Engineering Researcher	 
-•	The Impact of Prompt Stylometry in Large Language Models (LLMs):
-o	Leading a research study to evaluate the impact of different prompting strategies on the complexity, reliability, and readability of LLM generated code
-o	Conducted an extensive literature review and manually developed 400 prompts tailored to class level coding problems to test multiple LLMs 
-o	Designed a Python plug-in pipeline to automate test cases and code quality evaluation different metrics 
-•	Using ChatGPT to Augment Software Engineering Chatbots Dataset:
-o	Collaborated on the rebuttal of a project submitted to a top Software Engineering journal to leverage ChatGPT to augment natural language training data on NLUs
-o	Implemented a new data augmentation method based on random deletion and swap techniques to benchmark against the ChatGPT-based approach, achieving 8% improvement in F1 scores over baseline
+   Tip Top Tailors										 August 2022 - Present
+   Sales Associate 											        	        Calgary, AB
+•	Achieved over $300,000 in sales, demonstrating strong interpersonal skills and product knowledge.
+•	Attended customers in a fast-paced busy environment while working with a diverse and inclusive team.
+•	Resolved customer concerns in consultation with the store manager when required.
+•	Closed sales deals by effectively communicating and addressing questions promptly and accurately.
 """
+supplemental = """
+   Embedded in Embedded								   September 2023 – April 2024
+•	Leveraged in-class fundamentals to develop practical applications on a development board.
+•	Integrated an inertial measurement unit (IMU) to design and implement various functional applications. 
+   Facial Recognition Program | Python								    August 2024
+•	Built a facial recognition program in Python utilizing the TensorFlow library and convolutional neural networks (CNNs) for high-precision facial identification. 
+•	Trained and fine-tuned the CNN model to accurately detect and recognize facial features, achieving an accuracy of 99.63% on the LFW (Labeled Faces in the Wild) dataset.
+   IMU Based Speedometer | C							        January 2024 – April 2024
+•	Developed a precise speedometer using an inertial measurement unit (IMU) and IAR debugger, enabling real-time speed tracking with an accuracy of 95%.
+•	Analyzed the IMU data sheet and modified driver code to support customized functionalities, including a conversion algorithm to transform raw IMU readings into meters per second.
+   Flight Management System | C++								            November 2023	
+•	Developed a robust flight management system in C++ to streamline operations, allowing users to efficiently search, book, and manage flights.
+   Mini Game Console | C										    March 2023
+•	Designed and 3D-printed a custom mini game console powered by an Arduino, featuring an interactive, built-in Battleship game.
+•	Utilized the Arduino’s TFT library and TFT LCD screen to implement a simple GUI.
+   Automated Garden | C										February 2023
+•	Developed an automated garden system using an Adafruit soil condition sensor and motorized mechanism, improving the maintenance for Arugula plants, resulting in a 25% increase in plant growth efficiency.
+"""
+
+f = open("llm\\resumeTemplate.txt", "r", encoding='utf8')
+resumeTemplate = f.read()
 
 jobDescription = """
 Overview
@@ -81,27 +107,23 @@ The Company: Hexagon is a global leader in digital reality solutions, combining 
 Applicants who require accommodation in the job application process may contact Human Resources at hrrecruitingteam.ap@hexagon.com
 """
 
-f = open("backendLayer\llm\coverLetterTemplate.txt", "r")
-letterTemplate = f.read()
-
-
 promptPayload = """
-Please make a cover letter for a {userProfession}. Use the following fields:
+Please make a resume for a {userProfession}. Use the following information to generate a resume. Please return ONLY the text associated with the template.
 Name: {userName}
 Address: {userAddress}
 Phone Number: {userNumber}
-Social Media: {userSocials}
-
-Hiring Manager Information: {userDesiredCompany}
+Social Medias: {userSocials}
 
 Education: {userEducation}
 Skills: {userSkills}
-Experience: {userExperience}
+Work Experience: {userExperience}
+Projects: {userProjects}
+Additional Experience: {supplementaryUserExperience}
 
-Please use the enclosed cover letter as a template for filling the information in:
-{templateLetter}
+The resume template should adhere to the following:
+{resumeTemplate}
 
-Here is the job description that the cover letter should be tailored towards:
+Here is the job description that the resume should be tailored towards:
 {jobDescription}
 """.format(
     userProfession = profession,
@@ -112,10 +134,10 @@ Here is the job description that the cover letter should be tailored towards:
     userSocials = socials,
     userSkills = skills,
     userExperience = experience,
-    templateLetter = letterTemplate,
-    userDesiredCompany = recipientAddress + recipientName,
-    jobDescription = jobDescription
+    supplementaryUserExperience = supplemental,
+    jobDescription = jobDescription,
+    resumeTemplate = resumeTemplate
     )
-header = "The prompt being sent will contain details about creating a resume or cover letter template. please return ONLY the text associated with the template"
+header = "The prompt being sent will contain details about creating a resume template. please return ONLY the text associated with the template"
 
 print(gpt_prompter(promptPayload, header))
