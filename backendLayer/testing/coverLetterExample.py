@@ -9,7 +9,7 @@ sys.path.append(parent_dir)
 from llm.gptPromptingutilities import gpt_prompter
 
 '''
-Testing File to test the original JobAppMaterial class and the gpt prompter. 
+Testing File to test the original JobAppMaterial class and the gpt prompter. Depricated.
 '''
 
 # Constants:

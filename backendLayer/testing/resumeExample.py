@@ -9,7 +9,7 @@ sys.path.append(parent_dir)
 from llm.gptPromptingutilities import gpt_prompter
 
 '''
-Testing File to test the original JobAppMaterial class and the gpt prompter. 
+Testing File to test the original JobAppMaterial class and the gpt prompter. Depricated
 '''
 
 # Constants:
@@ -49,7 +49,7 @@ supplemental = """
 •	Developed an automated garden system using an Adafruit soil condition sensor and motorized mechanism, improving the maintenance for Arugula plants, resulting in a 25% increase in plant growth efficiency.
 """
 
-f = open("backendLayer\\llm\\resumeTemplate.txt", "r", encoding='utf8')
+f = open("llm\\resumeTemplate.txt", "r", encoding='utf8')
 resumeTemplate = f.read()
 
 jobDescription = """
