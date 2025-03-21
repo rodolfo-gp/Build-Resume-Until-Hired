@@ -89,7 +89,9 @@ function Viewsaved() {
 			if (response.status >= 200 && response.status < 300) {
 				setErrorText("Deletion successful");
 				setText([]);
+				setID();
 				Getcvs();
+				setCurrentButton();
 			} else {
 				setErrorText("Deletion failed");
 			}
@@ -120,9 +122,7 @@ function Viewsaved() {
 					</div>
 				)}
 
-				{errorText? (
-					<div className="content-container">{errorText}</div>
-				) : currentID ?(
+				{currentID ?(
 					<>
 						<div className="content-container">{
 							textarea.map((line, index) => (
@@ -136,7 +136,9 @@ function Viewsaved() {
 							Delete
 						</button>
 					</>
-				) : null}
+				) : errorText? (
+					<div className="content-container">{errorText}</div>
+				) :  null}
 			</div>
 		</div>
 	);
