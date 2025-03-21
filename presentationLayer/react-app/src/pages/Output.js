@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation,useNavigate} from 'react-router-dom';
-import * as HTMLDocx from 'html-docx-js/dist/html-docx.js'; // Import the html-docx-js library
-import { saveAs } from 'file-saver'; // Import file-saver
+import * as HTMLDocx from 'html-docx-js/dist/html-docx.js';
+import { saveAs } from 'file-saver';
 
 import "../styles/Generation.css";
 
@@ -50,7 +50,11 @@ const OutputForm = () => {
 	}
 
     const downloadDOCX = () => {
-        // Convert output to HTML format without including the title in the body
+		if (!output || output.length === 0) {
+			alert("Please add content before downloading")
+			return;
+		}
+
         const htmlContent = `
             <html>
                 <body>
@@ -64,7 +68,7 @@ const OutputForm = () => {
         // Convert the HTML content to DOCX
         const docxBlob = HTMLDocx.asBlob(htmlContent);
 
-        // Use FileSaver's saveAs function to save the DOCX file
+        // saveAs function to save the DOCX file
         saveAs(docxBlob, `${newdoc_title || "Generated_Document"}.docx`);
     };
 
