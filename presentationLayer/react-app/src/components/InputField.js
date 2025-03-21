@@ -12,6 +12,8 @@ function InputField({
 	row,
 	col,
 }) {
+	const isRequired = !placeholder.includes("(Optional)")
+
 	const isTextArea = textAreaFields.includes(field);
 
 	const isLatexField = field === "latex";
@@ -56,6 +58,7 @@ function InputField({
 				placeholder={placeholder}
 				rows={row}
 				cols={col}
+				required = {isRequired}
 			/>
 		);
 	} else {
@@ -67,6 +70,7 @@ function InputField({
 				value={value}
 				onChange={(event) => handleChange(event, setFormData)}
 				placeholder={placeholder}
+				required = {isRequired}
 			/>
 		);
 	}

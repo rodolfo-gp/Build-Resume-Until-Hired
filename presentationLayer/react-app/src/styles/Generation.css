@@ -1,33 +1,97 @@
-body, html {
-    height: 100%;
-    overflow-y: auto;
-    margin: 0;
-    padding: 0;
-}
-
 h1 {
     text-align: center;
     font-size: 2em;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
-.output_page {
-    max-height: 80vh;
-    overflow-y: auto;
-}
+.output-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
-.Generation_output {
-    max-width: 800px;
-    margin: 20px auto;
+    max-width: 900px;
+    height: fit-content;
     padding: 20px;
-    border-radius: 10px;
-    background-color: #f0f7ff;
-    box-shadow: 10px 4px 15px rgba(0, 0, 0, 0.3)
+    margin: 0 auto;
 }
 
 .header {
     color: rgb(255, 255, 255);
     font-family: monospace;
     font-weight: bold;
-    box-shadow: 8px 0px rgba(0, 0, 0, 0.3);
+
 }
+
+.content{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 10px;
+}
+
+
+.document-title-wrapper{
+    width: 100%;
+
+    display: flex;
+    flex-direction: row;
+
+    justify-content: space-between;
+
+    gap: 20px;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.document-title-wrapper > input{
+    flex: 2; /*This takes up 2/3 of the space in wrapper*/
+    padding: 8px 12px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+
+.document-actions{
+    flex: 1; /*This takes up 1/3 of the space in wrapper*/
+    
+    display: flex;
+    justify-content: flex-end;
+
+    gap: 10px;
+
+}
+
+.document-button{
+    padding: 8px 15px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+    background-color: #000;
+    color: white;
+    cursor: pointer;
+}
+
+.document-button:hover{
+    background-color: #333;
+}
+
+
+.generated-content {
+    width: 100%;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #f0f7ff;
+    box-shadow: 10px 4px 15px rgba(0, 0, 0, 0.3);
+
+    box-sizing: border-box;
+}
+
+
+
+

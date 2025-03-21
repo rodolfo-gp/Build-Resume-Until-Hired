@@ -7,6 +7,7 @@ function Viewsaved() {
 	const password = localStorage.getItem("password");
 	const [documentlist, setList] = useState([]);
 	const [textarea, setText] = useState("");
+	const [errorText, setErrorText] = useState("");
 	const [currentID, setID] = useState();
     const [currentButton, setCurrentButton] = useState(null);
 	const [deletemessage, setDelete] = useState("");
@@ -19,7 +20,7 @@ function Viewsaved() {
 		if (email != null && password != null && email && password) {
 			Getcvs();
 		} else {
-			setText("Login to see saved documents");
+			setErrorText("Login to see saved documents");
 		}
 	}, []);
 
@@ -42,7 +43,8 @@ function Viewsaved() {
 			})
 			.then((data) => {
 				if (data["status"] == false) {
-					setText(data["message"]);
+					console.log("nothing on user");
+					setErrorText(data["message"]);
 					setList([]);
 					setID();
 				} else {
@@ -66,7 +68,7 @@ function Viewsaved() {
 				if (response.status >= 200 && response.status < 300) {
 					return result;
 				} else {
-					setText(response.status);
+					setErrorText(response.status);
 				}
 			})
 			.then((data) => {
@@ -87,7 +89,7 @@ function Viewsaved() {
 		}).then((response) => {
 			if (response.status >= 200 && response.status < 300) {
 				setDelete("Deletion successful");
-				setText("");
+				setText([]);
 				Getcvs();
 			} else {
 				setDelete("Deletion failed");
@@ -114,6 +116,10 @@ function Viewsaved() {
 							</button>
 						))}
 					</div>
+				)}
+
+				{errorText && (
+					<div className="content-container">{errorText}</div>
 				)}
 
 				{currentID && (
