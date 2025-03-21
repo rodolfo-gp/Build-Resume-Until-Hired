@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
-import * as HTMLDocx from 'html-docx-js/dist/html-docx.js';
-import { saveAs } from 'file-saver';
+import React, { useState, useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import * as HTMLDocx from "html-docx-js/dist/html-docx.js";
+import { saveAs } from "file-saver";
 
 import "../styles/Generation.css";
 
 const OutputForm = () => {
 	const location = useLocation();
+	const navigate = useNavigate();
 	let { output, doc_title } = location.state || {};
-	const [responsemessage, setMessage] = useState("");
 	const [newdoc_title, setDoc_Title] = useState("");
 
 	useEffect(() => {
@@ -44,10 +44,7 @@ const OutputForm = () => {
 			}),
 		}).then((response) => {
 			if (response.status >= 200 && response.status < 300) {
-				setMessage("Save Successful");
-                window.alert(responsemessage)
-			} else {
-				setMessage("Save failed");
+				navigate("/View");
 			}
 		});
 	}
@@ -75,26 +72,33 @@ const OutputForm = () => {
 		<div className="output-container">
 			<h1 className="header">Generated File</h1>
 
-			<div className="document-title-wrapper">
-				<input
-					type="title"
-					value={newdoc_title}
-					onChange={(event) => setDoc_Title(event.target.value)}
-					placeholder="(Optional) Enter Document Title"
-				/>
-				<div className="document-actions">
-					{email && password && 
-                    <button onClick={Savedoc}>💾 Save</button>}
-					<button onClick={downloadDOCX}>📄 Download DOCX</button>
+			<div className = "content">
+				<div className="document-title-wrapper">
+					<input
+						type="title"
+						value={newdoc_title}
+						onChange={(event) => setDoc_Title(event.target.value)}
+						placeholder="Enter Document Title (Optional)"
+					/>
+					<div className="document-actions">
+						{email && password && (
+							<button onClick={Savedoc} className="document-button">
+								💾 Save
+							</button>
+						)}
+						<button onClick={downloadDOCX} className="document-button">
+							📄 Download DOCX
+						</button>
+					</div>
 				</div>
-			</div>
 
-			<div className="generated-content">
-				{output && output.length > 0 ? (
-					output.map((line, index) => <p key={index}>{line}</p>)
-				) : (
-					<p>No output available</p>
-				)}
+				<div className="generated-content">
+					{output && output.length > 0 ? (
+						output.map((line, index) => <p key={index}>{line}</p>)
+					) : (
+						<p>No output available</p>
+					)}
+				</div>
 			</div>
 		</div>
 	);
