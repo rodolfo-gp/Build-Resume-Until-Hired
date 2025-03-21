@@ -216,7 +216,7 @@ The app should now be fully running. Website is on localhost:3000 which is conne
           <img src="https://github.com/s0uptim3.png" width="50" height="50" alt="s0uptim3" />
         </a>
         <br /><strong>Odin Fox</strong>
-        <br /><span style="color:gray;">Frontend Developer</span>
+        <br /><span style="color:gray;">Documentation<br />Frontend Developer</span>
       </td>
     </tr>
     <tr>
