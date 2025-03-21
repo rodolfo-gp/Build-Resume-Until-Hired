@@ -6,7 +6,7 @@ function Viewsaved() {
 	const email = localStorage.getItem("email");
 	const password = localStorage.getItem("password");
 	const [documentlist, setList] = useState([]);
-	const [text, setText] = useState("");
+	const [textarea, setText] = useState("");
 	const [errorText, setErrorText] = useState("");
 	const [currentID, setID] = useState();
     const [currentButton, setCurrentButton] = useState(null);
@@ -125,7 +125,7 @@ function Viewsaved() {
 				{currentID && (
 					<>
 						<div className="content-container">{
-							text.map((line, index) => (
+							textarea.map((line, index) => (
 							<p key={index}>{line}</p>
 							))}
 						</div>
