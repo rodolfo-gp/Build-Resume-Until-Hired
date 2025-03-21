@@ -105,6 +105,9 @@ function Viewsaved() {
 	return (
 		<div className="viewer">
 			<div className="viewer-wrapper">
+			<div>
+				<h3>Saved Documents:</h3>
+			</div>
 				{documentlist.length > 0 && (
 					<div className="title-container">
 						{documentlist.map((item,index) => (
