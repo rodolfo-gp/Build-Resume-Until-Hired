@@ -28,16 +28,13 @@ class JobAppMaterial ():
         self.projects = jobAppDict['projects']
         self.additionalExperience = jobAppDict['additionalExperience']
         self.latex = jobAppDict['latex']
-        print(self.latex)
+        self.template = jobAppDict['template']
 
 class CoverLetter(JobAppMaterial):
     def __init__(self, jobAppJson):
         super().__init__(jobAppJson)
         self.materialType = "cover letter"
-        if self.latex:
-            f = open("llm/latexCoverLetter.txt", "r", encoding="utf-8")
-            self.template = f.read()
-        else:
+        if self.template == "":
             f = open("llm/coverLetterTemplate.txt", "r", encoding="utf-8")
             self.template = f.read()
 
@@ -99,10 +96,7 @@ class Resume(JobAppMaterial):
     def __init__(self, jobAppJson):
         super().__init__(jobAppJson)
         self.materialType = "resume"
-        if self.latex:
-            f = open("llm/latexResume.txt", "r", encoding="utf-8")
-            self.template = f.read()
-        else:
+        if self.template == "":
             f = open("llm/resumeTemplate.txt", "r", encoding="utf-8")
             self.template = f.read()
 
@@ -150,55 +144,3 @@ class Resume(JobAppMaterial):
         )
 
         return promptPayload
-
-# TESTING AREA
-
-# Dummy dictionary for testing CoverLetter
-cover_letter_data = {
-    "name": "John Doe",
-    "education": "B.Sc. in Software Engineering, University of Calgary",
-    "address": "123 Main St, Calgary, AB, Canada",
-    "phone": "123-456-7890",
-    "email": "johndoe@example.com",
-    "skills": ["Python", "C++", "Embedded Systems", "React.js"],
-    "jobDesc": "Software Engineering Intern at Seequent",
-    "recipientInfo": "Odin Fox",
-    "companyName": "Seequent",
-    "companyLocation": "Calgary, AB",
-    "projects": ["Developed an AI chatbot using Rasa and Llama 3",
-                 "Optimized a C-based data compression algorithm for embedded systems"],
-    "workExperience": ["Research Intern at University of Calgary, focusing on LLM evaluations",
-                   "Software Developer Intern at XYZ Tech, developed REST APIs in Python"],
-    "additionalExperience": ["Volunteer coding mentor at local high school"],
-    "latex": False
-}
-
-# Dummy dictionary for testing Resume
-resume_data = {
-    "name": "Jane Smith",
-    "education": "B.Sc. in Computer Science, University of Toronto",
-    "address": "456 Elm St, Toronto, ON, Canada",
-    "phone": "987-654-3210",
-    "email": "janesmith@example.com",
-    "socials": "https://github.com/janesmith",
-    "skills": ["Java", "SQL", "PostgreSQL", "Docker"],
-    "jobDesc": "Software Developer Intern at Garmin",
-    "projects": ["Created a web app using React.js and Flask for Bluetooth communication",
-                 "Built a CI/CD pipeline for automated testing with GitHub Actions"],
-    "workExperience": ["Software Engineer Intern at ABC Corp, worked on database optimization",
-                   "Teaching Assistant for Data Structures at University of Toronto"],
-    "additionalExperience": ["Hackathon participant - 1st place in AI challenge"],
-    "latex": "True"
-}
-
-# Convert to JSON strings
-cover_letter_json = json.dumps(cover_letter_data)
-resume_json = json.dumps(resume_data)
-
-# Create instances of CoverLetter and Resume
-cover_letter = CoverLetter(cover_letter_json)
-resume = Resume(resume_json)
-
-# Generate prompts
-# print(cover_letter.createCoverLetterPrompt())
-# print(resume.createCoverLetterPrompt())
