@@ -12,7 +12,6 @@ div.header-container {
 .navbar {
     background: transparent;
     border-radius: 12px;
-    box-shadow: none; /* Removed shadow */
     border: none; /* Ensure no border */
     padding: 15px 30px;
     text-align: center;

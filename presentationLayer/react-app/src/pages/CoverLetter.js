@@ -27,9 +27,9 @@ function CoverLetterForm({row, col}) {
         projects: { value: "", placeholder: "Name of projects you have worked on" },
         jobDesc: { value: "", placeholder: "Description of job" },
         template: { value: "", placeholder: "Template for Cover Letter (Optional)" },
-        latex: false 
+        latex: false
     });
-    
+
 
 	const textAreaFields = [
 		"workExperience",
@@ -65,7 +65,7 @@ function CoverLetterForm({row, col}) {
                 typeof val === "object" && val.hasOwnProperty("value") ? [key, val.value] : [key, val]
             )
         );
-    
+
         await fetch(URL, {
             method: "POST",
             headers: myHeaders,
@@ -76,13 +76,13 @@ function CoverLetterForm({row, col}) {
             navigate("/Output", { state: { output: formattedText, doc_title: 'Cover Letter' } });
         });
     }
-    
+
 
 	return (
 		<div className="form-container">
 			<div>
-				<h3>Enter your Cover Letter Information</h3>
-				<p>Provide details below to build your professional cover letter.</p>
+				<h3 className="title">Enter your Cover Letter Information</h3>
+				<p className="subtitle">Provide details below to build your professional cover letter.</p>
 			</div>
 
 			{/**
@@ -115,7 +115,7 @@ function CoverLetterForm({row, col}) {
 									handleChange={handleChange}
 									setFormData={setFormData}
 									textAreaFields={textAreaFields}
-									placeholder={rightEntry.placeholder}	
+									placeholder={rightEntry.placeholder}
 									row = {row}
 									col = {col}
 								/>
@@ -142,15 +142,9 @@ function CoverLetterForm({row, col}) {
 					</button>
 				</div>
 
-				<div>
-					{output.map((line, index) => (
-						<p key={index}>{line}</p>
-					))}
-				</div>
-			
 			{/** End of two-column-grid*/}
 			</div>
-		
+
 		{/** End of form-container */}
 		</div>
 	);

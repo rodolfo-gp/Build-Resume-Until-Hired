@@ -88,7 +88,7 @@ const OutputForm = () => {
             <div className='button&response'>
                 {email && password && <button onClick={Savedoc}>Save</button>}
                 <button onClick={downloadDOCX}>Download DOCX</button>
-                {responsemessage}
+                <p style={{ color: "white" }}>{responsemessage}</p>
             </div>
         </div>
     );
