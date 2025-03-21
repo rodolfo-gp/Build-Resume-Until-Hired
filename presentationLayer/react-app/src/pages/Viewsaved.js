@@ -10,7 +10,6 @@ function Viewsaved() {
 	const [errorText, setErrorText] = useState("");
 	const [currentID, setID] = useState();
     const [currentButton, setCurrentButton] = useState(null);
-	const [deletemessage, setDelete] = useState("");
 
 	const myHeaders = new Headers();
 	myHeaders.append("Content-Type", "application/json");
@@ -88,11 +87,11 @@ function Viewsaved() {
 			}),
 		}).then((response) => {
 			if (response.status >= 200 && response.status < 300) {
-				setDelete("Deletion successful");
+				setErrorText("Deletion successful");
 				setText([]);
 				Getcvs();
 			} else {
-				setDelete("Deletion failed");
+				setErrorText("Deletion failed");
 			}
 		});
 	}
@@ -118,11 +117,9 @@ function Viewsaved() {
 					</div>
 				)}
 
-				{errorText && (
+				{errorText? (
 					<div className="content-container">{errorText}</div>
-				)}
-
-				{currentID && (
+				) : currentID ?(
 					<>
 						<div className="content-container">{
 							textarea.map((line, index) => (
@@ -136,7 +133,7 @@ function Viewsaved() {
 							Delete
 						</button>
 					</>
-				)}
+				) : null}
 			</div>
 		</div>
 	);
