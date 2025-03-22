@@ -10,6 +10,7 @@ function SignupPage() {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [confirmPassword, setConfirmPassword] = useState("");
+	const [errorText, setErrorText] = useState("");
 	const [showPassword, setShowPassword] = useState(false);
 	const [showConfirmedPassword, setShowConfirmedPassword] = useState(false);
 	const {login} = useUser();
@@ -45,6 +46,7 @@ function SignupPage() {
 					navigate("/Homepage");
 					return result;
 				} else {
+					setErrorText("Email already exists");
 					return result;
 				}
 			})
@@ -130,6 +132,7 @@ function SignupPage() {
 				<p>
 					Already have an account? <a href="/Login">Sign in</a>
 				</p>
+				<h5 className="error" >{errorText}</h5>
 				{!issame && (<h5 className = "error">
 					Passwords do not match
 				</h5>)}
