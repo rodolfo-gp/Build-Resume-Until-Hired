@@ -1,8 +1,7 @@
 import { React, useState } from "react";
-
 import { Link } from "react-router-dom";
 import "../styles/Navbar.css";
-import { useUser } from "../context/UserContext"; // Import the custom hook
+import { useUser } from "../context/UserContext";
 
 function Navbar() {
 	const { email, logout } = useUser();
@@ -19,17 +18,19 @@ function Navbar() {
 		localStorage.removeItem("doc_title");
 	}
 
-  const closeMenu = () => setMenuOpen(false);
+	const closeMenu = () => setMenuOpen(false);
 
 	return (
 		<div className="header-container">
-			<img src="/images/bruh_logo.png" alt="Logo" />
+			<Link to="/Homepage" onClick={closeMenu}>
+				<img src="/images/bruh_logo.png" alt="Logo" />
+			</Link>
 
-      <button className = "hamburger" onClick = {() => setMenuOpen(!menuOpen)}>
-        ☰
-      </button>
+			<button className="hamburger" onClick={() => setMenuOpen(!menuOpen)}>
+				☰
+			</button>
 
-			<nav className= {`navbar ${menuOpen ? "open" : ""}`}>
+			<nav className={`navbar ${menuOpen ? "open" : ""}`}>
 				<ul>
 					{!logged ? (
 						<li>
@@ -37,9 +38,7 @@ function Navbar() {
 						</li>
 					) : (
 						<li>
-							<Link onClick={() => logouthandler()} to="/Login">
-								Logout
-							</Link>
+							<Link onClick={() => logouthandler()} to="/Login">Logout</Link>
 						</li>
 					)}
 					{!logged && (
