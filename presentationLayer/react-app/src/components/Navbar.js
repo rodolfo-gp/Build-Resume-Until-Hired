@@ -2,7 +2,7 @@ import { React, useState } from "react";
 
 import { Link } from "react-router-dom";
 import "../styles/Navbar.css";
-import { useUser } from "../context/UserContext";
+import { useUser } from "../context/UserContext"; // Import the custom hook
 
 function Navbar() {
 	const { email, logout } = useUser();
@@ -11,7 +11,7 @@ function Navbar() {
 	let logged = email;
 
 	function logouthandler() {
-    closeMenu();
+    	closeMenu();
 		logout();
 		localStorage.setItem("email", "");
 		localStorage.setItem("password", "");
