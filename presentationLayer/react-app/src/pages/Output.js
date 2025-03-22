@@ -57,6 +57,9 @@ const OutputForm = () => {
 
         const htmlContent = `
             <html>
+				<head>
+					<meta charset="UTF-8">
+				</head>
                 <body>
                     <div>
                         ${output.map((line) => `<p>${line}</p>`).join("")}
