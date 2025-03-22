@@ -134,7 +134,7 @@ label span{
 
 
 /*This is for screens >712px width*/
-@media(min-width: 712px){
+@media(min-width: 850px){
 
     .field-container input,
     .field-container textarea{
@@ -153,7 +153,7 @@ label span{
 }
 
 /*This is for screens <712px width*/
-@media (max-width: 712px){
+@media (max-width: 850px){
     .form-container input,
     .form-container textarea{
         width: 100%;

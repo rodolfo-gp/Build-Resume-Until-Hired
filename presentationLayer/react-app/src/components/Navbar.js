@@ -1,10 +1,8 @@
 import { React, useState } from "react";
 
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
 import "../styles/Navbar.css";
 import { useUser } from "../context/UserContext";
-import { useUser } from "../context/UserContext"; // Import the custom hook
 
 function Navbar() {
 	const { email, logout } = useUser();
