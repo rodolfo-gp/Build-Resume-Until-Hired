@@ -117,5 +117,11 @@
     color: #007bff;
     text-decoration: none;
     cursor: pointer;
-    
+
+}
+
+@media (max-width: 420px) {
+    .login-card {
+        width: auto;
+    }
 }
