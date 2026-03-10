@@ -40,7 +40,6 @@
   <p align="center">
     Tailor your resumes and cover letter for a specific job
     <br />
-    <a href="https://bru-h.xyz/"><strong>Live Demo »</strong></a>
     <br />
     <br />
     
